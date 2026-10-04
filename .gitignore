@@ -1,3 +1,6 @@
+# 環境変数（絶対にコミットしない）
+.env
+
 # Google API 認証情報（絶対にコミットしない）
 credentials.json
 token.json

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Zoom ミーティング作成</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: #fff;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      padding: 32px 28px;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    h1 { font-size: 22px; font-weight: 700; text-align: center; margin-bottom: 4px; }
+    .subtitle { font-size: 13px; color: rgba(255,255,255,0.5); text-align: center; margin-bottom: 28px; }
+
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
+
+    input {
+      width: 100%;
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 15px;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus { border-color: rgba(255,255,255,0.4); }
+    input::placeholder { color: rgba(255,255,255,0.3); }
+
+    .btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+      margin-top: 8px;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+    .btn-primary { background: linear-gradient(135deg, #2D8CFF, #0052CC); color: #fff; }
+
+    /* 結果カード */
+    .result {
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .result.success {
+      background: rgba(45,140,255,0.1);
+      border: 1px solid rgba(45,140,255,0.3);
+    }
+    .result.error {
+      background: rgba(255,59,48,0.1);
+      border: 1px solid rgba(255,59,48,0.3);
+      color: #ff6b6b;
+    }
+
+    .result-title { font-size: 15px; font-weight: 700; margin-bottom: 14px; color: #2D8CFF; }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 14px;
+      gap: 10px;
+    }
+    .result-row:last-child { border-bottom: none; }
+    .result-label { color: rgba(255,255,255,0.5); flex-shrink: 0; }
+    .result-value { font-weight: 600; word-break: break-all; text-align: right; }
+
+    /* URLコピーエリア */
+    .url-row {
+      margin-top: 16px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .url-text {
+      flex: 1;
+      font-size: 13px;
+      color: #64b5f6;
+      word-break: break-all;
+    }
+    .btn-copy {
+      flex-shrink: 0;
+      background: rgba(45,140,255,0.2);
+      color: #2D8CFF;
+      border: 1px solid rgba(45,140,255,0.3);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-copy:hover { background: rgba(45,140,255,0.35); }
+    .btn-copy.copied { background: rgba(52,199,89,0.2); color: #34c759; border-color: rgba(52,199,89,0.3); }
+
+    .spinner {
+      display: inline-block;
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+<div class="card">
+  <h1>📹 Zoom ミーティング作成</h1>
+  <p class="subtitle">フォームを入力してミーティングを作成</p>
+
+  <div class="form-group">
+    <label>タイトル</label>
+    <input type="text" id="topic" value="APIテストミーティング" placeholder="ミーティングのタイトル">
+  </div>
+
+  <div class="form-group">
+    <label>開始日時</label>
+    <input type="datetime-local" id="start_time">
+  </div>
+
+  <div class="form-group">
+    <label>所要時間（分）</label>
+    <input type="number" id="duration" value="60" min="15" max="480">
+  </div>
+
+  <button class="btn btn-primary" id="btn-create" onclick="createMeeting()">
+    ミーティングを作成
+  </button>
+
+  <!-- 結果表示 -->
+  <div id="result-area"></div>
+</div>
+
+<script>
+  // デフォルト開始時刻を5分後に設定
+  const dt = new Date(Date.now() + 5 * 60 * 1000);
+  dt.setSeconds(0);
+  document.getElementById('start_time').value = dt.toISOString().slice(0, 16);
+
+  async function createMeeting() {
+    const btn = document.getElementById('btn-create');
+    const topic    = document.getElementById('topic').value.trim() || 'APIテストミーティング';
+    const duration = parseInt(document.getElementById('duration').value) || 60;
+    const startRaw = document.getElementById('start_time').value;
+    const start_time = startRaw ? startRaw + ':00' : null;
+
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span>作成中...';
+    document.getElementById('result-area').innerHTML = '';
+
+    try {
+      const res = await fetch('http://localhost:5001/api/create-meeting', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic, duration, start_time }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || data.error) {
+        throw new Error(data.error || 'サーバーエラー');
+      }
+
+      document.getElementById('result-area').innerHTML = `
+        <div class="result success">
+          <div class="result-title">✅ ミーティングを作成しました！</div>
+          <div class="result-row">
+            <span class="result-label">タイトル</span>
+            <span class="result-value">${escHtml(data.topic)}</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">ミーティングID</span>
+            <span class="result-value">${data.id}</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">パスワード</span>
+            <span class="result-value">${data.password || 'なし'}</span>
+          </div>
+          <div class="url-row">
+            <span class="url-text" id="join-url">${escHtml(data.join_url)}</span>
+            <button class="btn-copy" id="btn-copy" onclick="copyUrl('${escHtml(data.join_url)}')">コピー</button>
+          </div>
+        </div>
+      `;
+
+    } catch (e) {
+      document.getElementById('result-area').innerHTML = `
+        <div class="result error">
+          <strong>❌ エラー</strong><br>${escHtml(e.message)}
+        </div>
+      `;
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'ミーティングを作成';
+    }
+  }
+
+  function copyUrl(url) {
+    navigator.clipboard.writeText(url).then(() => {
+      const btn = document.getElementById('btn-copy');
+      btn.textContent = 'コピー済み✓';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'コピー';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+
+  function escHtml(str) {
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+</script>
+</body>
+</html>
