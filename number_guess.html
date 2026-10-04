@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>数字当てゲーム</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 28px;
+      padding: 36px 28px;
+      width: 100%;
+      max-width: 400px;
+      color: #fff;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 28px;
+    }
+
+    /* 試行回数バッジ */
+    .attempts-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 28px;
+    }
+
+    /* ヒントエリア */
+    .hint-box {
+      min-height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      font-size: 20px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .hint-box.higher {
+      background: rgba(52, 199, 89, 0.15);
+      color: #34c759;
+    }
+
+    .hint-box.lower {
+      background: rgba(255, 59, 48, 0.15);
+      color: #ff3b30;
+    }
+
+    .hint-box.correct {
+      background: rgba(255, 214, 10, 0.15);
+      color: #ffd60a;
+    }
+
+    .hint-box.empty {
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 14px;
+    }
+
+    /* 入力エリア */
+    .input-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    input[type="number"] {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      border-radius: 14px;
+      padding: 14px 18px;
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+      text-align: center;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      transition: border-color 0.2s;
+    }
+
+    input[type="number"]:focus {
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    input[type="number"]::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    /* エラーメッセージ */
+    .error-msg {
+      font-size: 13px;
+      color: #ff6b6b;
+      min-height: 20px;
+      margin-bottom: 8px;
+      text-align: left;
+      padding-left: 4px;
+    }
+
+    /* ボタン */
+    .btn {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 14px;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.1s, opacity 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #007aff, #5856d6);
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* 数字キーパッド */
+    .numpad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .numpad-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 22px;
+      font-weight: 500;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .numpad-btn:active {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(0.95);
+    }
+
+    .numpad-btn.delete {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .numpad-btn.submit {
+      background: linear-gradient(135deg, #007aff, #5856d6);
+      font-size: 15px;
+    }
+
+    .numpad-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* 正解画面のアニメーション */
+    @keyframes pop {
+      0% { transform: scale(0.8); opacity: 0; }
+      70% { transform: scale(1.05); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .correct-anim {
+      animation: pop 0.4s ease;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="title">🎯 数字当てゲーム</div>
+  <div class="subtitle">1〜100の数字を当ててください</div>
+
+  <div class="attempts-badge">
+    <span>試行回数</span>
+    <strong id="attempts-count">0</strong>
+  </div>
+
+  <div class="hint-box empty" id="hint-box">ここにヒントが表示されます</div>
+
+  <div class="input-row">
+    <input
+      type="number"
+      id="guess-input"
+      placeholder="1〜100"
+      min="1"
+      max="100"
+      inputmode="numeric"
+      pattern="[0-9]*"
+      readonly
+    >
+  </div>
+
+  <div class="error-msg" id="error-msg"></div>
+
+  <!-- 数字キーパッド -->
+  <div class="numpad" id="numpad">
+    <button class="numpad-btn" onclick="padInput('1')">1</button>
+    <button class="numpad-btn" onclick="padInput('2')">2</button>
+    <button class="numpad-btn" onclick="padInput('3')">3</button>
+    <button class="numpad-btn" onclick="padInput('4')">4</button>
+    <button class="numpad-btn" onclick="padInput('5')">5</button>
+    <button class="numpad-btn" onclick="padInput('6')">6</button>
+    <button class="numpad-btn" onclick="padInput('7')">7</button>
+    <button class="numpad-btn" onclick="padInput('8')">8</button>
+    <button class="numpad-btn" onclick="padInput('9')">9</button>
+    <button class="numpad-btn delete" onclick="padDelete()">⌫</button>
+    <button class="numpad-btn" onclick="padInput('0')">0</button>
+    <button class="numpad-btn submit" id="submit-btn" onclick="submitGuess()">決定</button>
+  </div>
+
+  <button class="btn btn-secondary" id="restart-btn" onclick="startGame()" style="display:none;">
+    もう一度遊ぶ
+  </button>
+</div>
+
+<script>
+  let secretNumber = 0;
+  let attempts = 0;
+  let gameOver = false;
+
+  function startGame() {
+    secretNumber = Math.floor(Math.random() * 100) + 1;
+    attempts = 0;
+    gameOver = false;
+
+    document.getElementById('attempts-count').textContent = 0;
+    document.getElementById('guess-input').value = '';
+    document.getElementById('error-msg').textContent = '';
+    document.getElementById('restart-btn').style.display = 'none';
+
+    const hintBox = document.getElementById('hint-box');
+    hintBox.className = 'hint-box empty';
+    hintBox.textContent = 'ここにヒントが表示されます';
+
+    setNumpadEnabled(true);
+  }
+
+  function padInput(digit) {
+    if (gameOver) return;
+    const input = document.getElementById('guess-input');
+    if (input.value.length >= 3) return;
+    input.value += digit;
+    document.getElementById('error-msg').textContent = '';
+  }
+
+  function padDelete() {
+    if (gameOver) return;
+    const input = document.getElementById('guess-input');
+    input.value = input.value.slice(0, -1);
+    document.getElementById('error-msg').textContent = '';
+  }
+
+  function submitGuess() {
+    if (gameOver) return;
+
+    const input = document.getElementById('guess-input');
+    const errorMsg = document.getElementById('error-msg');
+    const rawValue = input.value.trim();
+
+    // 空欄チェック
+    if (rawValue === '') {
+      errorMsg.textContent = '数字を入力してください。';
+      return;
+    }
+
+    const guess = Number(rawValue);
+
+    // 範囲チェック
+    if (!Number.isInteger(guess) || guess < 1 || guess > 100) {
+      errorMsg.textContent = '1〜100の整数を入力してください。';
+      input.value = '';
+      return;
+    }
+
+    errorMsg.textContent = '';
+    attempts++;
+    document.getElementById('attempts-count').textContent = attempts;
+
+    const hintBox = document.getElementById('hint-box');
+    hintBox.classList.remove('correct-anim');
+    void hintBox.offsetWidth; // reflow for re-trigger animation
+
+    if (guess < secretNumber) {
+      hintBox.className = 'hint-box higher';
+      hintBox.textContent = '↑ もっと大きい！';
+    } else if (guess > secretNumber) {
+      hintBox.className = 'hint-box lower';
+      hintBox.textContent = '↓ もっと小さい！';
+    } else {
+      hintBox.className = 'hint-box correct correct-anim';
+      hintBox.textContent = `🎉 正解！ ${attempts}回で当てました！`;
+      gameOver = true;
+      setNumpadEnabled(false);
+      document.getElementById('restart-btn').style.display = 'block';
+    }
+
+    input.value = '';
+  }
+
+  function setNumpadEnabled(enabled) {
+    document.querySelectorAll('.numpad-btn').forEach(btn => {
+      btn.disabled = !enabled;
+    });
+  }
+
+  // 起動時にゲーム開始
+  startGame();
+</script>
+</body>
+</html>

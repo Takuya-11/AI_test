@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>CSVスコア集計</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      /* スクロールなしで1画面に収める */
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 14px 16px;
+      color: #fff;
+    }
+
+    /* ヘッダー（コンパクト） */
+    .header {
+      text-align: center;
+      flex-shrink: 0;
+      margin-bottom: 10px;
+    }
+
+    .header h1 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .header p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2px;
+    }
+
+    /* エラー・警告 */
+    #messages {
+      flex-shrink: 0;
+    }
+
+    .msg {
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .msg-error {
+      background: rgba(255,59,48,0.15);
+      color: #ff6b6b;
+      border: 1px solid rgba(255,59,48,0.3);
+    }
+
+    .msg-warn {
+      background: rgba(255,159,10,0.12);
+      color: #ffcc00;
+      border: 1px solid rgba(255,159,10,0.25);
+    }
+
+    /* カード共通 */
+    .card {
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .card-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+      flex-shrink: 0;
+    }
+
+    /* アップロード画面（縦中央） */
+    #upload-card {
+      max-width: 480px;
+      width: 100%;
+      margin: auto;
+    }
+
+    .upload-area {
+      border: 2px dashed rgba(255,255,255,0.25);
+      border-radius: 14px;
+      padding: 28px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .upload-area:hover,
+    .upload-area.drag-over {
+      border-color: rgba(0,122,255,0.7);
+      background: rgba(0,122,255,0.07);
+    }
+
+    .upload-icon { font-size: 36px; margin-bottom: 8px; }
+
+    .upload-area p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 4px;
+    }
+
+    .upload-area small {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    #file-input { display: none; }
+
+    .btn-upload {
+      display: inline-block;
+      margin-top: 12px;
+      background: linear-gradient(135deg, #007aff, #5856d6);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* ---- 結果画面レイアウト ---- */
+
+    /* サマリー（上部バー） */
+    #summary-card {
+      flex-shrink: 0;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .summary-row {
+      display: flex;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .badge {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 8px 10px;
+      text-align: center;
+    }
+
+    .badge-num {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .badge-label {
+      font-size: 10px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 1px;
+    }
+
+    .btn-reset {
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 13px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    /* テーブルとランキングを横2列 */
+    #results-grid {
+      flex: 1;          /* 残りの高さをすべて使う */
+      min-height: 0;    /* flex子要素のoverflowを有効にするために必要 */
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    /* 各カードは縦方向にflexで内部スクロール */
+    #result-card,
+    #ranking-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* テーブルエリア（内部スクロール） */
+    .table-wrap {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background: rgba(20, 30, 60, 0.95);
+      text-align: right;
+      padding: 7px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.45);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    thead th:first-child { text-align: left; }
+
+    tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+
+    tbody tr:hover { background: rgba(255,255,255,0.04); }
+
+    tbody td {
+      padding: 9px 10px;
+      text-align: right;
+    }
+
+    tbody td:first-child {
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .avg-cell { color: #ffd60a; font-weight: 700; }
+    .max-cell { color: #34c759; }
+    .min-cell { color: #ff6b6b; }
+
+    /* ランキングエリア（内部スクロール） */
+    .ranking-list {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      list-style: none;
+    }
+
+    .ranking-item {
+      display: flex;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .ranking-item:last-child { border-bottom: none; }
+
+    .rank-badge {
+      width: 28px;
+      font-size: 18px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .rank-num {
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .rank-name {
+      flex: 1;
+      font-size: 15px;
+      font-weight: 600;
+      margin-left: 10px;
+    }
+
+    .rank-avg {
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffd60a;
+    }
+
+    .rank-avg span {
+      font-size: 11px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.4);
+      margin-left: 2px;
+    }
+
+    /* 非表示 */
+    .hidden { display: none !important; }
+
+    /* モバイル：1列に戻す */
+    @media (max-width: 600px) {
+      body { overflow-y: auto; height: auto; }
+
+      #results-grid {
+        grid-template-columns: 1fr;
+        flex: none;
+      }
+
+      #result-card,
+      #ranking-card {
+        height: auto;
+        overflow: visible;
+      }
+
+      .table-wrap,
+      .ranking-list {
+        overflow: visible;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>📊 CSVスコア集計</h1>
+    <p>CSVファイルを読み込んで参加者の成績を集計します</p>
+  </div>
+
+  <div id="messages"></div>
+
+  <!-- ファイル選択 -->
+  <div class="card hidden" id="upload-card">
+    <div class="card-title">CSVファイルを選択</div>
+    <div class="upload-area" id="upload-area" onclick="document.getElementById('file-input').click()">
+      <div class="upload-icon">📂</div>
+      <p>タップしてCSVを選択</p>
+      <small>対応形式：.csv（UTF-8）</small><br>
+      <button class="btn-upload" onclick="event.stopPropagation(); document.getElementById('file-input').click()">
+        ファイルを選ぶ
+      </button>
+    </div>
+    <input type="file" id="file-input" accept=".csv,text/csv">
+  </div>
+
+  <!-- サマリーバー -->
+  <div class="card hidden" id="summary-card">
+    <div class="summary-row">
+      <div class="badge">
+        <div class="badge-num" id="summary-count">0</div>
+        <div class="badge-label">参加者数</div>
+      </div>
+      <div class="badge">
+        <div class="badge-num" id="summary-rounds">0</div>
+        <div class="badge-label" id="summary-rounds-label">総記録数</div>
+      </div>
+      <div class="badge">
+        <div class="badge-num" id="summary-top">—</div>
+        <div class="badge-label">1位</div>
+      </div>
+    </div>
+    <button class="btn-reset" onclick="resetAll()">別のファイルを読み込む</button>
+  </div>
+
+  <!-- 結果グリッド（テーブル ＋ ランキング 横並び） -->
+  <div class="hidden" id="results-grid">
+
+    <div class="card" id="result-card">
+      <div class="card-title">集計結果</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>名前</th>
+              <th>平均点</th>
+              <th>最高点</th>
+              <th>最低点</th>
+            </tr>
+          </thead>
+          <tbody id="result-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" id="ranking-card">
+      <div class="card-title">ランキング</div>
+      <ul class="ranking-list" id="ranking-list"></ul>
+    </div>
+
+  </div>
+
+  <script>
+    const MEDALS = ['🥇', '🥈', '🥉'];
+
+    // ---- CSV パース（横持ち・縦持ちを自動判別） ----
+    function parseCSV(text) {
+      const lines = text.trim().split(/\r?\n/).filter(l => l.trim() !== '');
+      if (lines.length < 2) throw new Error('データが2行以上必要です。');
+
+      const headers = lines[0].split(',').map(h => h.trim());
+      if (headers.length < 2) throw new Error('列が不足しています。');
+
+      const secondColValue = (lines[1].split(',')[1] || '').trim();
+      const isLongFormat = secondColValue === '' || isNaN(Number(secondColValue));
+
+      return isLongFormat ? parseLongFormat(lines, headers) : parseWideFormat(lines, headers);
+    }
+
+    // 縦持ち形式（名前,日付,科目,スコア など1行1スコア）
+    function parseLongFormat(lines, headers) {
+      let scoreColIdx = -1;
+      for (let col = 1; col < headers.length; col++) {
+        const allNumeric = lines.slice(1).every(line => {
+          const val = (line.split(',')[col] || '').trim();
+          return val !== '' && !isNaN(Number(val));
+        });
+        if (allNumeric) { scoreColIdx = col; break; }
+      }
+      if (scoreColIdx === -1) throw new Error('スコア列（数値列）が見つかりません。');
+
+      const order = [];
+      const map = new Map();
+      for (let i = 1; i < lines.length; i++) {
+        const cols = lines[i].split(',');
+        const name = (cols[0] || '').trim();
+        const scoreRaw = (cols[scoreColIdx] || '').trim();
+        if (!name || !scoreRaw || isNaN(Number(scoreRaw))) continue;
+        if (!map.has(name)) { map.set(name, []); order.push(name); }
+        map.get(name).push(Number(scoreRaw));
+      }
+
+      if (map.size === 0) throw new Error('有効な参加者データがありません。');
+
+      const participants = order.map(name => ({ name, scores: map.get(name) }));
+      return { participants, roundCount: lines.length - 1, roundLabel: '総記録数', warnings: [] };
+    }
+
+    // 横持ち形式（名前,1回目,2回目,... の1行1人）
+    function parseWideFormat(lines, headers) {
+      const roundCount = headers.length - 1;
+      const participants = [];
+      const warnings = [];
+
+      for (let i = 1; i < lines.length; i++) {
+        const cols = lines[i].split(',');
+        const name = (cols[0] || '').trim();
+        if (!name) { warnings.push(`${i + 1}行目：名前が空のためスキップ`); continue; }
+
+        const scores = [];
+        let rowOk = true;
+        for (let j = 1; j < cols.length; j++) {
+          const raw = (cols[j] || '').trim();
+          if (raw === '') { warnings.push(`「${name}」${j}回目が空欄のためスキップ`); rowOk = false; break; }
+          const num = Number(raw);
+          if (isNaN(num)) { warnings.push(`「${name}」${j}回目「${raw}」は数値ではないためスキップ`); rowOk = false; break; }
+          scores.push(num);
+        }
+        if (rowOk && scores.length > 0) participants.push({ name, scores });
+      }
+
+      if (participants.length === 0) throw new Error('有効な参加者データがありません。');
+      return { participants, roundCount, roundLabel: '試行回数', warnings };
+    }
+
+    // ---- 統計計算 ----
+    function calcStats(scores) {
+      const sum = scores.reduce((a, b) => a + b, 0);
+      return { avg: sum / scores.length, max: Math.max(...scores), min: Math.min(...scores) };
+    }
+
+    // ---- 表示 ----
+    function renderResults(participants, roundCount, roundLabel) {
+      const ranked = participants
+        .map(p => ({ ...p, ...calcStats(p.scores) }))
+        .sort((a, b) => b.avg - a.avg);
+
+      document.getElementById('summary-count').textContent = ranked.length;
+      document.getElementById('summary-rounds').textContent = roundCount;
+      document.getElementById('summary-rounds-label').textContent = roundLabel || '総記録数';
+      document.getElementById('summary-top').textContent = ranked[0].name;
+
+      const tbody = document.getElementById('result-tbody');
+      tbody.innerHTML = '';
+      participants.forEach(p => {
+        const s = calcStats(p.scores);
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${escHtml(p.name)}</td>
+          <td class="avg-cell">${s.avg.toFixed(1)}</td>
+          <td class="max-cell">${s.max}</td>
+          <td class="min-cell">${s.min}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      const rankingList = document.getElementById('ranking-list');
+      rankingList.innerHTML = '';
+      ranked.forEach((p, i) => {
+        const li = document.createElement('li');
+        li.className = 'ranking-item';
+        const medal = i < 3
+          ? `<span class="rank-badge">${MEDALS[i]}</span>`
+          : `<span class="rank-badge"><span class="rank-num">${i + 1}</span></span>`;
+        li.innerHTML = `${medal}<span class="rank-name">${escHtml(p.name)}</span><span class="rank-avg">${p.avg.toFixed(1)}<span>点</span></span>`;
+        rankingList.appendChild(li);
+      });
+
+      hide('upload-card');
+      show('summary-card');
+      show('results-grid');
+    }
+
+    // ---- メッセージ表示 ----
+    function showMessages(warnings, error) {
+      const container = document.getElementById('messages');
+      container.innerHTML = '';
+      if (error) {
+        const div = document.createElement('div');
+        div.className = 'msg msg-error';
+        div.textContent = '⚠️ ' + error;
+        container.appendChild(div);
+      }
+      warnings.forEach(w => {
+        const div = document.createElement('div');
+        div.className = 'msg msg-warn';
+        div.textContent = '⚠ ' + w;
+        container.appendChild(div);
+      });
+    }
+
+    // ---- リセット ----
+    function resetAll() {
+      hide('summary-card');
+      hide('results-grid');
+      show('upload-card');
+      document.getElementById('messages').innerHTML = '';
+      document.getElementById('file-input').value = '';
+    }
+
+    // ---- ファイル読み込み ----
+    document.getElementById('file-input').addEventListener('change', function () {
+      if (this.files[0]) readFile(this.files[0]);
+    });
+
+    const uploadArea = document.getElementById('upload-area');
+    uploadArea.addEventListener('dragover', e => { e.preventDefault(); uploadArea.classList.add('drag-over'); });
+    uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('drag-over'));
+    uploadArea.addEventListener('drop', e => {
+      e.preventDefault();
+      uploadArea.classList.remove('drag-over');
+      if (e.dataTransfer.files[0]) readFile(e.dataTransfer.files[0]);
+    });
+
+    function readFile(file) {
+      if (!file.name.endsWith('.csv') && file.type !== 'text/csv') {
+        showMessages([], 'CSVファイル（.csv）を選択してください。');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        try {
+          const { participants, roundCount, roundLabel, warnings } = parseCSV(e.target.result);
+          showMessages(warnings, null);
+          renderResults(participants, roundCount, roundLabel);
+        } catch (err) {
+          showMessages([], err.message);
+        }
+      };
+      reader.readAsText(file, 'UTF-8');
+    }
+
+    // ---- ユーティリティ ----
+    function show(id) { document.getElementById(id).classList.remove('hidden'); }
+    function hide(id) { document.getElementById(id).classList.add('hidden'); }
+    function escHtml(str) {
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    // 起動時はアップロード画面を表示
+    show('upload-card');
+  </script>
+</body>
+</html>
