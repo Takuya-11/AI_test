@@ -1,0 +1,14 @@
+# Google API 認証情報（絶対にコミットしない）
+credentials.json
+token.json
+
+# Python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# 生成ファイル
+*.png
+members.csv

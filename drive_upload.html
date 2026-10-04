@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Drive アップローダー</title>
+  <script src="https://accounts.google.com/gsi/client" async></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: #fff;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      padding: 36px 32px;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    /* サインインボタン */
+    .btn-signin {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #4285F4, #34A853);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+    .btn-signin:hover { opacity: 0.9; }
+    .btn-signin:active { transform: scale(0.98); }
+
+    /* サインイン済み表示 */
+    .signed-in-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(52,168,83,0.12);
+      border: 1px solid rgba(52,168,83,0.3);
+      border-radius: 12px;
+      padding: 10px 16px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #34c759;
+    }
+
+    /* アップロードエリア */
+    .upload-area {
+      border: 2px dashed rgba(255,255,255,0.25);
+      border-radius: 16px;
+      padding: 36px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      margin-bottom: 16px;
+    }
+    .upload-area:hover,
+    .upload-area.drag-over {
+      border-color: rgba(0,122,255,0.6);
+      background: rgba(0,122,255,0.07);
+    }
+    .upload-icon { font-size: 42px; margin-bottom: 10px; }
+    .upload-area p { font-size: 15px; color: rgba(255,255,255,0.75); margin-bottom: 4px; }
+    .upload-area small { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+    #file-input { display: none; }
+
+    /* 選択ファイル表示 */
+    .file-info {
+      background: rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .file-info .file-icon { font-size: 24px; }
+    .file-info .file-name { font-size: 14px; font-weight: 600; flex: 1; word-break: break-all; }
+    .file-info .file-size { font-size: 12px; color: rgba(255,255,255,0.5); }
+
+    /* アップロードボタン */
+    .btn-upload {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #007aff, #5856d6);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+      margin-bottom: 12px;
+    }
+    .btn-upload:hover { opacity: 0.9; }
+    .btn-upload:active { transform: scale(0.98); }
+    .btn-upload:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+    /* プログレスバー */
+    .progress-wrap {
+      background: rgba(255,255,255,0.08);
+      border-radius: 8px;
+      height: 8px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #007aff, #5856d6);
+      border-radius: 8px;
+      width: 0%;
+      transition: width 0.3s;
+    }
+
+    /* 結果表示 */
+    .result {
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    .result.success {
+      background: rgba(52,199,89,0.12);
+      border: 1px solid rgba(52,199,89,0.3);
+      color: #34c759;
+    }
+    .result.error {
+      background: rgba(255,59,48,0.12);
+      border: 1px solid rgba(255,59,48,0.3);
+      color: #ff6b6b;
+    }
+    .result .result-title { font-weight: 700; margin-bottom: 8px; font-size: 15px; }
+    .result .result-row { margin-top: 4px; color: rgba(255,255,255,0.75); word-break: break-all; }
+    .result .result-row a { color: #64b5f6; }
+
+    /* リセットボタン */
+    .btn-reset {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+<div class="card">
+  <h1>☁️ Drive アップローダー</h1>
+  <p class="subtitle">ファイルをGoogle Driveへアップロード</p>
+
+  <!-- Step 1: サインイン -->
+  <div id="step-signin">
+    <button class="btn-signin" onclick="signIn()">🔑 Googleでサインイン</button>
+  </div>
+
+  <!-- Step 2: ファイル選択＆アップロード -->
+  <div id="step-upload" class="hidden">
+    <div class="signed-in-bar">
+      <span>✓</span><span>サインイン済み</span>
+    </div>
+
+    <div class="upload-area" id="upload-area" onclick="document.getElementById('file-input').click()">
+      <div class="upload-icon">📂</div>
+      <p>クリックまたはドラッグ＆ドロップ</p>
+      <small>すべてのファイル形式に対応</small>
+    </div>
+    <input type="file" id="file-input">
+
+    <div class="file-info hidden" id="file-info">
+      <span class="file-icon">📄</span>
+      <span class="file-name" id="file-name"></span>
+      <span class="file-size" id="file-size"></span>
+    </div>
+
+    <div class="progress-wrap hidden" id="progress-wrap">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <div id="result-area"></div>
+
+    <button class="btn-upload" id="btn-upload" onclick="uploadFile()" disabled>
+      アップロード
+    </button>
+
+    <button class="btn-reset" onclick="resetFile()">別のファイルを選ぶ</button>
+  </div>
+</div>
+
+<script>
+  const CLIENT_ID = 'YOUR_CLIENT_ID.apps.googleusercontent.com'; // Google Cloud ConsoleのOAuthクライアントIDに置き換えてください
+  const SCOPE = 'https://www.googleapis.com/auth/drive.file';
+
+  let accessToken = null;
+  let selectedFile = null;
+  let tokenClient = null;
+
+  // Google Identity Services の初期化
+  window.onload = () => {
+    google.accounts.oauth2 && initTokenClient();
+  };
+
+  // GSI ライブラリ読み込み後に実行
+  document.querySelector('script[src*="gsi"]').onload = () => {
+    initTokenClient();
+  };
+
+  function initTokenClient() {
+    tokenClient = google.accounts.oauth2.initTokenClient({
+      client_id: CLIENT_ID,
+      scope: SCOPE,
+      callback: (resp) => {
+        if (resp.error) {
+          showError('認証に失敗しました: ' + resp.error);
+          return;
+        }
+        accessToken = resp.access_token;
+        show('step-upload');
+        hide('step-signin');
+      }
+    });
+  }
+
+  function signIn() {
+    if (!tokenClient) initTokenClient();
+    tokenClient.requestAccessToken();
+  }
+
+  // ファイル選択
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('file-input').addEventListener('change', (e) => {
+      if (e.target.files[0]) selectFile(e.target.files[0]);
+    });
+
+    const area = document.getElementById('upload-area');
+    area.addEventListener('dragover', (e) => { e.preventDefault(); area.classList.add('drag-over'); });
+    area.addEventListener('dragleave', () => area.classList.remove('drag-over'));
+    area.addEventListener('drop', (e) => {
+      e.preventDefault();
+      area.classList.remove('drag-over');
+      if (e.dataTransfer.files[0]) selectFile(e.dataTransfer.files[0]);
+    });
+  });
+
+  function selectFile(file) {
+    selectedFile = file;
+    document.getElementById('file-name').textContent = file.name;
+    document.getElementById('file-size').textContent = formatSize(file.size);
+    show('file-info');
+    hide('result-area');
+    document.getElementById('result-area').innerHTML = '';
+    document.getElementById('btn-upload').disabled = false;
+  }
+
+  function resetFile() {
+    selectedFile = null;
+    document.getElementById('file-input').value = '';
+    document.getElementById('result-area').innerHTML = '';
+    hide('file-info');
+    hide('progress-wrap');
+    document.getElementById('progress-bar').style.width = '0%';
+    document.getElementById('btn-upload').disabled = true;
+  }
+
+  // アップロード処理
+  async function uploadFile() {
+    if (!selectedFile || !accessToken) return;
+
+    const btn = document.getElementById('btn-upload');
+    btn.disabled = true;
+    btn.textContent = 'アップロード中...';
+
+    show('progress-wrap');
+    document.getElementById('progress-bar').style.width = '30%';
+    document.getElementById('result-area').innerHTML = '';
+
+    try {
+      const metadata = { name: selectedFile.name };
+      const form = new FormData();
+      form.append('metadata', new Blob([JSON.stringify(metadata)], { type: 'application/json' }));
+      form.append('file', selectedFile);
+
+      document.getElementById('progress-bar').style.width = '60%';
+
+      const res = await fetch(
+        'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name,webViewLink',
+        {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${accessToken}` },
+          body: form
+        }
+      );
+
+      document.getElementById('progress-bar').style.width = '100%';
+
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error?.message || 'アップロード失敗');
+      }
+
+      const data = await res.json();
+      document.getElementById('result-area').innerHTML = `
+        <div class="result success">
+          <div class="result-title">✅ アップロード成功！</div>
+          <div class="result-row">📄 ファイル名：${escHtml(data.name)}</div>
+          <div class="result-row">🆔 ファイルID：${data.id}</div>
+          <div class="result-row">🔗 <a href="${data.webViewLink}" target="_blank">Drive で開く</a></div>
+        </div>
+      `;
+    } catch (e) {
+      document.getElementById('progress-bar').style.width = '0%';
+      showError(e.message);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'アップロード';
+    }
+  }
+
+  function showError(msg) {
+    document.getElementById('result-area').innerHTML = `
+      <div class="result error">
+        <div class="result-title">❌ エラー</div>
+        <div class="result-row">${escHtml(msg)}</div>
+      </div>
+    `;
+  }
+
+  function formatSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / 1024 / 1024).toFixed(1) + ' MB';
+  }
+
+  function show(id) { document.getElementById(id).classList.remove('hidden'); }
+  function hide(id) { document.getElementById(id).classList.add('hidden'); }
+  function escHtml(str) {
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+</script>
+</body>
+</html>
