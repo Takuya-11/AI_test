@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Gmail 送信</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: #fff;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      padding: 32px 28px;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    h1 { font-size: 22px; font-weight: 700; text-align: center; margin-bottom: 4px; }
+    .subtitle { font-size: 13px; color: rgba(255,255,255,0.5); text-align: center; margin-bottom: 28px; }
+
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
+
+    input, textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 15px;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+      font-family: inherit;
+    }
+    input:focus, textarea:focus { border-color: rgba(255,255,255,0.4); }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.3); }
+    textarea { resize: vertical; min-height: 120px; }
+
+    .btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+      margin-top: 8px;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+    .btn-primary { background: linear-gradient(135deg, #EA4335, #c0392b); color: #fff; }
+
+    .result {
+      border-radius: 16px;
+      padding: 18px;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    .result.success {
+      background: rgba(52,199,89,0.1);
+      border: 1px solid rgba(52,199,89,0.3);
+    }
+    .result.error {
+      background: rgba(255,59,48,0.1);
+      border: 1px solid rgba(255,59,48,0.3);
+      color: #ff6b6b;
+    }
+    .result-title { font-size: 15px; font-weight: 700; margin-bottom: 12px; color: #34c759; }
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      gap: 10px;
+    }
+    .result-row:last-child { border-bottom: none; }
+    .result-label { color: rgba(255,255,255,0.5); flex-shrink: 0; }
+    .result-value { font-weight: 600; word-break: break-all; text-align: right; }
+
+    .spinner {
+      display: inline-block;
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+<div class="card">
+  <h1>✉️ Gmail 送信</h1>
+  <p class="subtitle">Gmail APIを使ってメールを送信します</p>
+
+  <div class="form-group">
+    <label>宛先</label>
+    <input type="email" id="to" placeholder="example@gmail.com">
+  </div>
+
+  <div class="form-group">
+    <label>件名</label>
+    <input type="text" id="subject" placeholder="件名を入力">
+  </div>
+
+  <div class="form-group">
+    <label>本文</label>
+    <textarea id="body" placeholder="本文を入力"></textarea>
+  </div>
+
+  <button class="btn btn-primary" id="btn-send" onclick="sendEmail()">
+    メールを送信
+  </button>
+
+  <div id="result-area"></div>
+</div>
+
+<script>
+  async function sendEmail() {
+    const to      = document.getElementById('to').value.trim();
+    const subject = document.getElementById('subject').value.trim();
+    const body    = document.getElementById('body').value.trim();
+    const btn     = document.getElementById('btn-send');
+
+    if (!to || !subject || !body) {
+      document.getElementById('result-area').innerHTML = `
+        <div class="result error">宛先・件名・本文をすべて入力してください。</div>`;
+      return;
+    }
+
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span>送信中...';
+    document.getElementById('result-area').innerHTML = '';
+
+    try {
+      const res = await fetch('http://localhost:5001/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ to, subject, body }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || data.error) throw new Error(data.error || 'サーバーエラー');
+
+      document.getElementById('result-area').innerHTML = `
+        <div class="result success">
+          <div class="result-title">✅ メールを送信しました！</div>
+          <div class="result-row">
+            <span class="result-label">宛先</span>
+            <span class="result-value">${escHtml(data.to)}</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">件名</span>
+            <span class="result-value">${escHtml(data.subject)}</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Message ID</span>
+            <span class="result-value">${escHtml(data.message_id)}</span>
+          </div>
+        </div>`;
+
+    } catch (e) {
+      document.getElementById('result-area').innerHTML = `
+        <div class="result error"><strong>❌ エラー</strong><br>${escHtml(e.message)}</div>`;
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'メールを送信';
+    }
+  }
+
+  function escHtml(str) {
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+</script>
+</body>
+</html>
