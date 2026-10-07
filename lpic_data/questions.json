@@ -1,0 +1,5223 @@
+[
+  {
+    "id": "001",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "/proc/mdstatファイルからの次の抜粋には、どのような情報が含まれていますか？（2つ選択）\nmd0 : active raid5 sdb1[3] (S) sdc1[7] sda1[4] (S) sdd1[6] sde1[5]\n1046528 blocks super 1.2 level 5, 512k chunk, algorithm 2 [3/2] [UU_]\n(===>............) recovery = 15.9% (83808/523264) finish=0.1min speed=71880K/sec\nunused devices: <none>",
+    "choices": {
+      "A": "/dev/md0のディスクの1つに障害が発生し、スペアディスクを使用して完全な冗長性を再作成しています",
+      "B": "スペアディスク/dev/sda1は、現在のリカバリ後に完全な冗長性を復元するために使用されます",
+      "C": "情報[UU_]は、RAIDに1つのディスクがなく、完全に冗長ではないことを意味します",
+      "D": "デバイスはバージョン1.2メタデータを使用して、LILOおよびGRUB Legacyが/dev/md0をブートパーティシ\nョンとして使用できるようにします。これはGRUB2では必要ではありません。",
+      "E": "[3/2]という情報は、3つのRAIDディスクがアレイに属し、2つのディスクがスペアであることを意味します。\n一緒に使用可能なディスクの数に等しいです。"
+    },
+    "answer": [
+      "A",
+      "C"
+    ]
+  },
+  {
+    "id": "002",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "システムマウントユニットの目的は何ですか？",
+    "choices": {
+      "A": "コマンドsystemd-mountによって使用され、ユーザーがパーティションをマウントして、選択したマウント\nポイントにマウントできるようにします。",
+      "B": "ネットワークファイルシステムをローカルマウントポイントにマウントするためにのみ使用されます。ロー\nカルメディアには使用できません。",
+      "C": "コマンドsystemd-fstab-generatorによって作成され、/etc/fstabのエントリをシステムのブートプロセス\nに統合します。",
+      "D": "コマンドmountによって使用され、システムを使用してファイルシステムをマウントおよびアンマウントし\nます。"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "003",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "sarを使用して長期間にわたってパフォーマンスデータを収集するには、cronから定期的にどのコマンドを実行\nする必要がありますか？",
+    "choices": {
+      "A": "sar",
+      "B": "sarmon",
+      "C": "sarec",
+      "D": "sadf",
+      "E": "sarcron"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "004",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "Webアプリケーションサーバーには、64 GBのRAMと、64 GBサイズの通常のハードディスクドライブ上の2つの\nスワップパーティションが含まれています。先月、このサーバーのユーザーセッションの平均数は20％増加しま\nした。同時に、RAMの平均使用量が65％から75％に増加しましたが、スワップスペースはほとんど使用されてい\nません。ユーザーセッションの数は、毎月約15％～20％増加し続けると予想されます。次のレスポンスのどれが\n適切でしょうか？（2つ選択）",
+    "choices": {
+      "A": "使用可能なハードウェアを効率的に使用するために、スワップスペースが大幅に消費されるまでハードウェ\nアのアップグレードを遅らせる。",
+      "B": "2つのスワップパーティション上にRAID 1デバイスを作成し、将来スワップスペースを使用する必要がある\n場合に備えて、データロスを回避する",
+      "C": "予想される増加が数か月にわたって続く場合は、負荷を分散するために追加のアプリケーションサーバーの\nインストールを検討する",
+      "D": "高速アクセスを確保し、スワップスペースの必要性を回避するために、Webアプリケーションのスクリプトと\nコンテンツをRAMディスクに移動する",
+      "E": "ハードウェアを更新して使用可能なRAMの容量を増やし、スワップスペースの使用を回避する"
+    },
+    "answer": [
+      "C",
+      "E"
+    ]
+  },
+  {
+    "id": "005",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "暗号化されたLUKSパーティションに関する情報を表示するcrypsetupのサブコマンドはどれですか？",
+    "choices": {
+      "A": "luksDump",
+      "B": "luksInfo",
+      "C": "luksDebug",
+      "D": "luksLS",
+      "E": "luksShow"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "006",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "次のコマンドのどれが、volumeという名前のBtrfsサブボリュームを /mnt に作成しますか？",
+    "choices": {
+      "A": "btrfs subvolume add ?n volume /mnt",
+      "B": "btrfs create subvolume /mnt volume",
+      "C": "btrfs-subvolume create /mnt/volume",
+      "D": "btrfs subvolume new volume /mnt",
+      "E": "btrfs subvolume create /mnt/volume"
+    },
+    "answer": [
+      "E"
+    ]
+  },
+  {
+    "id": "007",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "元の論理ボリュームの更新を許可したまま、論理ボリュームの特定の時点で正確なコピーを作成するために使用\nされるコマンドはどれですか。",
+    "choices": {
+      "A": "lvcclone",
+      "B": "lvcreate",
+      "C": "lvm2",
+      "D": "lvsnap",
+      "E": "lvsnapshot"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "008",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "多くの書き込み操作の後でファイルシステムがディスクに確実に書き込まれるようにするコマンドはどれです\nか。（パスまたはパラメーターなしのコマンドのみを指定）",
+    "choices": {},
+    "answer": [
+      "sync"
+    ]
+  },
+  {
+    "id": "009",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "新しいカーネルを手動でコンパイルしてインストールした後、initramfsに関して何をしなければなりません\nか？",
+    "choices": {
+      "A": "initramfsはカーネルに依存しないため、マシンのハードウェア構成が変更されていない限り変更する必要は\nありません。",
+      "B": "initramfsにはカーネルモジュールが含まれているため、新しいカーネル用に新しいinitramfsを構築する必\n要があります。",
+      "C": "Linuxカーネルのコンパイル中に、新しいinitramfsが自動的に構築されます。新しいinitramfsをインスト\nールするだけです。",
+      "D": "システムの起動時にinitramfsが新しいカーネル用に自分自身を再構成するため、システムを再起動する必\n要があります。"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "010",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "コマンドsysctlを使用してカーネルパラメータを変更すると、ファイルはどのディレクトリツリーで変更され\nますか？",
+    "choices": {
+      "A": "/sys/kernel/",
+      "B": "/proc/kernel/",
+      "C": "/proc/sys/",
+      "D": "/lib/sys/",
+      "E": "/sys/proc/"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "011",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "http://kernel.orgからpatch-4.6.4.xzをダウンロードした後、バージョン4.6.4 Linuxカーネルのビルドを準\n備するための次のステップは何ですか？（2つ選択）",
+    "choices": {
+      "A": "ファイルを解凍し、結果のディレクトリを/usr/src/linuxに移動します",
+      "B": "カーネルバージョン4.6.0を含むカーネルソースディレクトリにパッチファイルを適用する",
+      "C": "カーネルバージョン4.6.3を含むカーネルソースディレクトリにパッチファイルを適用する",
+      "D": "xzを使用してファイルを解凍し、非圧縮パッチファイルを取得します。",
+      "E": "patchを使用して、非圧縮パッチファイルを以前のカーネルバージョンのソースディレクトリに適用します。"
+    },
+    "answer": [
+      "B",
+      "D"
+    ]
+  },
+  {
+    "id": "012",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "次のコマンドのどれがdummyという名前のカーネルモジュールの物理パスを表示しますか？",
+    "choices": {
+      "A": "modprobe -i dummy",
+      "B": "modinfo -n dummy",
+      "C": "modpath -v dummy",
+      "D": "depmod -n dummy",
+      "E": "modshow -p dummy"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "013",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "SSDデバイスをサポートするために、マウントされたファイルシステム上の未使用のブロックを破棄するコマン\nドは何ですか？（パスまたはパラメーターなしのコマンドのみを指定）",
+    "choices": {},
+    "answer": [
+      "fstrim"
+    ]
+  },
+  {
+    "id": "014",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "ホスト名をIPアドレスに解決するために使用されるファイルは次のうちどれですか。（2つ選択）",
+    "choices": {
+      "A": "/etc/systems",
+      "B": "/etc/hosts",
+      "C": "/etc/network",
+      "D": "/etc/dns.conf",
+      "E": "/etc/resolv.conf"
+    },
+    "answer": [
+      "B",
+      "E"
+    ]
+  },
+  {
+    "id": "015",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "指定されたネットワークをスキャンして、使用中と思われるIPアドレスを探すために使用できるコマンドはど\nれですか。",
+    "choices": {
+      "A": "nmap",
+      "B": "tcpdump",
+      "C": "ip",
+      "D": "netscan",
+      "E": "hostdiscover"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "016",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "以下のtcpdump出力によると、クライアントホストのIPアドレスは何ですか？\n02:12:40.511381 IP 192.168.246.11.1045 > 192.168.246.1.22: S 3838532429:3838532429(0) win 5840 <mss\n1460,sackOK,timestamp 31325740,nop,wscale 2>\n02:12:40.511540 IP 192.168.246.1.22 > 192.168.246.11.1045: S 1209330085:1209330085(0) ack 383853 2430\nwin 5792 <mss 1460,sackOK,timestamp 11553457 3132574,nop,wscale 0>\n02:12:40.511755 IP 192.168.246.11.1045 > 192.168.246.1.22: . ack 1 win 1460 <nop,nop,timestamp 3 132574\n11553457>\n02:12:40.515122 IP 192.168.246.1.22 > 192.168.246.11.1045: P 1:26(25) ack 1 win 5792 <nop,nop,timestamp\n11553460 3132574>\n02:12:40.515511 IP 192.168.246.11.1045 > 192.168.246.1.22: . ack 26 win 1460 <nop,nop,timestamp 3132578\n11553460>\n02:12:40.515952 IP 192.168.246.11.1045 > 192.168.246.1.22: P 1:23(22) ack 26 win 1460 <nop,nop,timestamp\n3132578 11553460>",
+    "choices": {},
+    "answer": [
+      "192.168.246.11"
+    ]
+  },
+  {
+    "id": "017",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "以下のカーネルIPルーティングテーブルで、ネットワーク10.10.1.0/24へのルートを削除するには、次のコマ\nンドのどれを使用する必要がありますか？（2つ選択）\nKernel IP routing table\nDestination Gateway Genmask Flags Metric Ref Use Iface 203.0.113.162 0.0.0.0 255.255.255.255 UH 0 0 0\nppp0\n172.16.87.0 0.0.0.0 255.255.255.0 U 0 0 0 eth0\n192.168.246.0 0.0.0.0 255.255.255.0 U 0 0 0 eth1\n10.10.1.0 192.168.246.11 255.255.255.0 UG 0 0 0 eth1\n127.0.0.0 0.0.0.0 255.0.0.0 U 0 0 0 lo\n0.0.0.0 203.0.113.162 0.0.0.0 UG 0 0 0 ppp0",
+    "choices": {
+      "A": "ip net delete 10.10.1.0/24 B. route del 10.10.1.0/24",
+      "C": "route del -net 10.10.1.0/24",
+      "D": "route del 10.10.1.0/24 gw 192.168.246.11",
+      "E": "ip route delete 10.10.1.0/24"
+    },
+    "answer": [
+      "C",
+      "E"
+    ]
+  },
+  {
+    "id": "018",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "コマンドpingが文字列 (DUP!) を出力するのは次のどの状況ですか？",
+    "choices": {
+      "A": "ICMPパケットがブロードキャストアドレスに送信され、複数のホストが応答する場合。",
+      "B": "ICMPパケットが送信されるホストが別のネットワーク上にある場合。",
+      "C": "ホストがICMPパケットを受信することに加えて、ルーターがICMPパケットに応答する場合。",
+      "D": "ICMPパケットを送信するホストが、ICMPパケットを受信するホストと同じホストである場合。"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "019",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "ネットワークパケットの転送方向を指定するtcpdumpのフィルターキーワードは次のうちどれですか？（2つ選\n択）",
+    "choices": {
+      "A": "source",
+      "B": "src",
+      "C": "dest",
+      "D": "src or dst",
+      "E": "both"
+    },
+    "answer": [
+      "B",
+      "D"
+    ]
+  },
+  {
+    "id": "020",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "192.168.1.0/24サブネットからユーザーのsshdへのアクセスを許可する/etc/hosts.allowエントリはどれです\nか？（2つ選択）",
+    "choices": {
+      "A": "sshd : 192.168.1.",
+      "B": "sshd : 192.168.1",
+      "C": "sshd : 192.168.1.0 netmask 255.255.255.0",
+      "D": "sshd : 192.168.1.0/255.255.255.0",
+      "E": "sshd : 192.168.1.0"
+    },
+    "answer": [
+      "A",
+      "D"
+    ]
+  },
+  {
+    "id": "021",
+    "type": "fill_in",
+    "multi_answer": true,
+    "question": "ローカルネットワークのユーザーは、名前解決が十分に速くないと不平を言っています。DNSクエリの解決にか\nかる時間を示すコマンドは何ですか？(パスやオプションは不要)",
+    "choices": {},
+    "answer": [
+      "dig",
+      "time dig",
+      "time host",
+      "time nslookup"
+    ]
+  },
+  {
+    "id": "022",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "ワイヤレスネットワークリンクの品質を確認するために使用できるワイヤレスツールはどれですか。（2つ選択）",
+    "choices": {
+      "A": "iwconfig",
+      "B": "iwlink",
+      "C": "iwscan",
+      "D": "iwifi",
+      "E": "iw"
+    },
+    "answer": [
+      "A",
+      "E"
+    ]
+  },
+  {
+    "id": "023",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "変更を有効にするには、syslogdの構成ファイルを更新した後に何をする必要がありますか？（2つ選択）",
+    "choices": {
+      "A": "アクションは必要ありません。syslogdは数分後に更新された構成ファイルを認識します。",
+      "B": "HUPシグナルをsyslogdプロセスに送信します。",
+      "C": "syslogdサービスを再起動します。",
+      "D": "コマンドsyslogd -uを実行します。"
+    },
+    "answer": [
+      "B",
+      "C"
+    ]
+  },
+  {
+    "id": "024",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "次のコマンドのどれが、ワイヤレスインターフェイスwlan0の機能(Capability)と使用可能な周波数を表示しま\nすか？",
+    "choices": {
+      "A": "iw phy pyh0 info",
+      "B": "iw dev wlan0 info",
+      "C": "iw dev wlan0 show",
+      "D": "iw phy wlan0 show",
+      "E": "iw phy0 show"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "025",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "tcpwrapperが使用する構成ファイルは次のうちどれですか？",
+    "choices": {
+      "A": "/etc/tcpd.allow と etc/tcpd.deny",
+      "B": "/etc/tcpwrapper.allow と /etc/tcpwrapper.deny",
+      "C": "/etc/hosts.allow と /etc/hosts.deny",
+      "D": "/etc/service.allow と /etc/service.deny"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "026",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "以下のフィルターキーワードのうち、次のコマンドで使用できるものはどれですか。（3つ選択）\ntcpdump -i eth0 _____ 203.0.113.8",
+    "choices": {
+      "A": "host",
+      "B": "ip",
+      "C": "src",
+      "D": "dst",
+      "E": "ipv6"
+    },
+    "answer": [
+      "A",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "027",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "次のコマンドのどれが静的IPv6アドレスをネットワークインターフェースeth0に追加しますか？",
+    "choices": {
+      "A": "ip add addr 2001:db8::1337/64 dev eth0",
+      "B": "ip -6 add addr 2001:db8::1337/64 dev eth0",
+      "C": "ip addr add 2001:db8::1337/64 dev eth0",
+      "D": "ip -6 addr add new 2001:db8::1337/64 dev eth0",
+      "E": "ip addr add -6 2001:db8::1337/64 dev eth0"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "028",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "ネットワークリンクの品質を監視するために、次のどのプロパティを記録する必要がありますか？（2つ選択）",
+    "choices": {
+      "A": "双方向の帯域幅",
+      "B": "リンクを使用しているノードの数",
+      "C": "実効レイテンシー(Effective Latency)",
+      "D": "IPv4およびIPv6パケットの数",
+      "E": "使用されているTCPポートの数"
+    },
+    "answer": [
+      "A",
+      "C"
+    ]
+  },
+  {
+    "id": "029",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "複数のアクティブなネットワークインターフェイスを持つLinuxノードで、それぞれがインターネットへのデフ\nォルトルートを持っている場合、どのデフォルトルートが優先されますか？",
+    "choices": {
+      "A": "メトリック値が最も高いデフォルトルート",
+      "B": "MTU値が最も高いデフォルトルート",
+      "C": "TTL値が最小のデフォルトルート",
+      "D": "TTL値が最も高いデフォルトルート",
+      "E": "メトリック値が最も低いデフォルトルート"
+    },
+    "answer": [
+      "E"
+    ]
+  },
+  {
+    "id": "030",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "/etc/hosts内の下記のエントリについて、host2でホスト名の検索の問題を引き起こしている可能性があるのは\n何ですか\nhost1 192.168.1.12\nhost2 192.168.1.12",
+    "choices": {
+      "A": "2つのホスト名が同じIPアドレスを使用しています。",
+      "B": "クエリを実行しているサーバーが別のサブネット上にある。",
+      "C": "フィールドは順不同(out of order)です。",
+      "D": "host2は完全修飾ドメイン名ではありません。"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "031",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "次のコマンドのどれが現在のシステムのIPv4ネイバーをリストしますか？これには、IPアドレスとMACアドレ\nスが含まれます。（2つ選択）",
+    "choices": {
+      "A": "arp",
+      "B": "ifconfig -lv eth0",
+      "C": "netstat -al",
+      "D": "ip neigh show"
+    },
+    "answer": [
+      "A",
+      "D"
+    ]
+  },
+  {
+    "id": "032",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "ネットワーククライアントには、サブネット192.168.0.0/24のIPアドレスで構成されたイーサネットインター\nフェイス（eth0）があります。このサブネットには、このサブネットをインターネットに接続するIPアドレス\n192.168.0.1のルーターがあります。ルーターをデフォルトゲートウェイとして使用するには、クライアントで\n何をする必要がありますか？（2つ選択）",
+    "choices": {
+      "A": "route add default gw 192.168.0.1 eth0",
+      "B": "ifconfig eth0 defaultroute 192.168.0.1",
+      "C": "ip route add default via 192.168.0.1 dev eth0",
+      "D": "echo defaultroute 192.168.0.1 >> /etc/resolv.conf",
+      "E": "route add defaultgw=192.168.0.1 if=eth0"
+    },
+    "answer": [
+      "A",
+      "C"
+    ]
+  },
+  {
+    "id": "033",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "192.168.1.0/24サブネットにすでに（少なくとも）1つのIPアドレスを持っているネットワークインターフェ\nイス（eth0）に別のIPアドレス（192.168.1.2）を追加するコマンドは何ですか？",
+    "choices": {
+      "A": "ip add addr 192.168.1.2/32 dev eth0",
+      "B": "ifconfig eth0 192.168.1.2 netmask 255.255.255.255",
+      "C": "ip addr add 192.168.1.2/32 dev eth0",
+      "D": "ipconfig eth0 192.168.1.2"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "034",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "さまざまなTCPまたはUDPサービスとの相互作用をスクリプト化するために使用できるコマンドは次のうちどれ\nですか。",
+    "choices": {
+      "A": "ftp",
+      "B": "nc",
+      "C": "tcpdump",
+      "D": "strings",
+      "E": "wget"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "035",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "クライアントマシンがIPアドレス192.168.0.1で実行されている再帰(recursive)ネームサーバーを確実に使用\nするために何をすべきですか？（2つ選択）",
+    "choices": {
+      "A": "ネームサーバー192.168.0.1を/etc/resolv.confに追加します。",
+      "B": "route add nameserver 192.168.0.1を実行します。",
+      "C": "ifconfig eth0 nameserver 192.168.0.1.を実行します。",
+      "D": "/etc/nsswitch.confファイルのhostsエントリにdnsサービスがリストされていることを確認します。",
+      "E": "bind add nameserver 192.168.0.1を実行します。"
+    },
+    "answer": [
+      "A",
+      "D"
+    ]
+  },
+  {
+    "id": "036",
+    "type": "fill_in",
+    "multi_answer": true,
+    "question": "プロセスによって開かれたファイルとネットワーク接続に関する情報をリストするプログラムはどれですか。\n（パスまたはパラメーターなしのコマンドのみを指定）",
+    "choices": {},
+    "answer": [
+      "lsof",
+      "/usr/bin/lsof"
+    ]
+  },
+  {
+    "id": "037",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "/etc/hosts.denyに正しいフォーマットのエントリを追加し、特定のクライアントがサービスに接続できないよ\nうにしていますが、これは効果がありません。これの原因は何でしょうか？（2つ選択）",
+    "choices": {
+      "A": "tcpdにHUP信号を送信する必要があります。",
+      "B": "サービスを再起動する必要があります。",
+      "C": "マシンを再起動する必要があります。",
+      "D": "/etc/hosts.allowに競合するエントリがあります。",
+      "E": "サービスはtcpwrapperをサポートしていません。"
+    },
+    "answer": [
+      "D",
+      "E"
+    ]
+  },
+  {
+    "id": "038",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "tcpdump -nli eth1 'tcp'を実行すると、次の出力が表示されます。\n14:41:53.694538 IP 10.1.52.145.51738 > 24.215.7.162.143: Flags [.], ack 33051, win 1002, options\n[nop,nop,TS val 36789130 ecr 1746004159], length 0\nこのパケットの送信元IPアドレスは何ですか？（回答は数字とドットのみで指定）",
+    "choices": {},
+    "answer": [
+      "10.1.52.145"
+    ]
+  },
+  {
+    "id": "039",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "以下は、tcpdump -nli eth1 'udp'の出力からの抜粋です。\n13:03:17.277327 IP 192.168.123.5.1065 > 192.168.5.112.53: 43653+ A? lpi.org. (25)\n13:03:17.598624 IP 192.168.5.112.53 > 192.168.123.5.1065: 43653 1/0/0 A 198.51.100.42 (41)\nどのネットワークサービスまたはプロトコルが使用されましたか？",
+    "choices": {
+      "A": "FTP",
+      "B": "HTTP",
+      "C": "SSH",
+      "D": "DNS",
+      "E": "DHCP"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "040",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "以下は、tcpdump -nli eth1の出力からの抜粋です。\n13:03:17.277327 IP 192.168.123.5.1065 > 192.168.5.112.21: Flags [.], ack 1 (truncated)\n13:03:17.598624 IP 192.168.5.112.21 > 192.168.123.5.1065: Flags [P.], seq (truncated)\nどのネットワークサービスまたはプロトコルが使用されていますか？",
+    "choices": {
+      "A": "FTP",
+      "B": "HTTP",
+      "C": "SSH",
+      "D": "DNS",
+      "E": "DHCP"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "041",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "システムがローカルネットワーク上で認識したIPデバイスのIPv4アドレスとMACアドレスを一覧表示するため\nに使用できるコマンドは次のうちどれですか。",
+    "choices": {
+      "A": "arp",
+      "B": "ifconfig",
+      "C": "ipadm",
+      "D": "iwlist"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "042",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "コンソールにログインした後に表示されるテキストメッセージが含まれているファイルはどれですか。（パスを\n含む、ファイルの完全な名前を指定）",
+    "choices": {},
+    "answer": [
+      "/etc/motd"
+    ]
+  },
+  {
+    "id": "043",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "次のディレクトリのどれをバックアップしてはいけませんか？",
+    "choices": {
+      "A": "/backup",
+      "B": "/etc",
+      "C": "/opt",
+      "D": "/proc",
+      "E": "/var/log"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "044",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "次のコマンドが正常に実行されました。\ncd /opt; tar xvf /dev/nst0;\nコマンドシーケンスを再度実行するとどうなりますか？",
+    "choices": {
+      "A": "テープが使用後に排出されたため、テープが存在しないというエラーが生成されます。",
+      "B": "/optの内容が再び復元されます。",
+      "C": "/optの内容全体が、テープ上の次のファイルの内容で置き換えられます。",
+      "D": "/optの内容に、テープ上の次のファイルから、追加の内容として追加されます。"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "045",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "systemdを実行しているLinuxサーバーが、メンテナンスのためにrescue.targetで起動しました。サーバーを\n通常のターゲットに復元するには、どのコマンドを使用しますか？（2つ選択）",
+    "choices": {
+      "A": "telinit 0",
+      "B": "systemctl default",
+      "C": "sync",
+      "D": "systemctl emergency",
+      "E": "systemctl reboot"
+    },
+    "answer": [
+      "B",
+      "E"
+    ]
+  },
+  {
+    "id": "046",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "次のコマンドのどれが、アーカイブlpifiles.tar.gzから名前にlpiを含むファイルのみを復元しますか？",
+    "choices": {
+      "A": "tar xvzf lpifiles.tar.gz --wildcards ‘*lpi*’",
+      "B": "tar xvzwf lpifiles.tar.gz ‘*lpi*’",
+      "C": "tar -xvfz lpifiles.tar.gz --deep ‘*lpi*’",
+      "D": "tar -xvzf lpifiles.tar.gz --subdirs ‘*lpi*’",
+      "E": "tar xvzf lpifiles.tar.gz --globbing ‘*lpi*’"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "047",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "通常のユーザーjoeが、プログラムをビルドしてインストールするために、次のコマンドを実行しました。\n./configure && make && make install\nただし、インストールは失敗します。プログラムをインストールするにはどうすればよいですか？（2つ選択）",
+    "choices": {
+      "A": "suinstallを使用してバイナリを手動でインストールします。",
+      "B": "root権限でmake installを実行します。",
+      "C": "正しいインストールのためにデフォルトの構成を維持するために、./configureを実行してはいけません。",
+      "D": "ユーザーに書き込み権限がある--prefixオプションを使用して./configureを再実行します。",
+      "E": "make install_localを実行して、/usr/local/にインストールします。"
+    },
+    "answer": [
+      "B",
+      "D"
+    ]
+  },
+  {
+    "id": "048",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "makefileがソースコードパッケージに含まれている場合、ファイルで一般的に定義されているターゲットは何で\nすか？",
+    "choices": {
+      "A": "CFLAGS, CPPFLAGS, LIBS, LDFLAGS",
+      "B": "clean, install, uninstall",
+      "C": "PATHS, DESTDIR, LIBS, LDFLAGS",
+      "D": "prefix, exec_prefix, bindir, mandir"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "049",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "Linuxで使用される一般的なバックアップシステムは次のうちどれですか。（2つ選択）",
+    "choices": {
+      "A": "Amanda",
+      "B": "Bacula",
+      "C": "DrBackup",
+      "D": "BREWBackup",
+      "E": "SARcheck"
+    },
+    "answer": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "id": "050",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "リモートユーザーアカウントkevinを使用して、リモートホストdeltaurのディレクトリ./fyf/ を/var/tmp/ に\n安全にコピーするコマンドはどれですか。",
+    "choices": {
+      "A": "rsync -a -e ssh kevin@deltaur:/var/tmp/ fyf/",
+      "B": "rsync -a -u kevin -e ssh fyf/ deltaur:/var/tmp/",
+      "C": "rsync -a -u kevin -e ssh deltaur:/var/tmp/ fyf/",
+      "D": "rsync -a -e ssh fyf/ kevin@deltaur:/var/tmp/"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "051",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "各書き込み操作後に自動巻き戻しなしで使用した場合、システムの最初のSCSIテープドライブのデバイス名は\n何ですか？（デバイスへのフルパスを指定）",
+    "choices": {},
+    "answer": [
+      "/dev/nst0"
+    ]
+  },
+  {
+    "id": "052",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "/dev/sdb3パーティションの内容を消去するコマンドは次のうちどれですか？",
+    "choices": {
+      "A": "rm /dev/sdb3",
+      "B": "dd if=/dev/zero of=/dev/sdb3",
+      "C": "dd of=/dev/zero if=/dev/sdb3",
+      "D": "umount /dev/sdb3"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "053",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "/dev/sdb3パーティションの内容を消去するコマンドは次のうちどれですか。",
+    "choices": {
+      "A": "rm /dev/sdb3",
+      "B": "dd if=/dev/zero of=/dev/sdb3",
+      "C": "dd of=/dev/zero if=/dev/sdb3",
+      "D": "umount /dev/sdb3"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "054",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "システムコンソールのログインプロンプトの上に表示されるメッセージを含むファイルはどれですか。（パスを\n含む、ファイルの完全な名前を指定）",
+    "choices": {},
+    "answer": [
+      "/etc/issue"
+    ]
+  },
+  {
+    "id": "055",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "現在ログインしているすべてのユーザーにメッセージを送信するために使用されるコマンドは何ですか？ （パ\nスまたはパラメーターなしのコマンドのみを指定）",
+    "choices": {},
+    "answer": [
+      "wall"
+    ]
+  },
+  {
+    "id": "056",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "次のコマンドのうち、ローカルシステムが直接接続されているIPネットワーク上で認識したネットワークノー\nドのIPv4アドレスとMACアドレスを一覧表示するのはどれですか。",
+    "choices": {
+      "A": "arp",
+      "B": "ifconfig",
+      "C": "ipadm",
+      "D": "iwlist"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "057",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "patchコマンドの-p3オプションは何をしますか？",
+    "choices": {
+      "A": "patchファイルで記述されている各ファイルから、3番目の/文字までのパス情報を削除します。",
+      "B": "patchは、エラーが3つ以下である限り実行を継続します。",
+      "C": "patchは、元のファイルの宣言された行の前または後の最大3行のコンテキストを検索して一致を探します。",
+      "D": "patchは、変更履歴が失われないように、各ファイルの3つの前のバージョンを出力に保持します。",
+      "E": "POSIX標準にさらに厳密に準拠するようにpatchに指示します。"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "058",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "ソースコードからソフトウェアをコンパイルするときに、コマンドラインで別のファイルが指定されていない場\n合、GNU makeによって検索および使用されるのは、次のうちどれですか？（2つ選択）",
+    "choices": {
+      "A": "configure",
+      "B": "config.h.in",
+      "C": "makefile",
+      "D": "Makefile",
+      "E": "Makefile.in"
+    },
+    "answer": [
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "059",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "sar -bの出力で、tpsは何を表していますか？",
+    "choices": {
+      "A": "Terrabyte per second",
+      "B": "Traffic per second",
+      "C": "Transfers per second",
+      "D": "Total data per second",
+      "E": "Terrabit per second"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "060",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "update-rc.dコマンドの-fオプションは、/etc/rcX.d/および/etc/init.d/ディレクトリ内のファイルにどのよ\nうな影響を与えますか？",
+    "choices": {
+      "A": "リンクが読み取り専用の場合でも、/etc/rcX.d/のシンボリックリンクを強制的に削除します",
+      "B": "/etc/rcX.d/のシンボリックリンクと/etc/init.d/のinitスクリプトの両方を削除します",
+      "C": "/etc/init.d/のinitスクリプトと/etc/rcX.d/のシンボリックリンクを削除し、インストールされたファイ\nルのパッケージ情報を更新します",
+      "D": "該当するinitスクリプトが/etc/init.d/にまだ存在する場合でも、/etc/rcX.d/のシンボリックリンクを強\n制的に削除します。"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "061",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "SystemV initプロセスのメイン構成ファイルはどれですか？（パスを含む、ファイルの完全な名前を指定）",
+    "choices": {},
+    "answer": [
+      "/etc/inittab"
+    ]
+  },
+  {
+    "id": "062",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "LinuxシステムでEFIエントリを変更するために使用されるユーザースペースアプリケーションは次のうちどれ\nですか？",
+    "choices": {
+      "A": "efieditor",
+      "B": "configefi",
+      "C": "efimanager",
+      "D": "efiboottmgr",
+      "E": "efibootedit"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "063",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "Linuxシステムの起動中のinitramfsの目的は何ですか？",
+    "choices": {
+      "A": "必要なモジュールをロードし、LVMなどのサブシステムを起動して、ルートファイルシステムをカーネルから\nアクセス可能にします。",
+      "B": "カーネルアクセスを高速化するために、カーネルを通常のシステムメモリからinitramメモリに移動します。",
+      "C": "ルートファイルシステムのコンテンツをRAMにコピーして、システムを高速化し、ディスクへの書き込みを\n減らします。",
+      "D": "ディスクへの書き込みを減らすために、/tmpなどのディレクトリの揮発性データを格納するRAMディスクを\n作成します。"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "064",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "システム固有のsystemdユニットファイルが含まれているディレクトリはどれですか？（ディレクトリーへの絶\n対パスを指定）",
+    "choices": {},
+    "answer": [
+      "/lib/systemd/system"
+    ]
+  },
+  {
+    "id": "065",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "次の初期化システムのどれが独自のUEFIブートローダーに付属していますか？",
+    "choices": {
+      "A": "systemd",
+      "B": "SysVinit",
+      "C": "Upstart",
+      "D": "OpenRC",
+      "E": "launchd"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "066",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "GRUBブートローダーをマスターブートレコードにインストールするために使用されるコマンドはどれですか？",
+    "choices": {
+      "A": "grub-install",
+      "B": "grub-mkconfig",
+      "C": "grub-install-mbr",
+      "D": "grub-glue-mbr",
+      "E": "grub-mbr-setup"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "067",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "キャパシティプランニングする時、関心のあるプロセスの一覧表示と特定に役立つツールはどれですか。（2つ選\n択）",
+    "choices": {
+      "A": "acpid",
+      "B": "lsof",
+      "C": "pstree",
+      "D": "telinit"
+    },
+    "answer": [
+      "B",
+      "C"
+    ]
+  },
+  {
+    "id": "068",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "以下の出力例で、CPUがカーネル以外のコードの実行に費やした時間の割合と、CPUがカーネルコードの実行に\n費やした時間の割合を詳細に示している列はどれですか。（2つ選択）\n# vmstat 1 100\nprocs -----------memory---------- ---swap-- -----io---- --system-- ----cpu---- r b swpd free buff cache\nsi so bi bo in cs us sy id wa\n0 0 0 282120 134108 5797012 0 0 0 2 0 0 0 0 100 0\n0 0 0 282120 134108 5797012 0 0 0 0 1007 359 0 0 100 0\n0 0 0 282120 134108 5797012 0 0 0 0 1117 577 0 0 100 0\n0 0 0 282120 134108 5797012 0 0 0 0 1007 366 0 0 100 0",
+    "choices": {
+      "A": "id",
+      "B": "us",
+      "C": "wa",
+      "D": "sy"
+    },
+    "answer": [
+      "B",
+      "D"
+    ]
+  },
+  {
+    "id": "069",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "次の出力では、どのプロセスがCPUがwaの状態で費やす時間の割合に貢献(contribute)していますか？\nTasks: 193 total, 1 running, 190 sleeping, 2 stopped, 0 zombie\nCpu(s): 0.5%us, 0.3%sy, 0.0%ni, 98.2%id, 1.0%wa, 0.0%hi, 0.0%si, 0.0%st",
+    "choices": {
+      "A": "ユーザーの操作を待機しているプロセス。",
+      "B": "すでに閉じられており、再び起動されるのを待っているプロセス。",
+      "C": "RAMに完全にロードされていないまたは、スワップされているために、まだスケジュールされていないプロセ\nス。",
+      "D": "IO操作が完了するのを待っているプロセス。"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "070",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "次の出力では、負荷平均は、どの時間フレームのシステム負荷平均を表していますか？\n12:10:05 up 18 days, 19:00, 2 users, load average: 0.47, 24.71, 35.31",
+    "choices": {
+      "A": "1、5、15分",
+      "B": "1、15、30分",
+      "C": "1、15、30秒",
+      "D": "15、30、60分",
+      "E": "15、30、60秒"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "071",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "次の出力では、システムの5分間の平均負荷はどのくらいですか？\n# uptime\n12:10:05 up 18 days, 19:00, 2 users, load average: 0.47, 24.71, 35.31",
+    "choices": {
+      "A": "0.47",
+      "B": "24.71",
+      "C": "35.31",
+      "D": "5分の間隔はありません。0.47から24.71の間の値です。",
+      "E": "5分の間隔はありません。24.71から35.31の間の値です。"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "072",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "次の出力では、CPUがペンディング中のI/Oを待機していた時間の割合はどのくらいですか。\n# vmstat 1 100\nprocs -----------memory---------- ---swap-- -----io---- --system-- ----cpu---- r b swpd free buff cache\nsi so bi bo in cs us sy id wa\n0 0 0 282120 134108 5797012 0 0 0 2 0 0 0 0 100 0\n0 0 0 282120 134108 5797012 0 0 0 0 1007 359 0 0 100 0\n0 0 0 282120 134108 5797012 0 0 0 0 1117 577 0 0 100 0\n0 0 0 282120 134108 5797012 0 0 0 0 1007 366 0 0 100 0",
+    "choices": {
+      "A": "0",
+      "B": "100",
+      "C": "35.9",
+      "D": "57.7",
+      "E": "36.6"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "073",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "この出力例では、free、buff、およびcache列の目的に一致する説明はどれですか。（3つ選択）\n# vmstat 1 100\nprocs ----------- memory---------- --- swap-- -----io---- -- system-- ---- cpu---- r b swpd free buff\ncache si so bi bo in cs us sy id wa\n0 0 0 282120 134108 5797012 0 0 0 2 0 0 0 0 100 0\n0 0 0 282120 134108 5797012 0 0 0 0 1007 359 0 0 100 0\n0 0 0 282120 134108 5797012 0 0 0 0 1117 577 0 0 100 0\n0 0 0 282120 134108 5797012 0 0 0 0 1007 366 0 0 100 0",
+    "choices": {
+      "A": "使用済みのスワップスペース",
+      "B": "ファイルシステムバッファに使用可能なRAM",
+      "C": "利用可能な空きRAM",
+      "D": "バッファに使用されるRAM",
+      "E": "ファイルシステムのキャッシュに使用されるRAM"
+    },
+    "answer": [
+      "C",
+      "D",
+      "E"
+    ]
+  },
+  {
+    "id": "074",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "collectdはシステムの監視情報を収集するためにどのようなメカニズムを使用しますか？",
+    "choices": {
+      "A": "プラグインのライブラリを使用しています。",
+      "B": "マスターサーバーは、各マシンのcollectdサービスに接続して情報を取得します。",
+      "C": "各サーバーで独自の情報を収集し、マスターサーバーに送信します。",
+      "D": "監視対象のクライアントにSNMPクエリを送信します。"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "075",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "監視を開始する対象を定義するには、collectd構成ファイルのどのオプションが必要ですか？",
+    "choices": {
+      "A": "LoadModule",
+      "B": "Module",
+      "C": "Plugin",
+      "D": "LoadPlugin"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "076",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "リソース使用量の履歴データはいつ重要ですか？（3つ選択）",
+    "choices": {
+      "A": "リソースを増やす必要がある時期を予測する。",
+      "B": "コンピュータベンダーを選択する。",
+      "C": "メモリ不足の発生中に強制終了されたプロセスを特定する。",
+      "D": "容量問題の診断。",
+      "E": "ソフトウェアの問題のトラブルシューティング。"
+    },
+    "answer": [
+      "A",
+      "D",
+      "E"
+    ]
+  },
+  {
+    "id": "077",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "Webサーバーを計画するとき、次の選択肢のどれがシステムのサイジングに影響しますか？（3つ選択）",
+    "choices": {
+      "A": "予想される同時ユーザーの数。",
+      "B": "Linuxのサポートが優れているハードウェアベンダー。",
+      "C": "提供されるコンテンツのタイプ。",
+      "D": "Webサーバーがサポートするスクリプト言語。",
+      "E": "OSのインストールはCD,DVD,またはネットワークベースになるか。"
+    },
+    "answer": [
+      "A",
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "078",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "メモリ使用量、ページング、ブロックの入出力に関する情報を表示するコマンドはどれですか。",
+    "choices": {
+      "A": "free",
+      "B": "memshow",
+      "C": "ps",
+      "D": "top",
+      "E": "vmstat"
+    },
+    "answer": [
+      "E"
+    ]
+  },
+  {
+    "id": "079",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "リモートファイルシステム接続に関するデータを収集するのに役立つコマンドは次のうちどれですか。（2つ選択）",
+    "choices": {
+      "A": "pidstat",
+      "B": "nfsiostat",
+      "C": "sadf",
+      "D": "cifsiostat"
+    },
+    "answer": [
+      "B",
+      "D"
+    ]
+  },
+  {
+    "id": "080",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "次のコマンドのどれが、Linuxシステムで最もCPUサイクルを使用している順に、プロセスのPIDを提供します\nか？",
+    "choices": {
+      "A": "top",
+      "B": "uptime",
+      "C": "ps aux",
+      "D": "vmstat",
+      "E": "freemem"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "081",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "スワップスペースを大量に使用した場合の副作用は次のうちどれですか。",
+    "choices": {
+      "A": "スワップスペースは常にシステムのルートパーティションにあるため、ルートファイルシステムがいっぱい\nになる可能性があります。",
+      "B": "ハードディスクの大量使用とメモリの再編成により、システム全体のパフォーマンスが低下する可能性があ\nります。",
+      "C": "プロセスは常にRAMまたはスワップのいずれかに完全に存在するため、カーネルがプロセスをスワップスペ\nースからメモリに戻さない場合、通常のRAMが使用されなくなる可能性があります。",
+      "D": "メモリが断片化し、メモリページへのアクセスが遅くなることがあります。ただし、memfrag -dを定期的に\n使用することで、これを最小限に抑えることができます。",
+      "E": "アプリケーションは、スワップアドレス領域へのメモリの再配置を反映するために仮想メモリアドレスが変\n更されるため、再起動する必要があります。"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "082",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "次のツールのどれがメモリ使用量を測定するために使用されますか？（3つ選択）",
+    "choices": {
+      "A": "mpstat",
+      "B": "pstree",
+      "C": "sar",
+      "D": "top",
+      "E": "vmstat"
+    },
+    "answer": [
+      "C",
+      "D",
+      "E"
+    ]
+  },
+  {
+    "id": "083",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "データベースアプリケーションには、最大共有メモリセグメント（shmmax）GB（2147483648バイト）が必要です。\nこのカーネルパラメータを永続的に設定するには、どの構成ファイルを変更する必要がありますか？（パスを含\nむ、ファイルの完全な名前を指定）",
+    "choices": {},
+    "answer": [
+      "/etc/sysctl.conf"
+    ]
+  },
+  {
+    "id": "084",
+    "type": "fill_in",
+    "multi_answer": true,
+    "question": "新しい機能を使用するには、新しいカーネルバージョンをコンパイルする必要があります。古いカーネル構成フ\nァイルが使用可能な場合、どのコマンドが古いカーネルの構成に基づいて新しいカーネルの構成ファイルを作成\nしますか？",
+    "choices": {},
+    "answer": [
+      "oldconfig",
+      "make oldconfig"
+    ]
+  },
+  {
+    "id": "085",
+    "type": "fill_in",
+    "multi_answer": true,
+    "question": "Filesystem Hierarchy Standard（FHS）によると、Linuxカーネルソースへのパスは何ですか？実際のLinuxソ\nースコードへのシンボリックリンクである可能性があります。（バージョン情報を含まない完全パスを指定）",
+    "choices": {},
+    "answer": [
+      "/usr/src/linux",
+      "/usr/src/linux/"
+    ]
+  },
+  {
+    "id": "086",
+    "type": "fill_in",
+    "multi_answer": true,
+    "question": "新しいカーネルを構成した後、/usr/src/linux/の下のどのファイルに構成が含まれていますか？",
+    "choices": {},
+    "answer": [
+      "/usr/src/linux/.config",
+      ".config"
+    ]
+  },
+  {
+    "id": "087",
+    "type": "fill_in",
+    "multi_answer": true,
+    "question": "コンパイルされたカーネルをインストールした後、ロードする必要があるモジュールを見つけることができませ\nん。カーネルのインストール中に、どのmakeターゲットが見落とされたのでしょうか？",
+    "choices": {},
+    "answer": [
+      "make modules_install",
+      "modules_install"
+    ]
+  },
+  {
+    "id": "088",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "実行中のシステムで、共有メモリセグメントの最大サイズ（shmmax）のカーネルパラメータを2GB（2147483648\nバイト）に変更するにはどうすればよいですか？（2つ選択）",
+    "choices": {
+      "A": "/etc/shmmaxを編集し、パラメーターを2147483648に設定します。",
+      "B": "sysctl shmmax=2147483648",
+      "C": "sysctl kernel.shmmax=2147483648",
+      "D": "echo 2147483648 > /proc/sys/kernel/shmmax",
+      "E": "export kernel.shmmax=2147483648"
+    },
+    "answer": [
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "089",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "メインのLinuxカーネルモジュールのソースコードはどのように配布されますか？",
+    "choices": {
+      "A": "Linuxカーネルのソースコードに含まれています。",
+      "B": "カーネルモジュールは、コンパイル時に使用されるため、オンデマンドでダウンロードされます。",
+      "C": "カーネルモジュールには独自のリリースサイクルがあり、Linuxカーネルソースとは別に保守できます。",
+      "D": "同じバージョンのLinuxカーネルソースコードと共に、個別のダウンロードとして提供されます。"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "090",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "3.4.50-11 Linuxカーネルを実行しているサーバーで、/bootディレクトリのどのファイルにカーネル構成パラ\nメーターが含まれていますか？",
+    "choices": {
+      "A": "config-linux-3.4.50-11",
+      "B": "config-3.4.50-11",
+      "C": "system-3.4.50-11",
+      "D": "vmlinuz-3.4.50-11",
+      "E": "rc.config-3.4.50-11"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "091",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "modules.depファイルが提供する情報は何ですか？",
+    "choices": {
+      "A": "コンパイル済みかどうかに関係なく、カーネルで使用できるすべてのモジュールのリスト。",
+      "B": "インストールされたカーネルが信頼するモジュールのリスト。",
+      "C": "デバイスとそのモジュール名のリスト。",
+      "D": "すべてのコンパイル済みモジュールとその依存関係(dependency)のリスト。",
+      "E": "カーネルが実行する必要のあるモジュールのリスト。"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "092",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "zImageとbzImageカーネルイメージの主な違いは何ですか？",
+    "choices": {
+      "A": "zImageはgzipを使用して圧縮され、bzImageはbzip2を使用して圧縮されます。",
+      "B": "zImageは2.6シリーズのカーネル用、bzImageは3.xシリーズのカーネル用です。",
+      "C": "zImageは64kに制限されており、bzImageにはそのような制限はありません。",
+      "D": "zImageはlowメモリに完全に読み込まれます。bzImageは、lowメモリがいっぱいになると、highメモリに\nロードされます。"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "093",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "カーネルが利用可能なプロセッサの1つだけを使用するように強制するために、ブート時にカーネルに渡す正し\nいパラメーターは何ですか？",
+    "choices": {
+      "A": "maxcpus=1",
+      "B": "usecpus=1",
+      "C": "smpcpus=1",
+      "D": "vcpumx=1"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "094",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "コマンドudevadm monitorの目的は何ですか？",
+    "choices": {
+      "A": "udevルールによって生成されたカーネルイベントをリッスンし、情報をコンソールに出力します。",
+      "B": "新しいデバイスの/devディレクトリを監視します。",
+      "C": "udevプロセスを監視し、パフォーマンス統計をコンソールに出力します。",
+      "D": "D-Busと通信して新しいデバイスをセットアップします。"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "095",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "initramfsイメージの作成に使用されているアーカイブフォーマットはどれですか？",
+    "choices": {
+      "A": "gzip",
+      "B": "tar",
+      "C": "RAR",
+      "D": "cpio",
+      "E": "bzip2"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "096",
+    "type": "fill_in",
+    "multi_answer": true,
+    "question": "カーネルが依存しているモジュールをアンロードせずに、カーネルによって現在ロードされている単一のモジュ\nールをアンロードするために使用されるコマンドはどれですか？",
+    "choices": {},
+    "answer": [
+      "rmmod",
+      "/sbin/rmmod"
+    ]
+  },
+  {
+    "id": "097",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "Linuxカーネルにモジュールをロードするためにどのコマンドが使用されますか？（2つ選択）",
+    "choices": {
+      "A": "insmod",
+      "B": "loadmod",
+      "C": "kernload",
+      "D": "modprobe",
+      "E": "probemod"
+    },
+    "answer": [
+      "A",
+      "D"
+    ]
+  },
+  {
+    "id": "098",
+    "type": "fill_in",
+    "multi_answer": true,
+    "question": "システム固有のudevルールファイルが含まれているディレクトリはどれですか。（ディレクトリ名を含む絶対パ\nスで指定）",
+    "choices": {},
+    "answer": [
+      "/etc/udev/rules.d",
+      "/etc/udev/rules.d/"
+    ]
+  },
+  {
+    "id": "099",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ブート時にカーネルが使用するinitramfsファイル（/boot/initramfs）に含まれるファイルを抽出するために\n使用できるコマンドシーケンスは次のうちどれですか。",
+    "choices": {
+      "A": "cp /boot/initramfs /tmp/initramfs.gz; gzip -c /tmp/initramfs.gz; mkdir /tmp/initramfs.dir ; cd\n/tmp/initramfs.dir ; cpio -i < /tmp/initramfs",
+      "B": "cp /boot/initramfs /tmp/initramfs.gz; gunzip /tmp/initramfs.gz; mkdir /tmp/initramfs.dir ; cd\n/tmp/initramfs.dir ; cpio -i < /tmp/initramfs",
+      "C": "cp /boot/initramfs /tmp/initramfs.gz; gunzip /tmp/initramfs.gz; mount /tmp/initramfs /mnt/ - o loop\n-t initramfs",
+      "D": "cp /boot/initramfs /tmp/initramfs.gz; gunzip /tmp/initramfs.gz; mkdir /tmp/initramfs.dir ; cd\n/tmp/initramfs.dir ; cpio - e /tmp/initramfs",
+      "E": "cp /boot/initramfs /tmp/initramfs.gz; gunzip /tmp/initramfs.gz; mount /tmp/initramfs /mnt/ - o loop\n-t initrd"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "100",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "3.xカーネルリリースを説明するために使用されている用語は次のうちどれですか （2つ選択）",
+    "choices": {
+      "A": "beta",
+      "B": "final",
+      "C": "longterm",
+      "D": "prerelease",
+      "E": "stable"
+    },
+    "answer": [
+      "C",
+      "E"
+    ]
+  },
+  {
+    "id": "101",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "Linuxサーバーは、定期的なメンテナンスのためにシングルユーザーモードで実行されています。サーバーを通\n常のランレベルに復元するために使用されるコマンドはどれですか？（2つ選択）",
+    "choices": {
+      "A": "telinit 0",
+      "B": "shutdown -r now",
+      "C": "sync",
+      "D": "shutdown -h now",
+      "E": "reboot"
+    },
+    "answer": [
+      "B",
+      "E"
+    ]
+  },
+  {
+    "id": "102",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "サーバーには、常にランレベル1で起動するGRUB2起動オプションが必要です。GRUB2構成ファイルのどの行が、\nこの新しい選択を使用可能にするために必要な設定の始まりを開始しますか？",
+    "choices": {
+      "A": "initrd",
+      "B": "linux",
+      "C": "menuentry",
+      "D": "runlevel"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "103",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "SysV-initを備えたシステムには、apache2と呼ばれるサービスがインストールされています。このサービスの\n開始と停止を制御し、さまざまなランレベルディレクトリによって参照されるファイルはどれですか。",
+    "choices": {
+      "A": "/etc/init.d/apache2",
+      "B": "/etc/rc2.d/70apache2",
+      "C": "/etc/rc2.d/apache2",
+      "D": "/etc/rc2.d/apache2.start"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "104",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "SysV-init構成ファイルでデフォルトのランレベルを変更した後、システムは意図したランレベルとは異なるも\nので起動します。この別のランレベルをどこで定義していますか？",
+    "choices": {
+      "A": "/etc/sysctl.conf内",
+      "B": "ブートローダー構成ファイル",
+      "C": "/etc/runlevelファイル",
+      "D": "/boot/initramfsファイル",
+      "E": "/etc/rc.d/rc.localファイル"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "105",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ブート中にLinuxカーネルがinitramfsファイルをロードすると、initramfsからどのコマンドが最初に実行さ\nれますか？",
+    "choices": {
+      "A": "/init",
+      "B": "/initrd",
+      "C": "/linuxrc",
+      "D": "/rc.local",
+      "E": "/sbin/init"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "106",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "次のすべてのファイルまたはシンボリックリンク、あるいはその両方がSysV-initランレベルディレクトリに存\n在する場合、システムを直接ランレベルで起動するときに、次のうちどれが最初に実行されますか？",
+    "choices": {
+      "A": "S99lpi",
+      "B": "K99lpi",
+      "C": "PRE-S99lpi",
+      "D": "S98lpi",
+      "E": "S99a-lpi"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "107",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "Linuxカーネルを含むファイルが失われた場合、システムが起動するとどうなりますか？",
+    "choices": {
+      "A": "ブートローダーがカーネルをハードディスクのマスターブートレコードにコピーするため、システムは正常\nに起動します。",
+      "B": "カーネルの代わりに、initramfsがロードされ、ルートファイルシステムをマウントして、元のパッケージま\nたはソースからカーネルを再インストールするように指示されます。",
+      "C": "ブートローダーは、ルートファイルシステムを読み取り専用でマウントし、管理者がカーネルを再インスト\nールできるように/bin/shを直接起動します。",
+      "D": "カーネルがないとシステムは起動できず、ブートローダーによってはエラーが表示されます。"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "108",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "メインのSysV initプロセス構成ファイルへの完全なパスを入力してください。",
+    "choices": {},
+    "answer": [
+      "/etc/inittab"
+    ]
+  },
+  {
+    "id": "109",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "PXEプロトコルで使用される主なネットワークサービスは何ですか？（2つ選択）",
+    "choices": {
+      "A": "DNS",
+      "B": "DHCP",
+      "C": "HTTP",
+      "D": "TFTP",
+      "E": "NFS"
+    },
+    "answer": [
+      "B",
+      "D"
+    ]
+  },
+  {
+    "id": "110",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "Linuxカーネルが起動時にルートファイルシステムをマウントできない場合はどうなりますか？",
+    "choices": {
+      "A": "エラーメッセージが表示され、管理者はカーネルから有効なルートファイルシステムを指定してブートプロ\nセスを続行するように求められます。",
+      "B": "エラーメッセージが表示され、システムはキーを押した後に再起動します。",
+      "C": "エラーメッセージが表示され、システムがメンテナンスモードで起動します。",
+      "D": "どのデバイスをマウントできなかったか、またはinitが見つからなかったことを通知するエラーメッセージ\nが表示されます。",
+      "E": "対応するカーネルモジュールをロードできなかったことを示すエラーメッセージが表示されます。"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "111",
+    "type": "fill_in",
+    "multi_answer": true,
+    "question": "システムがSysV-initランレベル2で起動する間に実行するスクリプト（または元のスクリプトへのリンク）を\n含むディレクトリへのフルパスは何ですか？",
+    "choices": {},
+    "answer": [
+      "/etc/rc2.d",
+      "/etc/rc2.d/",
+      "/etc/init.d/rc2.d",
+      "/etc/init.d/rc2.d/"
+    ]
+  },
+  {
+    "id": "112",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "PXEが提供する機能は何ですか？",
+    "choices": {
+      "A": "ネットワークインターフェイスを使用してコンピューターを起動する機能。",
+      "B": "コンピューターでリモートX11デスクトップを起動する機能。",
+      "C": "ブートプロセスの完了後にシステムの構成を確認する機能。",
+      "D": "起動プロセスを完了する前にシステムの構成を確認する機能。"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "113",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "Linuxが1つのみインストールされていて、他のオペレーティングシステムはインストールされていないシステ\nムでは、LILOブートローダーコードは通常どこにインストールされますか？",
+    "choices": {
+      "A": "マスターブートレコード内。",
+      "B": "ブートセクター内。",
+      "C": "/bootディレクトリ内。",
+      "D": "カーネルの開始時。"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "114",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "新しいLILOブートローダーをインストールするために使用されるコマンドはどれですか？",
+    "choices": {
+      "A": "lilo",
+      "B": "lilo-config",
+      "C": "lilo-install",
+      "D": "install-lilo"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "115",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "LinuxフォーマットとGRUB構文の両方で、ファイルシステムパーティションのパスをGRUBに伝えるファイルは\nどれですか。（パス情報なしでファイル名のみを指定）",
+    "choices": {},
+    "answer": [
+      "device.map"
+    ]
+  },
+  {
+    "id": "116",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "/etc/inittabファイルでSysV-initデフォルトシステムランレベルを定義するために使用されているキーワー\nドはどれですか。",
+    "choices": {},
+    "answer": [
+      "initdefault"
+    ]
+  },
+  {
+    "id": "117",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "スクリプト/etc/init.d/test2が存在する場合、update-rc.dコマンドのどのオプションを使用すると、\n/etc/rcX.d/*test2へのすべてのシンボリックリンクが削除されますか？",
+    "choices": {
+      "A": "-d",
+      "B": "-f",
+      "C": "-n",
+      "D": "-r"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "118",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ルートファイルシステムが起動時に読み取り専用でマウントされ、後で書き込み権限で再マウントされるのはな\nぜですか？",
+    "choices": {
+      "A": "ブート中にルートファイルシステムの問題が検出された場合、損傷のリスクなしにfsckを実行できます。",
+      "B": "クラッカーはブートスニファーでルートに関する情報を収集できないためです。",
+      "C": "ルートパスワードがわからない場合は、ディスクへの書き込みをしないようにするため。",
+      "D": "他のオペレーティングシステムがLinuxルートパーティションを上書きしないようにするため。",
+      "E": "ディスクには、オペレーティングシステムによって変更できない独自の書き込み保護機能があるためです。"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "119",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "多数の書き込み操作の後、管理者はカーネルがファイルシステムバッファをディスクにフラッシュすることを確\n認したいと考えています。これを達成するコマンドはどれですか？（パスまたはパラメーターなしのコマンドの\nみを指定）",
+    "choices": {},
+    "answer": [
+      "sync"
+    ]
+  },
+  {
+    "id": "120",
+    "type": "fill_in",
+    "multi_answer": true,
+    "question": "次の /etc/fstab ファイルがあります。\n/dev/hda1 swap swap defaults 0 0\n/dev/hda2 / ext2 defaults 1 1\n/dev/hda3 /home ext2 defaults 1 2\nnone /proc proc defaults 0 0\n/dev/sdb1 /media/usb0 vfat user,noauto 0 0\n通常の（非root）ユーザーが /dev/sdb1 パーティションを /media/usb0 マウントポイントにマウントするため\nに使用できるコマンドの1つは何ですか？\n（すべてのパラメーターまたはオプション、あるいはその両方を指定してコマンドを入力してください。ただし、\nファイルシステムタイプのオプションは入力しないでください。）",
+    "choices": {},
+    "answer": [
+      "mount /dev/sdb1",
+      "mount /media/usb0",
+      "/bin/mount /dev/sdb1",
+      "/bin/mount /media/usb0",
+      "mount"
+    ]
+  },
+  {
+    "id": "121",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "システムの極端な使用により、Linuxシステムには追加のスワップスペースが必要です。5GBの追加のスワップ\nスペースを初期化するには、どのコマンドの組み合わせを使用する必要がありますか？",
+    "choices": {
+      "A": "dd if=/dev/zero of=/tmp/swapfile bs=1024 count=5120000; mkswap /tmp/swapfile; mount /tmp/swapfile",
+      "B": "dd if=/dev/zero of=/tmp/swapfile bs=1024 count=5120000; swapon /tmp/swapfile",
+      "C": "dd if=/dev/zero of=/tmp/swapfile bs=1024 count=5120000; mkswap /tmp/swapfile; swapon /tmp/swapfile",
+      "D": "touch -5G /tmp/swapfile; swapon /tmp/swapfile",
+      "E": "mkswap /tmp/swapfile 512000; swapon /tmp/swapfile"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "122",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "/dev/sda1のext2ファイルシステムにラベルルートを追加するにはどうすればよいですか？",
+    "choices": {
+      "A": "relabel /dev/sda1 root",
+      "B": "tune2fs -L root /dev/sda1",
+      "C": "echo 'root' > /proc/fs/sda1/label",
+      "D": "labelfs --device /dev/sda1 root"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "123",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "autofsのメイン構成ファイルには、次のエントリがあります。\n/home/etc/auto.home\n/etc/auto.homeファイルの意味は何ですか？",
+    "choices": {
+      "A": "ファイルシステムのマウント用の間接(indirect)マップがあります。",
+      "B": "リモートファイルサーバーのパスワードやキーなどの構成情報があります。",
+      "C": "/homeマウントポイントの設定に関する構成情報があります。",
+      "D": "リモートファイルサーバーへの認証を可能にするSSLキーを保持します。"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "124",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "smartdはシステムのどのコンポーネントを監視しますか？",
+    "choices": {
+      "A": "CPU",
+      "B": "RAM",
+      "C": "ハードドライブ",
+      "D": "イーサネットトラフィック"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "125",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "/etc/fstabの最後のフィールド（fsck order）の0は、ファイルシステムについて何を示していますか？",
+    "choices": {
+      "A": "ファイルシステムは、より高い値のファイルシステムの前にチェックする必要があります。",
+      "B": "ファイルシステムは、より高い値のファイルシステムの後にチェックする必要があります。",
+      "C": "ファイルシステムチェックカウンターは無視されます。",
+      "D": "ファイルシステムのチェックとシステムへのマウントが無効になっています。",
+      "E": "ファイルシステムはマウント時にfsckチェックを必要としません。"
+    },
+    "answer": [
+      "E"
+    ]
+  },
+  {
+    "id": "126",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "autofsが使用するメインテンプレートファイルは何ですか？",
+    "choices": {
+      "A": "default.maps",
+      "B": "auto.conf",
+      "C": "auto.master",
+      "D": "autofs.master"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "127",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "smartdデーモンの目的は何ですか？",
+    "choices": {
+      "A": "スマートカードと集積回路チップを読み取るために使用されるユーザースペースデーモンです。",
+      "B": "ファイルシステムチェックに失敗すると、ファイルシステムを自動的に修復しようとします。",
+      "C": "プロセスアクティビティを監視し、カーネルがオーバーコミットしたときに強制終了するプロセスをカーネ\nルが決定するのに役立ちます。",
+      "D": "特定のディスクドライブを監視し、いつ故障するかを予測しようとします。"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "128",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "マウント時にユーザーfredがUSBフラッシュデバイスを書き込み可能にするために、/etc/fstabの次の行に欠\n落しているキーワードは何ですか？\n/dev/sda1 /mnt/usbflash vfat defaults,users, _____ =fred,umask=022, 0 0\n（設定なしでオプション名のみを提供）",
+    "choices": {},
+    "answer": [
+      "uid"
+    ]
+  },
+  {
+    "id": "129",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "fsckは、参照されていないファイルまたはファイルフラグメントをext4ファイルシステムのどこに置きます\nか？",
+    "choices": {
+      "A": "recover",
+      "B": "lost+found",
+      "C": "back",
+      "D": "lost"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "130",
+    "type": "fill_in",
+    "multi_answer": true,
+    "question": "ISO9660ファイルシステムの作成に使用するコマンドはどれですか？（パスまたはパラメーターなしのコマンド\nのみを指定）",
+    "choices": {},
+    "answer": [
+      "mkisofs",
+      "genisoimage"
+    ]
+  },
+  {
+    "id": "131",
+    "type": "fill_in",
+    "multi_answer": true,
+    "question": "既存のext2ファイルシステムを、非破壊的(non-destructively)にext3ファイルシステムに変換するコマンド\nはどれですか。（パスまたはパラメーターなしのコマンドのみを指定）",
+    "choices": {},
+    "answer": [
+      "/sbin/tune2fs",
+      "tune2fs"
+    ]
+  },
+  {
+    "id": "132",
+    "type": "fill_in",
+    "multi_answer": true,
+    "question": "/dev/disk/ 内のどのディレクトリを使用して、接続されているハードディスクのUUIDを判別できますか？",
+    "choices": {},
+    "answer": [
+      "/dev/disk/by-uuid",
+      "by-uuid",
+      "/dev/disk/by-uuid/"
+    ]
+  },
+  {
+    "id": "133",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "現在マウントされているデバイスと使用されているオプションに関する情報を提供するために、デバイスがマウ\nントおよびマウント解除されると、どのファイルが更新されますか？（2つ選択）",
+    "choices": {
+      "A": "/proc/dtab",
+      "B": "/etc/mtab",
+      "C": "/etc/fstab",
+      "D": "/proc/mounts",
+      "E": "/proc/devices"
+    },
+    "answer": [
+      "B",
+      "D"
+    ]
+  },
+  {
+    "id": "134",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "ルートパーティションに使用される一般的なLinuxファイルシステムタイプは次のうちどれですか？（3つ選択）",
+    "choices": {
+      "A": "ext4",
+      "B": "VFAT",
+      "C": "NTFS",
+      "D": "XFS",
+      "E": "Btrfs"
+    },
+    "answer": [
+      "A",
+      "D",
+      "E"
+    ]
+  },
+  {
+    "id": "135",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "/etc/fstabファイルのフォーマットを最もよく表しているのは次のうちどれですか。",
+    "choices": {
+      "A": "device name; filesystem type; mount point; mount options; dump filesystem; fsck order",
+      "B": "device name; mount point; filesystem type; mount options; dump filesystem; fsck order",
+      "C": "device name; mount point; mount options; filesystem type; dump filesystem; fsck order",
+      "D": "mount point; filesystem type; device name; mount options; dump filesystem; fsck order",
+      "E": "mount point; device name; filesystem type; mount options; dump filesystem; fsck order"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "136",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "CD-ROMファイルシステムの標準は次のうちどれですか？",
+    "choices": {
+      "A": "OSI9660",
+      "B": "ISO9660",
+      "C": "SR0FS",
+      "D": "ISO8859",
+      "E": "ROM-EO"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "137",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "システムには、1つのハードディスクと1つのCDライターがあり、どちらもSATAコントローラーに接続されて\nいます。CDライターを表すデバイスはどれですか。",
+    "choices": {
+      "A": "/dev/hdb",
+      "B": "/dev/sdd",
+      "C": "/dev/scd1",
+      "D": "/dev/sr0",
+      "E": "/dev/sr1"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "138",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "システムの極端な使用により、Linuxシステムには追加のスワップスペースが必要です。5GBの追加のスワップ\nスペースを初期化するには、どのコマンドの組み合わせを使用する必要がありますか？",
+    "choices": {
+      "A": "dd if=/dev/zero of=/tmp/swapfile bs=1024 count=5120000; mkswap /tmp/swapfile; mount /tmp/swapfile",
+      "B": "dd if=/dev/zero of=/tmp/swapfile bs=1024 count=5120000; swapon /tmp/swapfile",
+      "C": "dd if=/dev/zero of=/tmp/swapfile bs=1024 count=5120000; mkswap /tmp/swapfile; swapon /tmp/swapfile",
+      "D": "touch -5G /tmp/swapfile; swapon /tmp/swapfile",
+      "E": "mkswap /tmp/swapfile 512000; swapon /tmp/swapfile"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "139",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ラベルルートを/dev/sda1のext4ファイルシステムに追加するにはどうすればよいですか？",
+    "choices": {
+      "A": "relabel /dev/sda1 root",
+      "B": "tune2fs -L root /dev/sda1",
+      "C": "echo 'root' > /proc/fs/sda1/label",
+      "D": "labelfs --device /dev/sda1 root"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "140",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "Linux システムで論理ボリュームを作成およびマウントするための正しいコマンドシーケンスは次のとおりです。",
+    "choices": {
+      "A": "lvcreate, pvcreate, vgcreate, mkfs, mount",
+      "B": "pvcreate, vgcreate, lvcreate, mkfs, mount",
+      "C": "vgcreate, lvcreate, pvcreate, mount, mkfs",
+      "D": "mkfs, pvcreate, vgcreate, lvcreate, mount",
+      "E": "pvcreate, lvcreate, vgcreate, mkfs, mount"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "141",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "IDEハードドライブ/dev/hdaではDMAが有効になっていません。DMAを有効にするには、どのコマンドを実行す\nる必要がありますか？",
+    "choices": {
+      "A": "hdparm -d /dev/hda",
+      "B": "hdparm --dma /dev/hda",
+      "C": "hdparm --dma /dev/hda1",
+      "E": "hdparm -d 1 /dev/hda"
+    },
+    "answer": [
+      "E"
+    ]
+  },
+  {
+    "id": "142",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "autofsのメイン構成ファイルには、次のエントリがあります。\n/home /etc/auto.home\n/etc/auto.homeファイルの意味は何ですか？",
+    "choices": {
+      "A": "ファイルシステムのマウント用の間接マップがあります。",
+      "B": "リモートファイルサーバーのパスワードやキーなどの構成情報があります。",
+      "C": "/homeマウントポイントの設定に関する構成情報があります。",
+      "D": "リモートファイルサーバーへの認証を可能にするSSLキーを保持します。"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "143",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "論理ボリュームのサイズを増やした後、どのようなアクションを実行する必要がありますか？",
+    "choices": {
+      "A": "vgresizeを実行します。",
+      "B": "論理ボリュームに使用されるファイルシステムのサイズを増やします。",
+      "C": "lvresizeを実行します。",
+      "D": "論理ボリュームを再マウントします。"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "144",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "iscsid.confファイルのnode.startupのオプションは何ですか？（2つ選択）",
+    "choices": {
+      "A": "login",
+      "B": "initiate",
+      "C": "manual",
+      "D": "discover",
+      "E": "automatic"
+    },
+    "answer": [
+      "C",
+      "E"
+    ]
+  },
+  {
+    "id": "145",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "バックアップの目的で、ある時点で論理ボリュームの正確なコピーを作成するために使用されるコマンドは何で\nすか？",
+    "choices": {
+      "A": "lvsnap",
+      "B": "lvsnapshot",
+      "C": "lvcreate",
+      "D": "lvcopy",
+      "E": "lvclone"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "146",
+    "type": "fill_in",
+    "multi_answer": true,
+    "question": "ボリュームグループから物理ボリュームを削除するコマンドは何ですか？（パスまたはパラメーターなしのコマ\nンドのみを指定）",
+    "choices": {},
+    "answer": [
+      "vgreduce",
+      "/sbin/vgreduce"
+    ]
+  },
+  {
+    "id": "147",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "smartdはシステムのどのコンポーネントを監視しますか？",
+    "choices": {
+      "A": "CPU",
+      "B": "RAM",
+      "C": "Hard drives",
+      "D": "Ethernet traffic"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "148",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "完全冗長RAID 5アレイに必要なディスクの最小数はいくつですか？",
+    "choices": {
+      "A": "1",
+      "B": "2",
+      "C": "3",
+      "D": "4",
+      "E": "5"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "149",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "コマンドvgextendの目的は何ですか？",
+    "choices": {
+      "A": "ディスク上のボリュームグループのフットプリントを拡張します。",
+      "B": "既存のボリュームグループに物理ボリュームを追加します。",
+      "C": "スケジュールされたエラーチェック間の日数を増やします。",
+      "D": "ディスク上のすべての使用可能なスペースを使用するボリュームグループを作成します。"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "150",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "マウント時にユーザーfredがUSBフラッシュデバイスを書き込み可能にするために、/etc/fstabの次の行に欠\n落しているキーワード：\n/dev/sda1 /mnt/usbflash vfat defaults,users, ____ =fred,umask=022, 0 0（設定なしでオプション名のみを\n提供）",
+    "choices": {},
+    "answer": [
+      "uid"
+    ]
+  },
+  {
+    "id": "151",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "iSCSIターゲットをマウントする場合、/etc/fstab でどのマウントオプションを使用する必要がありますか？",
+    "choices": {
+      "A": "_santarget",
+      "B": "iscsi",
+      "C": "waitiscsi",
+      "D": "_netdev"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "152",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "fsckは、参照されていないファイルまたはファイルフラグメントをext4ファイルシステムのどこに置きます\nか？",
+    "choices": {
+      "A": "recover",
+      "B": "lost+found",
+      "C": "back",
+      "D": "lost"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "153",
+    "type": "fill_in",
+    "multi_answer": true,
+    "question": "/dev/disk/ 内のどのディレクトリを使用して、接続されているハードディスクのUUIDを判別できますか？",
+    "choices": {},
+    "answer": [
+      "/dev/disk/by-uuid",
+      "by-uuid",
+      "/dev/disk/by-uuid/"
+    ]
+  },
+  {
+    "id": "154",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "/procのどのファイルにローカルソフトウェアRAIDデバイスのステータスに関する情報が含まれていますか？",
+    "choices": {
+      "A": "/proc/raidstat",
+      "B": "/proc/mdstat",
+      "C": "/proc/raidstatus",
+      "D": "/proc/mdstatus",
+      "E": "/proc/raid/status"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "155",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "/etc/fstab ファイルのフォーマットを最もよく表しているのは次のうちどれですか。",
+    "choices": {
+      "A": "device name; filesystem type; mount point; mount options; dump filesystem; fsck order",
+      "B": "device name; mount point; filesystem type; mount options; dump filesystem; fsck order",
+      "C": "device name; mount point; mount options; filesystem type; dump filesystem; fsck order",
+      "D": "mount point; filesystem type; device name; mount options; dump filesystem; fsck order",
+      "E": "mount point; device name; filesystem type; mount options; dump filesystem; fsck order"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "156",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "CD-ROMファイルシステムの標準は次のうちどれですか？",
+    "choices": {
+      "A": "OSI9660",
+      "B": "ISO9660",
+      "C": "SR0FS",
+      "D": "ISO8859",
+      "E": "ROM-EO"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "157",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "LinuxソフトウェアRAIDアレイへのパスの例は次のうちどれですか。",
+    "choices": {
+      "A": "/dev/raid0",
+      "B": "/dev/rd1",
+      "C": "/dev/pr0",
+      "D": "/dev/md1"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "158",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ミラーリングされたデバイスのアレイを作成するために、LinuxソフトウェアRAIDで使用する必要があるRAID\nレベル値はどれですか？",
+    "choices": {
+      "A": "1",
+      "B": "5",
+      "C": "6",
+      "D": "container",
+      "E": "mirrorstripe"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "159",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "RAID 5アレイ内の故障したデバイスをシミュレートする単一のコマンドはどれですか。",
+    "choices": {
+      "A": "mdadm --remove /dev/md0 /dev/sdd1",
+      "B": "mdadm --zero-superblock /dev/sdf3",
+      "C": "mdadm --force-fault /dev/md2 /dev/sde2",
+      "D": "mdadm --fail /dev/md0 /dev/sdc1",
+      "E": "mdadm /dev/md0 --offline /dev/sdc1"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "160",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "Linuxシステムで論理ボリュームを作成してそれを利用するために使用される次のシーケンスで、どの2つのLVM\nコマンドが欠落していますか？\npvcreate, ____, ____, mkfs, mount",
+    "choices": {
+      "A": "lvcreate, mdadm",
+      "B": "lvcreate, vgcreate",
+      "C": "lvmcreate, vgcreate",
+      "D": "vgcreate, lvcreate",
+      "E": "vgcreate, mdadm"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "161",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "RAIDボリュームのセットアップに使用するコマンドは次のうちどれですか。",
+    "choices": {
+      "A": "makerd",
+      "B": "mdadm",
+      "C": "mkfs.raid",
+      "D": "makeraid",
+      "E": "rdconfig"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "162",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "サーバーにはそれぞれ80GBであるディスクが3つあり、30KBの400万個のレコードを持つデータベースを管理\nする必要があります。性能、構成可能性、柔軟性という基準を備えたサーバーの最適な構成は、次のうちどれで\nすか？",
+    "choices": {
+      "A": "LVMのみを使用する",
+      "B": "RAID1 over LVMを使用する",
+      "C": "LVM over RAID5を使用する",
+      "D": "LVM over RAID1を使用する",
+      "E": "RAID5 over LVMを使用する"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "163",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "論理ボリュームマネージャー（LVM）を使用して4つの4GBディスクドライブを管理することに決めました。ボ\nリュームグループを作成した後、big-appという10GBの論理ボリュームを作成するコマンドは、次のうちどれで\nすか？",
+    "choices": {
+      "A": "vgcreate -p 10g -n /dev/vg01/big-app",
+      "B": "vgcreate -l 2560 /dev/vg01/big-app",
+      "C": "mklvm -v 10240 -n /dev/vg01/big-app",
+      "D": "lvcreate -v 10240 /dev/vg01/big-app",
+      "E": "lvcreate -l 2560 vg01 -n big-app"
+    },
+    "answer": [
+      "E"
+    ]
+  },
+  {
+    "id": "164",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "最も冗長性の高いRAIDレベルはどれですか？",
+    "choices": {
+      "A": "RAID4",
+      "B": "RAID5",
+      "C": "RAID1",
+      "D": "RAID0"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "165",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "modules.depファイルはどのような情報を提供しますか？",
+    "choices": {
+      "A": "カーネルに利用できるすべてのモジュールのリスト。",
+      "B": "各モジュールが必要とするモジュールのリスト。",
+      "C": "デバイスとそのモジュール名のリスト。",
+      "D": "カーネル用にコンパイルされたモジュールのリスト。",
+      "E": "カーネルが実行する必要があるモジュールのリスト。"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "166",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "/, /usr, /var, /tmp用に別々のパーティションを持つシステムで、どのファイルシステムが読み込み専用で安\n全にマウントできますか？",
+    "choices": {
+      "A": "/var, /usr",
+      "B": "/var",
+      "C": "/usr, /, /tmp",
+      "D": "/usr",
+      "E": "/tmp"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "167",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "Windowsシェアをシステムで利用可能にする必要がある場合、自動マウント構成で正しい場所はどれですか？",
+    "choices": {
+      "A": "\\\\server\\sharename",
+      "B": "://server/sharename",
+      "C": "server:/sharename",
+      "D": ":server/sharename",
+      "E": "\\\\\\\\server\\\\sharename"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "168",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "サーバーのIDEハードドライブがデータを非常に遅く転送しています。 DMAを有効にするには、どのコマンドを\n実行する必要がありますか？",
+    "choices": {
+      "A": "hdparm -d /dev/hda",
+      "B": "hdparm --dma /dev/hda",
+      "C": "hdparm --dma /dev/hda1",
+      "D": "hdparm -d /dev/hda1",
+      "E": "hdparm -d1 /dev/hda"
+    },
+    "answer": [
+      "E"
+    ]
+  },
+  {
+    "id": "169",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "実行レベル3に入ったときに自動的に実行される小さな起動スクリプト（/usr/local/bin/startup.sh）を作成\nしました。基準に従うと、どのようにして実現すべきですか？",
+    "choices": {
+      "A": "chmod 700 /usr/local/bin/startup.sh; cd/etc/init.d/rc3.d/; ln -s /user/local/bin/startup.sh",
+      "B": "chmod 700 /usr/local/bin/startup.sh; cd/etc/init.d/rc3.d/; ln -s /usr/local/bin/startup.sh\nS99startup.sh",
+      "C": "chmod 700 /usr/local/bin/startup.sh; cd/etc/init.d/rc3.d/; ln /user/local/bin/startup.sh",
+      "D": "chmod 700 /usr/local/bin/startup.sh; cd/etc/init.d/rc3.d/; ln -s /user/local/bin/startup.sh\n/usr/locl/bin/startup.sh",
+      "E": "chmod 700 /usr/local/bin/startup.sh; cp /user/local/bin/startup.sh /etc/init.d/rc3.d/S99Startup.sh"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "170",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "/usr/bin/foo のすべてのライブラリ依存関係を検索するために、正しいのは次のどの記述ですか？",
+    "choices": {
+      "A": "/usr/bin/fooに対してldconfigを実行すると、必要なライブラリが表示されます",
+      "B": "/usr/bin/fooに対してlddを実行すると、必要なライブラリが表示されます",
+      "C": "fooのライブラリ依存関係をチェックするためには、プログラムを再度コンパイルする必要があります。",
+      "D": "fooのすべてのライブラリ依存関係を表示するには、ls -laコマンドを/usr/binディレクトリで実行する必\n要があります。",
+      "E": "ライブラリの依存関係は、/usr/libディレクトリに表示されます。"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "171",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ルートファイルシステムが起動中には読み取り専用権限でマウントされ、後で書き込み権限で再マウントされる\nのはなぜですか？",
+    "choices": {
+      "A": "ブート中にルートファイルシステムで問題が検出された場合、システムを破壊するリスクなしでfsckを実行\nすることができるからです。",
+      "B": "クラッカーはブートスニファーでルートに関する情報を収集することができないからです。",
+      "C": "ルートパスワードがわかっていない限り、ディスクへの書き込みを避けるためです。",
+      "D": "他のオペレーティングシステムがLinuxのルートパーティションを上書きしないようにするためです。",
+      "E": "ディスクには、オペレーティングシステムによって変更できない独自の書き込み保護があるからです。"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "172",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "システムバックアップを作成するには、tarコマンドを使用するのが最も簡単で速い方法です。tarファイルを\n作成、一覧表示、展開するtarパラメータは、次のうちどれですか？",
+    "choices": {
+      "A": "--create --list --extract",
+      "B": "--compose --list --expand",
+      "C": "-c -t -e",
+      "D": "-c -l -x"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "173",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ネットワーククライアントには、サブネット192.168.0.0/24のIPアドレスで設定されたイーサネットインター\nフェイスがあります。このサブネットには、インターネットに接続用のIPアドレス192.168.0.1のルーターが\nあります。クライアントがデフォルトゲートウェイとしてルータを使用するためには、クライアントで何を行う\n必要がありますか？",
+    "choices": {
+      "A": "route add default gw 192.168.0.1 eth1を実行します。",
+      "B": "route add gw 192.168.0.1 eth1を実行します。",
+      "C": "ifconfig eth0 defaultroute 192.168.0.1実行します。",
+      "D": "\"defaultroute 192.168.0.1\" を /etc/resolv.confに追加します。",
+      "E": "route add defaultgw=192.168.0.1 if=eth0を実行します。"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "174",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "2.4シリーズLinuxカーネルを実行しているシステムで、(E)IDEディスク用の32ビットI/O転送モードを有効\nにするためには何が必要ですか？",
+    "choices": {
+      "A": "Linuxカーネルを再コンパイルする必要があります。",
+      "B": "sysctlユーティリティを使用する必要があります。",
+      "C": "hdparmユーティリティーを使用する必要があります。",
+      "D": "この機能は、2.4シリーズカーネルではサポートされていません。",
+      "E": "この機能は、2.4シリーズカーネルではデフォルトで有効になっています"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "175",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ブートプロセスのどの段階で下記のメッセージが表示されますか？\nide_setup: hdc=ide-scsi",
+    "choices": {
+      "A": "デーモンの初期化とセットアップ。",
+      "B": "ブートローダが起動し、カーネルにハンドオフするとき。",
+      "C": "ハードウェアの初期化とセットアップ。",
+      "D": "カーネルのロード。"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "176",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "一部のユーザーは特定のローカルホストに名前で接続できません。他のゾーンのホストには期待通りに接続可能\nです。ホストはIPアドレスによって到達可能とすれば、問題に関するヒントを提供することができるデフォル\nトログファイルはどれですか？",
+    "choices": {
+      "A": "/var/named/log",
+      "B": "/var/lib/named/dev/log",
+      "C": "/var/log/bind_errors",
+      "D": "/var/log/bind/errors",
+      "E": "/var/log/messages"
+    },
+    "answer": [
+      "E"
+    ]
+  },
+  {
+    "id": "177",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "DNSサーバーのIPアドレスは192.168.0.1です。このDNSサーバーを使用するためにクライアントに実行しなけ\nればならないのは次のうちどれですか？(2つ選択)",
+    "choices": {
+      "A": "nameserver 192.168.0.1 を /etc/resolv.confに追加します。",
+      "B": "route add nameserver 192.168.0.1を実行します。",
+      "C": "ifconfig eth0 nameserver 192.168.0.1を実行します。",
+      "D": "/etc/nsswitch.confファイルのhostsエントリにdnsサービスがリストされていることを確認します。",
+      "E": "bind add nameserver 192.168.0.1を実行します。"
+    },
+    "answer": [
+      "A",
+      "D"
+    ]
+  },
+  {
+    "id": "178",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "initramfsイメージを作成するのに、次のどのアーカイブフォーマットが使用されますか？(2つ選択)",
+    "choices": {
+      "A": "gzip",
+      "B": "tar",
+      "C": "rar",
+      "D": "cpio",
+      "E": "bzip2"
+    },
+    "answer": [
+      "A",
+      "D"
+    ]
+  },
+  {
+    "id": "179",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ディスクパーティション/dev/sda3を/dev/sdb3にコピーするのは、次のコマンドのうちどれですか？",
+    "choices": {
+      "A": "dd if=/dev/sdb3 of =/dev/sda3 bs=4096 conv=notrunc",
+      "B": "dd if=/dev/sda3 of=/dev/sdb3 bs=4096 conv=notrunc",
+      "C": "dd --input /dev/sda3 --output /dev/sdb3 bs=4096 conv=notrunc",
+      "D": "dd --input /dev/sdb3 --output /dev/sda3 bs=4096 conv=notrunc"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "180",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "一部のソースコードの依存関係の更新と Resolve が完了しました。バイナリ形式にコードを再コンパイルする\n前に、どのコマンドを実行する必要がありますか？",
+    "choices": {
+      "A": "make clean",
+      "B": "make all",
+      "C": "make dep",
+      "D": "make install"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "181",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "udevmonitorの目的は何ですか？",
+    "choices": {
+      "A": "udevルールによって生成されたカーネルイベントをリッスンし、情報をコンソールに出力します。",
+      "B": "新しいデバイス用の/devディレクトリを監視します。",
+      "C": "udevプロセスを監視し、パフォーマンス統計情報をコンソールに出力します。",
+      "D": "D-Busと通信して新しいデバイスをセットアップします。"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "182",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ファイルシステムをアンマウントするとき、すぐにファイルシステムへのすべての参照をクリーンアップします。\nこの動作を何と言いますか？",
+    "choices": {
+      "A": "soft",
+      "B": "strong",
+      "C": "forced",
+      "D": "lazy",
+      "E": "delayed"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "183",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "Debianベースのシステムでは、実際のスクリプトが/etc/init.d/から削除された後、起動時にapache2のinit\nスクリプトが実行するのを止めるためにどのコマンドを使うべきですか？",
+    "choices": {
+      "A": "update-rc.d -d apache2",
+      "B": "update-rc.d apache2 delete",
+      "C": "update-rc.d remove apache2",
+      "D": "update-rc.d apache2 remove",
+      "E": "update-rc.d delete apache2"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "184",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "DNSサーバー上のゾーンファイルが更新されました。ゾーンファイルをリロードするのは次のうちどのコマンド\nですか？（2つ選択）",
+    "choices": {
+      "A": "killall -HUP named",
+      "B": "killall named",
+      "C": "rndc reload",
+      "D": "rndc flush",
+      "E": "named-checkzone -r"
+    },
+    "answer": [
+      "A",
+      "C"
+    ]
+  },
+  {
+    "id": "185",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "デバイス・マッパーを使用するのは、次のアプリケーションのうちどれですか？（2つ選択）",
+    "choices": {
+      "A": "SELinux",
+      "B": "LVM2",
+      "C": "EVMS",
+      "D": "GRUB",
+      "E": "LILO"
+    },
+    "answer": [
+      "B",
+      "C"
+    ]
+  },
+  {
+    "id": "186",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "カーネルソースツリーからパッチpatch-2.4.28.tar.bz2を削除するために使用すべきコマンドは次のうちどれ\nですか？",
+    "choices": {
+      "A": "bunzip2 ../patch-2.4.28.tar.bz2 | patch -rp1",
+      "B": "bunzip2 -c ../patch-2.4.28.tar.bz2 | patch -Rp1",
+      "C": "bunzip2 -c ../patch-2.4.28.tar.bz2 | unpatch -p1",
+      "D": "bunzip2 ../patch-2.4.28.tar.bz2 | unpatch -p1",
+      "E": "bunzip2 ../patch-2.4.28.tar.bz2 | patch -Rp1\nF. bunzip2 -c ../patch-2.4.28.tar.bz2 | patch -rp1"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "187",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "プリコンパイルされたモジュールは/lib/modules/<kernel-version>に移動されましたが、 'modprobe -a\n<module-name> 'はロードできません。 このモジュールを使用可能にするためには何をする必要がありますか？",
+    "choices": {
+      "A": "make modules_install を実行する必要があります。",
+      "B": "depmod を実行する必要があります。",
+      "C": "カーネルをリコンパイルする必要があります。",
+      "D": "modules.conf 又は modprobe.conf を変更する必要があります。",
+      "E": "システムをリブートする必要があります。"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "188",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "/usr/bin/fooのすべてのライブラリー依存関係を見つけるためには、次の記述のうちどれが正しいですか？",
+    "choices": {
+      "A": "/usr/bin/fooに対してldconfigを実行すると、必要なライブラリが表示されます",
+      "B": "/usr/bin/fooに対してlddを実行すると、必要なライブラリが表示されます",
+      "C": "fooのライブラリ依存関係をチェックするために、プログラムを再度コンパイルする必要があります。",
+      "D": "ls -laコマンドを /usr/binディレクトリーで実行する必要があります。\nE.ライブラリの依存関係は、/usr/lib ディレクトリに表示されます。"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "189",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "デバイス /dev/hda でDMAを有効にするコマンドは、次のうちどれですか？",
+    "choices": {
+      "A": "echo \"1\" >/proc/ide/hda/dma",
+      "B": "sysctl -w dev.ide.dma=1",
+      "C": "dma add /dev/hda",
+      "D": "hdparm -d 1 /dev/hda",
+      "E": "insmod dma dev=/dev/hda"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "190",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "現在のディレクトリが/rootであり、カーネルソースが/usr/src/linuxにある場合、パッチ/tmp/foopatchを適\n用するために使用すべきなのは次のうちどのコマンドですか？",
+    "choices": {
+      "A": "cat /tmp/foopatch | patch -p0",
+      "B": "cd/usr/src/linux; cat/tmp/foopatch | patch -p0",
+      "C": "cd/usr/src/linux; cat/tmp/foopatch | patch",
+      "D": "cd/usr/src/linux; patch -p1 </tmp/foopatch",
+      "E": "cd/usr/src/linux; patch -p1 >/tmp/foopatch"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "191",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "カーネルに問い合わせることなく、PCIデバイスが何を見ることができるかを知るためには、どのコマンドを使\nうべきですか？",
+    "choices": {
+      "A": "lspci -v",
+      "B": "lspci -s",
+      "C": "lspci -x",
+      "D": "lspci -b",
+      "E": "lspci -p"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "192",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "Linuxカーネルはブートローダーによって正常にロードされました。しかし、カーネルがルートファイルシステ\nムをマウントした直後に、ブートプロセスが停止し、initに関するエラーメッセージが表示されました。問題を\n特定して修正するために最適なのは次のアクションのうちどれですか？",
+    "choices": {
+      "A": "管理者は、リカバリディスクを使用してシステムを再起動し、ルートファイルシステムでfsckを使用してエ\nラーをチェックします。",
+      "B": "管理者は、リカバリディスクを使用してシステムを再起動し、バックアップからリストアします。",
+      "C": "管理者はシステムを再起動し、ブートローダーのプロンプトを介して、カーネルに初期プロセスとして\n/bin/bashasを使用するように指示します。",
+      "D": "管理者はリカバリディスクを使用してシステムを再起動し、新しいカーネルをインストールします。",
+      "E": "管理者はシステムを再起動し、ブートローダのプロンプトから別のランレベルを使用するようinitに指示し\nます。"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "193",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "マシンはシングルユーザーモードで実行されているため、すべてのファイルシステムにアクセスすることができ\nません。/etc/fstabにリストされているすべてのファイルシステムにアクセス可能にするためには、どのコマン\nドを実行する必要がありますか？",
+    "choices": {
+      "A": "mount --all",
+      "B": "mountfs --all",
+      "C": "mountfs -a",
+      "D": "mount -a"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "194",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "再起動時にファイルシステムチェックを強制するために使用されるコマンドはどれですか？",
+    "choices": {
+      "A": "reboot-f",
+      "B": "shutdown -f now",
+      "C": "shutdown -c -r now",
+      "D": "fsck -r",
+      "E": "shutdown -F -r now"
+    },
+    "answer": [
+      "E"
+    ]
+  },
+  {
+    "id": "195",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "パーティションをマウントするときのディスクチェックの間隔を設定するために、既存のフォーマットされたパ\nーティションで使用できるコマンドは何ですか？",
+    "choices": {
+      "A": "mke2fs",
+      "B": "e2fsck",
+      "C": "e2fsckconfig",
+      "D": "config2fs",
+      "E": "tune2fs"
+    },
+    "answer": [
+      "E"
+    ]
+  },
+  {
+    "id": "196",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "リモートユーザアカウントkevinを使用して、リモートホストdeltaur上の/var/tmp/にディレクトリ./fyf/を\nセキュアにコピーするのは次のコマンドのうちどれですか？",
+    "choices": {
+      "A": "rsync -a -e ssh kevin@deltaur:/var/tmp/ fyf/",
+      "B": "rsync -a -u kevin -e ssh fyf/ deltaur:/var/tmp/",
+      "C": "rsync -a -u kevin -e ssh deltaur:/var/tmp/ fyf/",
+      "D": "rsync -a -e ssh fyf/ kevin@deltaur:/var/tmp/"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "197",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ジャーナリングはext3ファイルシステム上で動作しているようには見えません。 起動すると、次の行が表示さ\nれます。\nVFS: Mounted root (ext2 filesystem) readonly.\nこの問題の原因はどれが考えられますか？",
+    "choices": {
+      "A": "古いバージョンのe2fsprogsがインストールされています。",
+      "B": "カーネルはext3サポートを含んでいません。",
+      "C": "ファイルシステムは/etc/fstabでext2として指定されています。",
+      "D": "システムは正常にシャットダウンされませんでした。"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "198",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "異なるスタッフによって定期的に更新されるイントラネットウェブサーバーに使用しなければならないのはど\nのようなバックアップ構成ですか？",
+    "choices": {
+      "A": "毎日の増分バックアップ及び、毎週のフルバックアップテープをオフサイトに送信",
+      "B": "毎月の完全バックアップ及び、テープをオフサイトに送信",
+      "C": "毎日の完全バックアップ及び、すべてのテープをオフサイトに送信",
+      "D": "毎週の完全バックアップ及び、すべてのテープをオフサイトに送信",
+      "E": "毎日の完全バックアップ及び、毎週一つのテープをオフサイトに送信"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "199",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ブート時にカーネルが使用するramdiskファイル（/boot/initrd）の内容にアクセスするために使用できるコマ\nンドはどれですか？",
+    "choices": {
+      "A": "mount /boot/initrd /mnt/ -0 loop; cat /mnt",
+      "B": "mkintird -d /boot/initrd; mount /boot/initrd /mnt/ -o loop",
+      "C": "cp /boot/initrd /tmp/initrd.gz; mount /tmp/initrd /mnt/ -o loop",
+      "D": "cp /boot/initrd /tmp/initrd.gz; gunzip initrd.gz; mount /tmp/initrd /mnt/ -o loop",
+      "E": "cp /boot/initrd /tmp/initrd.gz; gunzip initrd.gz; mount /tmp/initrd /mnt/"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "200",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "dnssec-keygenによって生成されたホストキーとゾーンキーの違いは何ですか？",
+    "choices": {
+      "A": "違いはありません。",
+      "B": "ゾーンキーファイルにはパブリックキーとプライベートキーが含まれています。",
+      "C": "ホストキーファイルにはパブリックキーとプライベートキーが含まれています。",
+      "D": "DNSSECが使用されている場合、ホストキーは常に生成される必要があります。 ゾーンキーはオプションです。",
+      "E": "DNSSECが使用されている場合、ゾーンキーは常に生成される必要があります。 ホストキーはオプションです。"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "201",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "1日に何百人がリモートでサーバーにログインします。 特定の日のリモートSSH、FTP、およびtelnetセッショ\nンを表示するのは次のコマンドのうちどれですか？",
+    "choices": {
+      "A": "cat /var/log/messages | grep \"'date \"+%b %e\"'\" | egrep '(telnet|ssh|ftp)'",
+      "B": "cat /var/log/messages | egrep '(telnet|ssh|ftp)'",
+      "C": "cat /var/log/messages | grep \"`date \"+%b %e\"`\" | grep -E '(telnet|ssh|ftp)'",
+      "D": "cat /var/log/messages | date | egrep '(telnet|ssh|ftp)'",
+      "E": "cat /var/log/messages > grep \"'date \"+%b %e\"'\" > egrep '(telnet\\ssh\\ftp)'"
+    },
+    "answer": [
+      "A",
+      "C"
+    ]
+  },
+  {
+    "id": "202",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "init構成ファイルのデフォルトのランレベルを変更した後、システムは意図したランレベルとは異う状態で起動\nしました。この異なるランレベルを定義してのは、次のうちどれですか？",
+    "choices": {
+      "A": "どこにもありません。init構成ファイルが正しく変更されていません。",
+      "B": "ブートローダ構成ファイル",
+      "C": "デフォルトで/etc/runlevelにあります。",
+      "D": "initrdイメージファイルにあります。",
+      "E": "/etc/rc.d/rc.localファイルにあります。"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "203",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "PTRレコードの目的は何ですか？",
+    "choices": {
+      "A": "IP解決に名前を提供すること。",
+      "B": "名前解決にIPを提供すること。",
+      "C": "電子メールを特定のホストに送ること。",
+      "D": "追加のホスト情報を提供すること。",
+      "E": "クライアントを別のネームサーバーにダイレクトすること。"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "204",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "ダイナミックDNSアップデートを安全に使用するには、TSIGを使用することをお勧めします。 TSIGに関する記\n述で正しいのはどれですか？(2つ選択)",
+    "choices": {
+      "A": "TSIGはゾーンデータの暗号化に使用されます。",
+      "B": "TSIGはゾーン更新を開始するためのシグナルです。",
+      "C": "TSIGはゾーンファイルで使用されます。",
+      "D": "TSIGはサーバー構成でのみ使用されます。",
+      "E": "TSIGを使用するサーバーは同期している必要があります。（タイムゾーン！）"
+    },
+    "answer": [
+      "D",
+      "E"
+    ]
+  },
+  {
+    "id": "205",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "automounterに関する記述で正しいのはどれですか？(3つ選択)",
+    "choices": {
+      "A": "automounterマップファイルを変更した後にautofsサービスを再起動する必要はありません。",
+      "B": "マスターmap内の1つのエントリだけが各mapファイルを参照できます。",
+      "C": "automounterサービスはカーネル構成に依存しません。",
+      "D": "auto.master内の各エントリに対して、別々のautomounterデーモンが起動されます。",
+      "E": "auto.masterを変更した後、automounterが構成ファイルをリロードする必要があります。"
+    },
+    "answer": [
+      "A",
+      "D",
+      "E"
+    ]
+  },
+  {
+    "id": "206",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "abc.tar.bz2ファイルからデータを抽出する単一のコマンドは、次のうちどれですか",
+    "choices": {
+      "A": "bunzip2",
+      "B": "tar",
+      "C": "gzip",
+      "D": "gunzip"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "207",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "Human Interface Device（HID）が使用されている時、PCに接続されたUSBマウスを表すのは次のうちどれです\nか？",
+    "choices": {
+      "A": "/dev/psaux",
+      "B": "/dev/ttyS0",
+      "C": "/dev/input/mice",
+      "D": "/dev/usb/mouse0",
+      "E": "/dev/ttyUSB0"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "208",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "システムの起動時に特定のファイルシステムがマウントされないようにするには、以下の/etc/fstabエントリで\nどのマウントオプションを使用する必要がありますか？\n/dev/hdd /media/cdrom iso9660 ,ro 0 0",
+    "choices": {},
+    "answer": [
+      "noauto"
+    ]
+  },
+  {
+    "id": "209",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "多くの書き込み操作の後、変更はディスクに書き込まれるべきです。これを達成するためのコマンドは何です\nか？(パス、オプション、パラメータは不要)",
+    "choices": {},
+    "answer": [
+      "sync"
+    ]
+  },
+  {
+    "id": "210",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "Xの設定が完了し、デフォルトのランレベルをランレベル3からランレベル5に変更できるようになりました。\nこれを行うには、どの設定ファイルを使用すべきですか？",
+    "choices": {},
+    "answer": [
+      "/etc/inittab"
+    ]
+  },
+  {
+    "id": "211",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "RAID5 arrayに必要なディスクの最小数はいくつですか?",
+    "choices": {
+      "A": "1",
+      "B": "2",
+      "C": "3",
+      "D": "4",
+      "E": "5"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "212",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "Linuxシステムで論理ボリュームを作成する正しいコマンドシーケンスは次のうちどれですか？",
+    "choices": {
+      "A": "lvcreate, pvcreate, vgcreate, mount, mke2fs",
+      "B": "pvcreate, vgcreate, lvcreate, mke2fs, mount",
+      "C": "vgcreate, lvcreate, pvcreate, mount, mke2fs",
+      "D": "mke2fs, pvcreate, vgcreate, lvcreate, mount",
+      "E": "pvcreate, lvcreate, vgcreate, mount, mke2fs"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "213",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "5個の18GBドライブと1個のスペア専用ドライブで構成したRAID 5アレイの使用可能なディスク容量はどれで\nすか？",
+    "choices": {
+      "A": "18GB",
+      "B": "36GB",
+      "C": "54GB",
+      "D": "72GB",
+      "E": "90GB"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "214",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "vgextendの目的は何ですか？",
+    "choices": {
+      "A": "ディスク上のボリュームグループのフットプリントを拡張する",
+      "B": "ボリュームグループに物理ボリュームを追加する",
+      "C": "スケジュールされたエラーチェック間の日数を増やす",
+      "D": "ディスク上のすべての空き領域を使用するボリュームグループを作成する"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "215",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "どの疑似ファイル(pseudo-file)にソフトウェアRAIDデバイスの状態に関する情報が含まれていますか？",
+    "choices": {
+      "A": "/proc/raidstat",
+      "B": "/proc/mdstatus",
+      "C": "/proc/raidstatus",
+      "D": "/proc/mdstat",
+      "E": "/proc/raid/status"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "216",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "新しいカーネルをコンパイルする前に、何をする必要がありますか？",
+    "choices": {
+      "A": "カーネルモジュールをコンパイルする",
+      "B": "カーネルオプションを構成する",
+      "C": "古いカーネルソースを削除する",
+      "D": "ランレベル1に変更する",
+      "E": "上記のすべて"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "217",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "/etc/fstabファイルの形式に関して最も正しい記述はどれですか？",
+    "choices": {
+      "A": "mount point; device name; filesystem type; mount options; dump filesystem; fsck order",
+      "B": "device name; mount point; filesystem type; mount options; dump filesystem; fsck order",
+      "C": "mount point; filesystem type; device name; mount options; dump filesystem; fsck order",
+      "D": "device name; mount point; mount options; filesystem type; dump filessystem; fsck order",
+      "E": "device name; filesystem type; mount point; mount options; dump filesystem; fsck order"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "218",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "カーネルにパッチを当てるためにカーネルソースにはどのようなスクリプトが含まれていますか？",
+    "choices": {
+      "A": "patch",
+      "B": "patch-kernel",
+      "C": "apply-patch",
+      "D": "update-kernel"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "219",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "オリジナルにdiff-fileを適用するためにどのコマンドを使用しますか？",
+    "choices": {
+      "A": "patch > diff-file",
+      "B": "patch < diff-file",
+      "C": "patch << diff-file",
+      "D": "cat diff-file >> kernel",
+      "E": "cat diff-file << kernel"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "220",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "起動しているときLinuxカーネルがルートファイルシステムをマウントできなかった場合、どうなりますか？",
+    "choices": {
+      "A": "どのデバイスがマウントできなかったか、またはinitが見つからなかったことを通知するエラーメッセージ\nが表示されます。",
+      "B": "エラーメッセージが表示され、キーを押すとシステムが再起動します。",
+      "C": "エラーメッセージが表示され、システムはメンテナンスモードで起動します。",
+      "D": "エラーメッセージが表示され、管理者はブートプロセスを続行するために有効なルートファイルシステムを\n指定するよう求められます。",
+      "E": "対応するカーネルモジュールがロードできなかったことを示すエラーメッセージが表示されます。"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "221",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "Windows 95/98から正常にアクセスできるISO9660ファイルシステムを作成するコマンドは、次のうちどれです\nか？",
+    "choices": {
+      "A": "mkisofs -l -o backup.iso /home/joe",
+      "B": "mkisofs -J -T -r -o backup.iso /home/joe",
+      "C": "mkisofs -D -T -o backup.iso /home/joe",
+      "D": "mkisofs -j -T -o backup.iso /home/joe",
+      "E": "mkisofs -d -T -o backup.iso /home/joe"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "222",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "サーバー上のユーザーのクォータ(quota)が200MBから100MBに削減されました。すべてのユーザーに電子メー\nルを送信するだけでなく、ユーザーがサーバーにアクセスするたびにメッセージに変更内容を伝える必要があり\nます。これを構成する正しい方法は、次のうちどれですか？",
+    "choices": {
+      "A": "メッセージテキストを/ etc / login-messageファイルに入れます。",
+      "B": "メッセージテキストを/ etc / motdファイルに入れます。",
+      "C": "メッセージテキストを/ etc / default / loginファイルに入れます。",
+      "D": "すべてのユーザーの入力後、メッセージテキストを/ etc / passwdファイルに入れます。",
+      "E": "管理者が各ユーザーの.bash_profileファイルを変更する権限を持っていないため、これを行う方法はありま\nせん。"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "223",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "MBRにインストールされたGRUBブートローダーが誤って上書きされました。レスキューCD-ROMで起動した後、\n失われたGRUB first stageローダーをどのように回復できますか？",
+    "choices": {
+      "A": "ddを使用して、MBRの以前のバックアップを復元します。",
+      "B": "GRUBを簡単に回復する方法はないので、LILOをインストールします。",
+      "C": "mformatを実行すると、新しいMBRが作成され、grub.confのinfoを使用してGRUBを修正します。",
+      "D": "grub.confが正しいことを確認した後、grub-installを実行します。",
+      "E": "ブート・ハードディスクが/dev/hdaである場合、fdisk --mbr /dev/hdaを実行します。"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "224",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "アプリケーションのREADMEファイルに含まれている指示に従って、makeコマンドが実行されましたが、次のメ\nッセージが画面に表示されました。\nMake: *** No targets specified and no makefile found. Stop.\nこの問題に対して考えられる原因はどれですか？(2つ選択)",
+    "choices": {
+      "A": "makeコマンドが間違った場所で実行されています。",
+      "B": "ユーザーにはMakefileに対する書き込み権限がないため、makeコマンドを正しく実行することはできません。",
+      "C": "makeコマンドは適切な場所で実行されましたが、Makefileを生成するコマンドが正しく実行されませんでし\nた。",
+      "D": "makeコマンドがシステムにインストールされていません。",
+      "E": "makeが必要とする開発ライブラリは、システムにインストールされていません。"
+    },
+    "answer": [
+      "A",
+      "C"
+    ]
+  },
+  {
+    "id": "225",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "実行時にカーネルパラメータ（例えば、共有メモリセグメントの最大サイズ（shmmax））を構成することが可能\nです。実行中のシステムで2GB（2147483648バイト）に変更できるのは次のうちどれですか？(2つ選択)",
+    "choices": {
+      "A": "Edit /etc/shmmax and set the parameter to 2147483648.",
+      "B": "sysctl shmmax=2147483648.",
+      "C": "sysctl kernel.shmmax=2147483648",
+      "D": "echo 2147483648 > /proc/sys/kernel/shmmax",
+      "E": "export kernel.shmmax=2147483648"
+    },
+    "answer": [
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "226",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "Linuxマシンがブート中にフリーズしました。ファイルの編集やサービスの手動開始を可能にするために、シェ\nルプロンプトに直接ブートする必要があります。シェルプロンプトに直接ブートするために、ブートプロセス用\nのカネルにパスしなければならないのはどのコマンドラインですか？",
+    "choices": {
+      "A": "init=/bin/bash",
+      "B": "1",
+      "C": "runlevel=1",
+      "D": "sh",
+      "E": "/bin/sh"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "227",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ワイヤレスネットワークリンクの品質をチェックするために使用できるワイヤレスツールはどれですか？",
+    "choices": {
+      "A": "iwconfig",
+      "B": "iwlink",
+      "C": "iwscan",
+      "D": "iwifi"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "228",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "すでに少なくとも1つのIPアドレスを持っているインターフェイスに別のIPアドレスを追加するコマンドは、\n次のうちどれですか？",
+    "choices": {
+      "A": "ifconfig eth0:1 192.168.1.2",
+      "B": "ifconfig eth0 192.168.1.2",
+      "C": "ipconfig eth0:1 192.168.1.2",
+      "D": "ipconfig eth0 192.168.1.2",
+      "E": "ifconfig eth0:sub1 192.168.1.2"
+    },
+    "answer": [
+      "A",
+      "E"
+    ]
+  },
+  {
+    "id": "229",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "DNSクエリに関する情報を最も多く提供できるツールは、次のうちどれでしょうか？",
+    "choices": {
+      "A": "dig",
+      "B": "nslookup",
+      "C": "host",
+      "D": "named-checkconf",
+      "E": "named-checkzone"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "230",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ext3ファイルシステムを作成するために、どのコマンドを使用する必要がありますか？",
+    "choices": {
+      "A": "mkext3fs",
+      "B": "mkjfs",
+      "C": "mke3fs",
+      "D": "mke2fs",
+      "E": "mkext2fs"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "231",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "DNSSEC は何のために使われますか？",
+    "choices": {
+      "A": "ネームサーバー間の暗号化されたDNSクエリ。",
+      "B": "DNSゾーンの暗号化認証(Cryptographic authentication)。",
+      "C": "ローカルゾーンのセカンダリDNSクエリ。",
+      "D": "安全なDNSセクションの定義。",
+      "E": "安全なDNSセクションの照会。"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "232",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "以下は tcpdump -nli eth1 'udp' の出力からの抜粋です。\n13:03:17.277327 IP 192.168.123.5.1065 > 192.168.5.112.53: 43653+ A? lpi.org. (25)\n13:03:17.598624 IP 192.168.5.112.53 > 192.168.123.5.1065: 43653 1/0/0 A\n24.215.7.109 (41)\nどのネットワークサービスまたはプロトコルが使用されますか？",
+    "choices": {
+      "A": "FTP",
+      "B": "HTTP",
+      "C": "SSH",
+      "D": "DNS",
+      "E": "DHCP"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "233",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "新しい2.4シリーズカーネルを設定した後、インクルードされたファイルなどのすべての依存関係を作成する必\n要があります。どのコマンドを実行すべきですか？",
+    "choices": {
+      "A": "make dependencies",
+      "B": "make clean",
+      "C": "make mrproper",
+      "D": "make dep",
+      "E": "make test"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "234",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "次のカーネルIPルーティングテーブルで、ネットワーク10.10.1.0/24へのルートを削除するコマンドは次のう\nちどれですか？\nKernel IP routing table\nDestination Gateway Genmask Flags Metric Ref Use Iface 200.207.199.162 0.0.0.0 255.255.255.255 UH 0 0\n0 ppp0\n172.16.87.0 0.0.0.0 255.255.255.0 U 0 0 0 eth0\n192.168.246.0 0.0.0.0 255.255.255.0 U 0 0 0 eth1\n10.10.1.0 192.168.246.11 255.255.255.0 UG 0 0 0 eth1\n127.0.0.0 0.0.0.0 255.0.0.0 U 0 0 0 lo\n0.0.0.0 200.207.199.162 0.0.0.0 UG 0 0 0 ppp0",
+    "choices": {
+      "A": "route del 10.10.1.0",
+      "B": "route del 10.10.1.0/24",
+      "C": "route del -net 10.10.1.0/24",
+      "D": "route del 10.10.1.0/24 gw 192.168.246.11",
+      "E": "route del -net 10.10.1.0"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "235",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "コマンドarp -f を実行した場合、デフォルトでどのファイルが読み込まれますか？",
+    "choices": {
+      "A": "/etc/hosts",
+      "B": "/etc/ethers",
+      "C": "/etc/arp.conf",
+      "D": "/etc/networks",
+      "E": "/var/cache/arp"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "236",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "カーネルをコンパイルするとき、zImageとbzImageターゲットの違いは何ですか？",
+    "choices": {
+      "A": "zImageはgzipで圧縮され、bzImageはbzip2で圧縮されます。",
+      "B": "zImageは2.4シリーズ・カーネル用であり、bzImageは2.6シリーズ・カーネル用です。",
+      "C": "zImageは低メモリにロードされ、bzImageは高メモリにロードされます。",
+      "D": "zImageは最大64kですが、bzImageは制限されません。"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "237",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "メールサーバーをfredと呼びます。プライマリMXレコードはmailhost.example.orgをポイントしています。\nexample.orgのメールをfredにダイレクトするためには何を行う必要がありますか？",
+    "choices": {
+      "A": "fredのIPアドレスをポイントするmailhost用のAレコードを追加します。",
+      "B": "mailhostからfredをポイントするCNAMEレコードを追加します。",
+      "C": "fredのIPアドレスをポイントする別のMXレコードを追加します。",
+      "D": "mailhostからfredをポイントするPTRレコードを追加します。"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "238",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "特定のネットワーク/ホストからのDNSサーバーへのアクセスのみを許可するために、使用できるのは次のうち\nどの方法ですか？",
+    "choices": {
+      "A": "指定の構成ファイルにlimit {...;};ステートメントを使用します。",
+      "B": "指定の構成ファイルにallow-query {...;};ステートメントを使用します。",
+      "C": "指定の構成ファイルにanswer only{...;};ステートメントを使用します。",
+      "D": "指定の構成ファイルにanswer{...;};ステートメントを使用します。",
+      "E": "指定の構成ファイルにquery access{...;};ステートメントを使用します。"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "239",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "/usr/local/libにある共有ライブラリを使用できるようにするのは、次のコマンドのうちどれですか？",
+    "choices": {
+      "A": "export LD_PRELOAD=/usr/local/lib",
+      "B": "export LD_LIBRARY_PATH=/usr/local/lib",
+      "C": "ldconfig /usr/local/lib",
+      "D": "ldd /usr/local/lib"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "240",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "Linuxカーネルのソースコードを解凍した後、現在の構成と生成されたすべてのファイルを削除するために、最\n初に実行するmakeコマンドは何ですか？このコマンドによりカーネルアーカイブに不適切なファイルが残って\nいないことを保証します。",
+    "choices": {
+      "A": "make depend",
+      "B": "make distclean",
+      "C": "make config",
+      "D": "make clean",
+      "E": "make mrproper"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "241",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "2.6.xxカーネルソースコードにアップグレード又はアップデートコードを追加するために、linux/scriptsディ\nレクトリのどのスクリプトを使用すべきですか？",
+    "choices": {
+      "A": "patch",
+      "B": "patch-kernel",
+      "C": "kernel-update",
+      "D": "upgrade-kernel",
+      "E": "upgrade"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "242",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "共有ライブラリの依存関係を表示するのに、どのツールを使用すべきですか？",
+    "choices": {
+      "A": "ldconfig",
+      "B": "ldd",
+      "C": "libdep",
+      "D": "libpath",
+      "E": "ldev"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "243",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ソースコードを解凍した後最終的なMakefileを作成するために、どのファイルを使用しますか？",
+    "choices": {
+      "A": "configure.in",
+      "B": "configure.ac",
+      "C": "Makefile.in",
+      "D": "Makefile.tmpl"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "244",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ユーザーJosephは、ソースコードからプログラムを正常に抽出してコンパイルしました。バイナリをインストー\nルするとエラーが発生します。 エラーの原因として最も可能性が高いのははどれですか？",
+    "choices": {
+      "A": "ソースコードが違うCPU用にコンパイルされました。",
+      "B": "/usr/binディレクトリに設定されているアクセス権限が間違っています。",
+      "C": "バイナリがインストールされるために、root権限を必要とします。",
+      "D": "ソースコードの設定時に間違った接頭辞が使用されました。"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "245",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "手動でシステムのARPキャッシュにエントリを追加するにはどうすればよいですか？",
+    "choices": {
+      "A": "/etc/arp-cacheを直接編集します。",
+      "B": "add-arp hostname FF：FF：FF：FF：FF：FFを実行します。",
+      "C": "ping -a hostnameを実行します。",
+      "D": "arp -s hostname FF:FF:FF:FF:FF:FFを実行します。",
+      "E": "arp.conf and restart arpdを編集します。"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "246",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "クライアントのネットワークで使用されているホスト（192.168.1.4）が、ポート31337でリッスンしているバ\nックドアプログラムによって侵害されていることが発見されました。クライアントは、そのポートに接続してい\nる発信元IPアドレスのリストを要求しています。Linuxワークステーションをトラフィックアナライザとして使\n用するとき、クライアントから要求されたデータを収集するのは次のコマンドうちどれでしょうか？",
+    "choices": {
+      "A": "tcpdump host 192.168.1.4 and port 31337 -w out",
+      "B": "nmap host 192.168.1.4:31337",
+      "C": "arpwatch -n 192.168.1.4/32 -p 31337 > capture",
+      "D": "pcap -d 192.168.1.4:31337",
+      "E": "ipwatch --syn 192.168.1.4 -p 31337 --1og=out"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "247",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "udevの実行時の動作(runtime behavior)を制御するために使用できるツールはどれですか？",
+    "choices": {
+      "A": "udev",
+      "B": "udevctl",
+      "C": "udevadm",
+      "D": "udevconfig",
+      "E": "udevclient"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "248",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "マウントされているデバイス及び使用されているオプションに関する情報を提供するために、デバイスがマウン\nト又はアンマウントされる時、どのシステムファイルが更新されますか？（2つ選択）",
+    "choices": {
+      "A": "/proc/dtab",
+      "B": "/etc/mtab",
+      "C": "/etc/fstab",
+      "D": "/proc/mounts",
+      "E": "/proc/devices"
+    },
+    "answer": [
+      "B",
+      "D"
+    ]
+  },
+  {
+    "id": "249",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ブート時から現在までに作成されたカーネルメッセージを確認するために使用できるのはどのコマンドです\nか？",
+    "choices": {
+      "A": "initm",
+      "B": "initmessage",
+      "C": "initmsg",
+      "D": "inittab",
+      "E": "dmesg"
+    },
+    "answer": [
+      "E"
+    ]
+  },
+  {
+    "id": "250",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "IDEハードディスクでDMAと32ビットI/Oサポート両方を使用するために、どのhdparmコマンドラインオプシ\nョンを使用すべきですか？",
+    "choices": {
+      "A": "-p 1 -A 1",
+      "B": "-f -g",
+      "C": "-L 1 -i 1",
+      "D": "-d 1 -c 1",
+      "E": "-L 1 -i 32"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "251",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "2.6シリーズカーネルでmkinitrdの代わりにmkinitramfsを推奨するようになった理由は次のうちどれですか？\n（2つ選択）",
+    "choices": {
+      "A": "ブートプロセスの後半まではロードされません。",
+      "B": "mkinitramfsには使いやすいGUIがあります。",
+      "C": "mkinitrd はdevfsに依存しています。",
+      "D": "SATAハードドライブはサポートされていません。"
+    },
+    "answer": [
+      "C",
+      "D"
+    ]
+  },
+  {
+    "id": "252",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "Linuxサーバーはシングルユーザーモードで動作していますが、これまでに存在していた問題は修正されました。\nサーバーをサービスへリストアするためには、どのコマンドが最適ですか？",
+    "choices": {
+      "A": "reboot",
+      "B": "telinit 2",
+      "C": "shutdown -r now",
+      "D": "telinit 3",
+      "E": "shutdown -h now"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "253",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "システム上のスワップ使用状況をチェックする必要があります。スワップ使用状況サマリーを表示するためにど\nのコマンドが使用できますか？（2つ選択）",
+    "choices": {
+      "A": "swapconfig",
+      "B": "cat /proc/swaps",
+      "C": "swapon -s",
+      "D": "swapshow",
+      "E": "cat /etc/fstab"
+    },
+    "answer": [
+      "B",
+      "C"
+    ]
+  },
+  {
+    "id": "254",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "/etc/raidtabで有効ではないエントリは、次のうちどれですか？",
+    "choices": {
+      "A": "superblock-persistent",
+      "B": "chunk-size",
+      "C": "nr-spare-disks",
+      "D": "nr-raid-disks"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "255",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ifconfig eth0コマンドの出力は次のとおりです。eth0インターフェースのIPアドレスを含む変数を必要とす\nるbashスクリプトで使用するのは次のコマンドのうちどれですか？\neth0 Link encap:Ethernet HWaddr 00:0C:29:CB:FA:30\ninet addr:192.168.246.11 Bcast:192.168.246.255 Mask:255.255.255.0 UP BROADCAST RUNNING MULTICAST\nMTU:1500 Metric:1\nRX packets:4721 errors:0 dropped:0 overruns:0 frame:0 TX packets:3216 errors:0 dropped:0 overruns:0\ncarrier:0 collisions:0 txqueuelen:1000\nRX bytes:445184 (434.7 Kb) TX bytes:512968 (500.9 Kb) Interrupt:185 Base address:0x1080",
+    "choices": {
+      "A": "IP=LANG= ifconfig eth0 | awk '{ print $2 }' | cut -f2",
+      "B": "IP=`LANG= ifconfig eth0 | grep inet | cut -d: -f2 | awk { print $1 }`",
+      "C": "IP=`LANG= ifconfig eth0 | awk '{ print $3 }'`",
+      "D": "IP=$(LANG= ifconfig eth0 | grep inet | awk '{ print $2 }' | cut -d: -f2)",
+      "E": "IP=$(LANG= ifconfig eth0 | grep inet | cut -d: -f2)"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "256",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "automounterとautofsスクリプトを使用する予定です。 /etc/auto.masterファイルには次のものが含まれてい\nます：\n/home /etc/auto.home\n/project/etc/auto.project\n/data yp:data.map\n/etc/auto.projectの内容を変更して新しいソースパスを追加する場合、新しいパスにアクセスするために何を\nしなければなりませんか？",
+    "choices": {
+      "A": "ローカルNFSクライアントデーモンをシャットダウンして再起動する",
+      "B": "該当するマウントポイントでfsckを実行します。",
+      "C": "/etc/init.d/autofs reloadコマンドを発行します。",
+      "D": "新しくマップされたパスを/etc/fstabに追加します。",
+      "E": "何も不要です。"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "257",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "カーネルソースを、パッチを適用した前のバージョンに戻すためには、次のコマンドのうちどれを使用すべきで\nすか？",
+    "choices": {
+      "A": "patch --restore",
+      "B": "patch --remove",
+      "C": "patch -U",
+      "D": "patch --undo",
+      "E": "patch -R"
+    },
+    "answer": [
+      "E"
+    ]
+  },
+  {
+    "id": "258",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "2.6.9-ac1カーネルに関して、正しい記述は次のうちどれですか？",
+    "choices": {
+      "A": "alphaカーネルです。",
+      "B": "安定したカーネルに対するある人のパッチです。",
+      "C": "安定したカーネルです。",
+      "D": "不安定したカーネルです。",
+      "E": "不安定したカーネルに対するある人のパッチです。"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "259",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "2.4シリーズのLinuxカーネルを使用する時、IDE CD writerでCDを焼くためにはどのカーネルモジュールをロ\nードする必要がありますか？",
+    "choices": {
+      "A": "ide-cd",
+      "B": "ide-cdrw",
+      "C": "ide-cdb",
+      "D": "ide-scsi",
+      "E": "上記の中にはない。"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "260",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ext3ファイルシステムの作成にはどのコマンドを使用する必要がありますか？",
+    "choices": {
+      "A": "mke2fs",
+      "B": "mkext2fs",
+      "C": "mke3fs",
+      "D": "mkext3fs",
+      "E": "mkjfs"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "261",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "digを使用してDNS検索を実行すると、次のような結果になります。\n;; question SECTION:\n;5.123.168.192.in-addr.arpa. IN PTR\n;; ANSWER SECTION:\n5.123.168.192.in-addr.arpa. 600 IN PTR linuserv.example.net.123.168.192.in-addr.arpa.\n;;AUTHORITY SECTION:\n123.168.192.in-addr.arpa. 600 IN NS linuserv.example.net.\n;; ADDITIONAL SECTION:\nlinuserv.example.net. 600 IN A 192.168.123.5\nゾーンの定義で何が間違っているのでしょうか？",
+    "choices": {
+      "A": "間違いはありません。すべてうまくいっています。",
+      "B": "正引きファイルのPTRレコードのlinuserv.example.netの後に\".\"がありません。",
+      "C": "正引きファイルのPTRレコードのlinuservの後に\".\"がありません。",
+      "D": "逆引きファイルのPTRレコードのlinuserv.example.netの後に\".\"がありません。",
+      "E": "逆引きゾーンのNS定義の\".\"を削除しなければならない。"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "262",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ルーティング設定は、3c59xモジュールを必要とする3comカードであるeth0に依存しています。eth0が常にこ\nのモジュールを使用するためには、モジュール設定ファイルにどの行を追加する必要がありますか？",
+    "choices": {
+      "A": "eth0=3c59x",
+      "B": "alias eth0=3c59x",
+      "C": "alias eth0 3c59x",
+      "D": "set eth0 3c59x",
+      "E": "set eth0=3c59x"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "263",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ブートプロセスのどの段階でこのメッセージが表示されますか？\nIde0: BM-DMA at 0xff00-0xff07, BIOS settings: hda:DMA, hdb:DMA",
+    "choices": {
+      "A": "ブートローダーの起動とカーネルへのハンドオフ",
+      "B": "カーネルロード",
+      "C": "ハードウェアの初期化とセットアップ",
+      "D": "デーモンの初期化とセットアップ"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "264",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "TSIGを使用するには、BINDサーバーをアップグレードする必要があります。 サーバーがアルゴリズムhmac-md5\nと、key skrKc4DoTzi/tAkllPi7JZA== を使用する必要がある場合は、どの設定パラメータを追加する必要があり\nますか？",
+    "choices": {
+      "A": "TSIG server.example.com. algorithm hmac-md5; secret \"skrKc4DoTzi/tAkllPi7JZA==\";};",
+      "B": "key server.example.com. { algorithm hmac-md5; secret skrKc4DoTzi/tAkllPi7JZA==;};",
+      "C": "key server.example.com. { algorithm hmac-md5; secret \"skrKc4DoTzi/tAkllPi7JZA==\";};",
+      "D": "key server.example.com. { algorithm=hmac-md5; secret=\"skrKc4DoTzi/tAkllPi7JZA==\";};",
+      "E": "key server.example.com. { algorithm hmac-md5 secret \"skrKc4DoTzi/tAkI1Pi7JZA==\"};"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "265",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "次のBIND9構成に関して、正しい記述は次のうちどれですか？\noptions {\ndirectory \"/var/named\"; allow-query { any; };\nallow-recursion {127.0.0.1; 10.0.0.0/24; }; forwarders {192.168.0.4; };\nforward first;\n};\nzone\".\" { type hint;\nfile \"named.ca\";\n};",
+    "choices": {
+      "A": "任意のネットワークからの任意のホストは、このサーバーをメインDNSサーバーとして使用できます。",
+      "B": "サーバーがクエリの答えを知らない場合、サーバーは192.168.0.4に再帰的なクエリを送信します。",
+      "C": "サーバーがクエリの答えを知らない場合、サーバーはルートDNSサーバーにクエリを送信します。",
+      "D": "ネットワーク10.0.0.0/24のホストはゾーン転送を要求できます。",
+      "E": "サーバーがクエリの答えを知らない場合、サーバーは192.168.0.4に再帰的なクエリを送信し、失敗した場\n合はエラーを返します。"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "266",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "システムのスワップ領域が不足しています。 5GBの追加スワップ領域を初期化するには、どのコマンドの組み合\nわせを使用する必要がありますか？",
+    "choices": {
+      "A": "dd if=/dev/zero of=/tmp/swapfile bs=1024 count=5120000; mkswap /tmp/swapfile; swapon /tmp/swapfile",
+      "B": "dd if=/dev/zero of=/tmp/swapfile bs=1024 count=5120000; swap on /tmp/swapfile",
+      "C": "dd if=/dev/zero of=/tmp/swapfile bs=1024 count=5120000; mkswap /tmp/swapfile; mount /tmp/swapfile",
+      "D": "touch -5G /tmp/swapfile; swapon /tmp/swapfile",
+      "E": "mkswap /tmp/swapfile 512000; swapon /tmp/swapfile"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "267",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "/mnt/floppyの下にフロッピーディスクイメージをマウントするコマンドは何ですか？",
+    "choices": {
+      "A": "mount -1 root.img /mnt/floppy",
+      "B": "mount --loop root.img /mnt/floppy",
+      "C": "mount root.img /mnt/floppy",
+      "D": "mount root.img",
+      "E": "mount -o loop root.img /mnt/floppy"
+    },
+    "answer": [
+      "E"
+    ]
+  },
+  {
+    "id": "268",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "OpenVPNのserver.confのstatusパラメータで指定されたログファイルには、どのような情報がありますか？ （2\nつ選択）",
+    "choices": {
+      "A": "openvpnデーモンによって生成されたエラーと警告",
+      "B": "ルーティング情報",
+      "C": "現在実行中のopenvpnデーモンに関する統計情報",
+      "D": "現在接続しているクライアントのリスト",
+      "E": "ある時点で接続しているすべてのクライアントの履歴"
+    },
+    "answer": [
+      "B",
+      "D"
+    ]
+  },
+  {
+    "id": "269",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "BINDサーバーは、特定のネットワークまたはホストからのクエリに決して応答すべきではありません。これを実\n現するためには、どの設定構文を使用できますか？",
+    "choices": {
+      "A": "deny-query { ...; };",
+      "B": "no-answer { ...; };",
+      "C": "deny-answer { ...; };",
+      "D": "deny-access { ...; };",
+      "E": "blackhole { ...; };"
+    },
+    "answer": [
+      "E"
+    ]
+  },
+  {
+    "id": "270",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "192.168.1.0/24ネットワークへのゾーン転送を制限するために、named.confで使用できるディレクティブはど\nれですか？",
+    "choices": {
+      "A": "allow-transfer { 192.168.1.0/24; };",
+      "B": "allow-transfer { 192.168.1.0-192.168.1.0.255; };",
+      "C": "allow-axfr { 192.168.1.0/24; };",
+      "D": "allow-xfer { 192.168.1.0/24; };"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "271",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "makefileの典型的なターゲットは何ですか？",
+    "choices": {
+      "A": "CFLAGS, CPPFLAGS, LIBS, LDFLAGS",
+      "B": "clean, install, uninstall",
+      "C": "PATHS, DESTDIR, LIBS, LDFLAGS",
+      "D": "prefix, exec_prefix, bindir, mandir"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "272",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "chroot jail内でnamedコマンドをuser nobody と group nogroupで実行する方法は次のうちどれですか？",
+    "choices": {
+      "A": "\"user nobody; group nogroup; chroot /var/named/root\"をnamed.confに追加します。",
+      "B": "namedはデフォルトでnobody/nogroupとして実行されるので、単に \"name --chroot /var/named/root\"を実\n行するだけです。",
+      "C": "\"chown nobody.nogroup named\"を実行した後に/usr/bin/chrootを使用します。",
+      "D": "\"named -t /var/named/root -u nobody\"でnamedを実行します。"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "273",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "LinuxOSのみインストールされているシステムで、LILOコードはどこにありますか？",
+    "choices": {
+      "A": "master boot record",
+      "B": "boot sector",
+      "C": "/bootディレクトリ",
+      "D": "カーネルの開始時"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "274",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "kill -9コマンドに関する記述で正しいものは次のうちどれですか？(2つ選択)",
+    "choices": {
+      "A": "このコマンドの使用は避けるべきであり、他の選択肢を先に試すべきです。",
+      "B": "このコマンドの使用は、データ損失を引き起こすことがあります。",
+      "C": "このコマンドの使用の結果として、ゾンビプロセスが作成される可能性があります。",
+      "D": "このコマンドはいつでも制限なく使用することができます。",
+      "E": "このコマンドを頻繁に使用すると、RAMの使用率が向上します。"
+    },
+    "answer": [
+      "A",
+      "B"
+    ]
+  },
+  {
+    "id": "275",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "サーバーには2枚のネットワークカードがあります。 最初のカード用のドライバはモジュール8139tooであり、\n2番目のカード用のドライバはモジュールne2k-pciです。 8139tooドライバを使用するカードがne2k-pciドラ\nイバを使用するカードの前に検出されることを保証するために、どうすべきですか？",
+    "choices": {
+      "A": "modprobe 8139too dev=eth0; modprobe ne2k-pci dev=eth1",
+      "B": "install mod 8139too; install mod ne2k-pci",
+      "C": "modprobe eth0=8139too, eth1=ne2k-pci",
+      "D": "ifconfig modadd eth0=8139too, eth1=ne2k-pci",
+      "E": "modprobe 8139too; modprobe ne2k-pci"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "276",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "異なるバージョン番号を返すようにBINDを設定するために、もっとも簡単な方法は次のうちどれですか？",
+    "choices": {
+      "A": "-blur-version=my versionオプションでBINDをコンパイルします。",
+      "B": "BINDの設定ファイルにversion-string \"my version\"を設定します。",
+      "C": "BINDの設定ファイルにversion \"my version\"を設定します。",
+      "D": "BINDの設定ファイルにversion=my versionを設定します。",
+      "E": "BINDの構成ファイルにversion-bind \"my version\"を設定します。"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "277",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "管理者は実行可能ファイルを/etc/init.dディレクトリに置いていますが、システムがランレベル2で起動した\nときには実行されていません。この原因として最も可能性の高いのはどれですか？",
+    "choices": {
+      "A": "スクリプトは/etc/servicesで宣言されていません。",
+      "B": "ランレベル2は/etc/inittabで宣言されていません。",
+      "C": "スクリプトのアクセス権限は700であり、rootが所有しています。",
+      "D": "対応するリンクが/etc/rc2.dで作成されません。"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "278",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "SSH接続中に使用する非対称キー・ペアを生成するために、使用する正しいコマンドは次のうちどれですか？",
+    "choices": {
+      "A": "ssh-keygen -t dsa",
+      "B": "ssh-agent",
+      "C": "sshd",
+      "D": "ssh-agent -t dsa",
+      "E": "ssh-keyscan -t dsa"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "279",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "/dev/hda1の予約ブロックを表示するコマンドは、何ですか？ (オプション、パラメータは必要)",
+    "choices": {},
+    "answer": [
+      "tune2fs -l /dev/hda1"
+    ]
+  },
+  {
+    "id": "280",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "/dev/hda1 上のext2ファイルシステムをext3ファイルシステムに変更するために、どのコマンドを使用すべき\nですか？ (オプションは必要)",
+    "choices": {},
+    "answer": [
+      "tune2fs -j /dev/hda1"
+    ]
+  },
+  {
+    "id": "281",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "df-iからの次の出力について考えてみます。\nFilesystem Inodes IUsed IFree IUse% Mounted on\n/dev/md0 1966080 45044 1921036 3% /\nnone 125731 712 125019 1% /dev\nnone 127729 1 127728 1% /dev/shm\nnone 127729 17 127712 1% /var/run\nnone 127729 2 127727 1% /var/lock\nnone 1966080 45044 1921036 3% /var/lib/ureadahead/debugfs\n/dev/sde1 0 0 0 - /mnt\n/dev sde1が使用する可能性が高いのはどのファイルシステムですか?",
+    "choices": {
+      "A": "ext2",
+      "B": "ext3",
+      "C": "reiserfs",
+      "D": "xfs"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "282",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "磁気テープバックアップでtarを使用するときに、どうしてオプション-zと-jを使用してはいけないのですか？",
+    "choices": {
+      "A": "テープが破損した場合、圧縮されていないtarアーカイブはバックアップの部分的な復元をする可能性があ\nるからです。",
+      "B": "テープドライブの標準Linux圧縮ソフトウェアとハードウェア圧縮により、テープ上により大きなファイル\nが生成するためです。",
+      "C": "標準Linux圧縮ソフトウェアはシーケンシャルテープメディアに書き込むことができないからです。",
+      "D": "圧縮遅延をプロセスに導入しなければ、バックアップと復元のパフォーマンスが向上するからです。",
+      "E": "テープドライブのハードウェアベース圧縮は、gzipまたはbzip2softwareベース圧縮より高い圧縮率を実現\nするからです。"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "283",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "namedに含まれているコマンドのみを使用して、オプションまたはパラメーターを使用して、namedにゾーンフ\nァイルを再読み取りさせるコマンドは何ですか？",
+    "choices": {},
+    "answer": [
+      "rndc reload"
+    ]
+  },
+  {
+    "id": "284",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "automountの構成データが含まれているファイルはどれですか？(完全なパスを入力)",
+    "choices": {},
+    "answer": [
+      "/etc/auto.master"
+    ]
+  },
+  {
+    "id": "285",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "/、/usr、/varおよび/tmpのパーティションが別々のシステムで、どのファイルシステムが読み込み専用で安全\nにマウントできますか？",
+    "choices": {},
+    "answer": [
+      "/usr"
+    ]
+  },
+  {
+    "id": "286",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "Runlevel 4で起動するようにワークステーションを設定しましたが、Xサーバが正しく起動せず、マシンがロー\nカルアクセスを許可しないことがわかりました。 最後に動作していたカーネルイメージがlinuxであった場合\nに、LILOプロンプトでマシンへのローカルアクセスを取り戻す最も効果的なコマンドは何でしょうか？",
+    "choices": {},
+    "answer": [
+      "linux s"
+    ]
+  },
+  {
+    "id": "287",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "デフォルトのシステムRunlevel を定義するために/etc/inittabファイルで使用されるキーワードはどれです\nか？",
+    "choices": {},
+    "answer": [
+      "initdefault"
+    ]
+  },
+  {
+    "id": "288",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "SysV initシステムを使用する場合、ファイル/etc/rc3.d/S55sshdはシンボリックリンクです。 これがリンク\nされているフルパスとファイル名を入力してください。",
+    "choices": {},
+    "answer": [
+      "/etc/init.d/sshd"
+    ]
+  },
+  {
+    "id": "289",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "クラッシュ後、システムをRunlevel 1にブートする必要があります。どのオプションを入力しなければなりま\nせんか？",
+    "choices": {},
+    "answer": [
+      "linux 1"
+    ]
+  },
+  {
+    "id": "290",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "メインのinitプロセス設定ファイルへの完全なパスを入力してください。",
+    "choices": {},
+    "answer": [
+      "/etc/inittab"
+    ]
+  },
+  {
+    "id": "291",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "どのe2fsckオプションを使ってext2ファイルシステムを自動的に修復するのですか？",
+    "choices": {},
+    "answer": [
+      "-p"
+    ]
+  },
+  {
+    "id": "292",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "接続されて認識されているPCカードに関する情報は、/procのどのサブディレクトリの中にありますか？",
+    "choices": {},
+    "answer": [
+      "/proc/bus/pccard"
+    ]
+  },
+  {
+    "id": "293",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "どのファイルにソフトウェアRAID構成が含まれていますか？ （パスなしでファイル名を入力）",
+    "choices": {},
+    "answer": [
+      "raidtab"
+    ]
+  },
+  {
+    "id": "294",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "どのプログラムを使用してIDEハードドライブのDMA設定を調整できますか？（パス、パラメータ、引数なしで\n入力）",
+    "choices": {},
+    "answer": [
+      "hdparm"
+    ]
+  },
+  {
+    "id": "295",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "データベースアプリケーションでは、2GB（2147483648バイト）の最大共有メモリーセグメント（shmmax）が必\n要です。\nこのカーネルパラメータを永久に設定するには、どの設定ファイルを変更する必要がありますか？(ファイルへ\nの完全なパスを入力)",
+    "choices": {},
+    "answer": [
+      "/etc/sysctl.conf"
+    ]
+  },
+  {
+    "id": "296",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "新しい機能を使用するには、新しいカーネルバージョンをコンパイルする必要があります。 古いカーネル構成\nファイルが利用可能な場合、新しいカーネルバージョンの構成ファイルのみを更新するのはどのmake targetで\nすか？（make targetのみを入力）",
+    "choices": {},
+    "answer": [
+      "oldconfig"
+    ]
+  },
+  {
+    "id": "297",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "新しくコンパイルされたカーネルは、ロードする必要のあるモジュールを見つけることができません。 カーネ\nルをコンパイルしてインストールするときに、どのコマンドが欠けていましたか？",
+    "choices": {},
+    "answer": [
+      "make modules_install"
+    ]
+  },
+  {
+    "id": "298",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "使用可能なプロセッサーの1つだけを使用するために、起動時にカーネルにパスする必要があるパラメーターは\n何ですか？",
+    "choices": {},
+    "answer": [
+      "nosmp"
+    ]
+  },
+  {
+    "id": "299",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "次の/etc/fstabファイルがあります。\n/dev/hda1 swap swap defaults 0 0\n/dev/hda2 / ext2 defaults 1 1\n/dev/hda3 /home ext2 defaults 1 2\nnone /proc proc defaults 0 0\n/dev/fd0 /media/floppy vfat user,noauto 0 0\n通常の（root以外の）ユーザーは、このシステムにフロッピーディスクをマウントするためにどのようなコマン\nドを使用できますか？ （すべてのパラメータやオプションでコマンドを入力）",
+    "choices": {},
+    "answer": [
+      "mount /dev/fd0"
+    ]
+  },
+  {
+    "id": "300",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "ラベルルートは/dev/sda1上のext2ファイルシステムにどのように追加できますか？(すべてのパラメータおよ\nび/またはオプションでコマンドを入力)",
+    "choices": {},
+    "answer": [
+      "tune2fs -L root /dev/sda1"
+    ]
+  },
+  {
+    "id": "301",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "ジャーナルは/dev/dg/lv05のext2ファイルシステムに非破壊的にどのように追加できますか？(すべてのパラ\nメータを指定してコマンドを入力)",
+    "choices": {},
+    "answer": [
+      "tune2fs -j /dev/dg/lv05"
+    ]
+  },
+  {
+    "id": "302",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "ユーザーがローカルにログインするときにログインプロンプトで使用されるメッセージを含むファイルを変更\nする予定です。 パスを含むファイルを入力してください。",
+    "choices": {},
+    "answer": [
+      "/etc/issue"
+    ]
+  },
+  {
+    "id": "303",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "標準検索パスにない共有ライブラリを使用するために設定する環境変数はどれですか？",
+    "choices": {},
+    "answer": [
+      "LD_LIBRARY_PATH"
+    ]
+  },
+  {
+    "id": "304",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "すべてのユーザーに、使用しているサービスを停止する必要がある旨を通知する必要があります。 どのコマン\nドで現在ログオンしているすべてのユーザーにメッセージを送信できますか？ (パスではなくコマンドだけを\n入力)",
+    "choices": {},
+    "answer": [
+      "wall"
+    ]
+  },
+  {
+    "id": "305",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "以下の設定によると、このドメインの管理者の電子メールアドレスは何ですか？\n$TTL 86400\n$ORIGIN lpi.org\n@ IN SOA test.lpi.org hostmaster.lpi.org ( 2005010101\n10800\n3600\n604800\n86400 )",
+    "choices": {},
+    "answer": [
+      "hostmaster@lpi.org"
+    ]
+  },
+  {
+    "id": "306",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "新しいカーネルを設定するとき、/usr/src/linux/のどのファイルに設定が含まれていますか？",
+    "choices": {},
+    "answer": [
+      ".config"
+    ]
+  },
+  {
+    "id": "307",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "Linuxカーネルモジュールから情報（モジュールパラメータなど）を抽出し、この情報をコマンドラインに出力\nするコマンドは何ですか？ （パス情報のないコマンドのみを指定）",
+    "choices": {},
+    "answer": [
+      "modinfo"
+    ]
+  },
+  {
+    "id": "308",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "どのディレクトリにLinuxカーネルのドキュメントがありますか？",
+    "choices": {},
+    "answer": [
+      "/usr/src/linux/Documentation"
+    ]
+  },
+  {
+    "id": "309",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "カーネルモジュールをコンパイルするときに、ほとんどの生成されたファイルを削除しますが、configファイル\nと外部モジュールをビルドするのに十分なビルドサポートを保持するのはどのmake targetですか？",
+    "choices": {},
+    "answer": [
+      "clean"
+    ]
+  },
+  {
+    "id": "310",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "磁気テープからデータを復元する必要があり、それはメディア上の2番目のファイルです。 次のコマンドが試\n行されています：\nmt -f /dev/nst0\n2番目のファイルの最初のブロックにテープを配置するmt操作はどれですか？ （他のパラメータを指定しない\nで操作を指定）",
+    "choices": {},
+    "answer": [
+      "asf 2"
+    ]
+  },
+  {
+    "id": "311",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "ローカルネットワークのユーザーは、名前解決が十分に速くないと不満を持っています。 DNSクエリの解決に要\nした時間を示すコマンドは何ですか？(パスまたは任意のオプションを指定なし)",
+    "choices": {},
+    "answer": [
+      "dig"
+    ]
+  },
+  {
+    "id": "312",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "どのオプションをhostnameコマンドに渡すと、DNSドメインの名前が返されますか？ （オプションのみを提供\nする）",
+    "choices": {},
+    "answer": [
+      "-d"
+    ]
+  },
+  {
+    "id": "313",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "カーネルブートメッセージをリモートサーバーに送信するために使用できるのはどのツールですか？",
+    "choices": {},
+    "answer": [
+      "netconsole"
+    ]
+  },
+  {
+    "id": "314",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "接続されたハードディスクのUUIDを特定するために使用できる/dev/disk/ディレクトリはどれですか？",
+    "choices": {},
+    "answer": [
+      "by-uuid"
+    ]
+  },
+  {
+    "id": "315",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "ハードドライブの物理的な欠陥を検索し、その欠陥が使用されなくするためにそれをマークするのはどのコマン\nドですか？ （パス情報のないコマンドを指定）",
+    "choices": {},
+    "answer": [
+      "badblocks"
+    ]
+  },
+  {
+    "id": "316",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "サービスldapがDebianシステム上ですべてのRunlevel で起動しないように、/etc/rcX.dのすべてのシンボリ\nックリンクを強制的に削除するのはどのコマンドですか？ （オプションまたはパラメータを指定せずにコマン\nドを入力する）",
+    "choices": {},
+    "answer": [
+      "update-rc.d"
+    ]
+  },
+  {
+    "id": "317",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "物理ボリューム/dev/sda4をボリュームグループ/dev/vg0から削除するコマンドは何ですか？ （コマンドにオ\nプションとパラメータを指定する）",
+    "choices": {},
+    "answer": [
+      "vgreduce /dev/vg0 /dev/sda4"
+    ]
+  },
+  {
+    "id": "318",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "ユーザーがサーバーにログインするときにユーザーに通知および情報を提供するには、どのファイルを変更する\n必要がありますか？ （ファイルに完全なパス情報を入力）",
+    "choices": {},
+    "answer": [
+      "/etc/motd"
+    ]
+  },
+  {
+    "id": "319",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "nmapに渡されると、nmapに高速スキャンを実行するよう指示されるのはどの単一パラメータですか？ （オプシ\nョンのみを提供する）",
+    "choices": {},
+    "answer": [
+      "-F"
+    ]
+  },
+  {
+    "id": "320",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "どのディレクトリにPCMCIA設定ファイルが入っていますか？",
+    "choices": {},
+    "answer": [
+      "/etc/pcmcia"
+    ]
+  },
+  {
+    "id": "321",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "新しい2.4シリーズカーネルを設定した後、インクルードファイル(include files)などのすべての依存関係を\n作成する必要があります。 これはどのように達成することができますか？ 完全なコマンドを入力してください。",
+    "choices": {},
+    "answer": [
+      "make dep"
+    ]
+  },
+  {
+    "id": "322",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "いくつかの新しいライブラリをインストールしましたが、これらはプログラムでは利用できず、ldconfig -pで\nリストされていません。 ldconfigを実行する前に、ライブラリへのパスをどのファイルに追加する必要があり\nますか？",
+    "choices": {},
+    "answer": [
+      "/etc/ld.so.conf"
+    ]
+  },
+  {
+    "id": "323",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "カーネルがマシン内のハードウェアを検出したかどうかはわかりません。 カーネルリングバッファの内容を表\n示するには、どのコマンドを実行する必要がありますか？(オプションやパラメータを使用しない)",
+    "choices": {},
+    "answer": [
+      "/bin/dmesg"
+    ]
+  },
+  {
+    "id": "324",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "以下のtcpdumpの出力によれば、クライアントホストのIPアドレスは何ですか？\n14:17:19.225220 IP 192.168.1.106.33239 > 192.168.1.127.22: S 4158312222, win\n5840, options [mss 1460,sackOK,TS val 806043 ecr 0,nop,wscale 6]\n14:17:19.242943 IP 192.168.1.127.22 > 192.168.1.106.33239: S. 4013568495 ack\n4158312223, win 5792, options [mss 1460,sackOK,TS val 565852 ecr 806043,nop, wscale 6]\n14:17:19.243111 IP 192.168.1.106.33239 > 192.168.1.127.22: . ack 1, win 92, options\n[nop,nop,TS val 806045 ecr 565852] 14:17:19.264654 IP 192.168.1.127.22 >\n192.168.1.106.33239: P. seq 1:40, ack 1, win 91, options [nop,nop,TS val 565856 ecr 806045]",
+    "choices": {},
+    "answer": [
+      "192.168.1.106"
+    ]
+  },
+  {
+    "id": "325",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "サービスldapが各Runlevel で起動するように設定されているかどうかを表示するchkconfigコマンドはどれで\nすか？ （コマンドとオプションまたはパラメータを指定する）",
+    "choices": {},
+    "answer": [
+      "chkconfig --list ldap"
+    ]
+  },
+  {
+    "id": "326",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "2.6.27-11 Linuxカーネルを実行しているサーバーでは、/bootディレクトリのどのファイルにカーネル構成パ\nラメータが入っていますか？",
+    "choices": {},
+    "answer": [
+      "config-2.6.27-11"
+    ]
+  },
+  {
+    "id": "327",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "プロセスによってオープンされたファイルに関する情報をリストし、他のプログラムによって解析できる出力を\n生成するのはどのプログラムですか？",
+    "choices": {},
+    "answer": [
+      "lsof"
+    ]
+  },
+  {
+    "id": "328",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "システムメッセージをLinuxシステムに記録するsyslogdのメイン設定ファイルへの完全なパスを入力してくだ\nさい。",
+    "choices": {},
+    "answer": [
+      "/etc/syslog.conf"
+    ]
+  },
+  {
+    "id": "329",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "ファイルシステムのために予約されたブロックカウントが表示られるコマンドはどれですか？ （パスまたはパ\nラメータやオプションなしでコマンドを入力）",
+    "choices": {},
+    "answer": [
+      "tune2fs"
+    ]
+  },
+  {
+    "id": "330",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "CDに書き込むファイルシステムを作成するためにどのコマンドを使用しますか？ （パスまたはオプションやパ\nラメータなしでコマンドを入力）",
+    "choices": {},
+    "answer": [
+      "mkisofs"
+    ]
+  },
+  {
+    "id": "331",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "管理者は、データストレージにのみ使用される10GBのext2ファイルシステムに約540MBがroot用に予約され\nていることに気づきます。 データを失うことなく、すべてのパーティションをユーザーが利用できるようにす\nるために、どのコマンドを使用してファイルシステムのパラメータを変更できますか？(パス、オプション、ま\nたはパラメータなしでコマンドだけを入力)",
+    "choices": {},
+    "answer": [
+      "tune2fs"
+    ]
+  },
+  {
+    "id": "332",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "システムrcスクリプトを解釈するために、シェルが最も一般的に使用されます。 スクリプトにある最初の行を\n入力してください。",
+    "choices": {},
+    "answer": [
+      "#!/bin/sh"
+    ]
+  },
+  {
+    "id": "333",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "named.confで192.168.1.0/24ネットワークへのゾーン転送を制限するために使用できるディレクティブは何で\nすか？",
+    "choices": {},
+    "answer": [
+      "allow-transfer { 192.168.1.0/24; };"
+    ]
+  },
+  {
+    "id": "334",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "このプログラムには、コピーインモード、コピーアウトモード、およびコピーパスモードの3つの動作モードが\nあり、ファイルのアーカイブへのコピーまたはアーカイブからのコピーに使用されます。 これはどんなプログ\nラムですか？ （引数またはパスなしでコマンド名のみを指定）",
+    "choices": {},
+    "answer": [
+      "cpio"
+    ]
+  },
+  {
+    "id": "335",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "tcpdump -nli eth1 'icmp'コマンドを実行すると、次の出力を表示します：\n11:56:35.599063 IP 192.168.123.5 > 194.25.2.129: icmp 64: echo request seq 1\n11:56:35.670910 IP 194.25.2.129 > 192.168.123.5: icmp 64: echo reply seq 1\nこの出力を生成するために、ホスト192.168.123.5ではどのコマンドが使用されましたか？",
+    "choices": {},
+    "answer": [
+      "ping"
+    ]
+  },
+  {
+    "id": "336",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "DNSサーバーがクエリを受信できるようにするには、ファイアウォールでどのポートを開く必要がありますか？\n（ポート番号のみを入力）。",
+    "choices": {},
+    "answer": [
+      "53"
+    ]
+  },
+  {
+    "id": "337",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "どのタイプのDNSレコードで、ドメイン用のどのサーバメールを送信するのかを定義していますか？",
+    "choices": {},
+    "answer": [
+      "MX"
+    ]
+  },
+  {
+    "id": "338",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "メインのudev設定ファイルの場所はどこですか？ （フルパスとファイル名を指定）",
+    "choices": {},
+    "answer": [
+      "/etc/udev/udev.conf"
+    ]
+  },
+  {
+    "id": "339",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "適切なパラメータでエラーなしで./configureを呼び出した後、次に実行するコマンドは何でしょうか？",
+    "choices": {},
+    "answer": [
+      "make all -or- make"
+    ]
+  },
+  {
+    "id": "340",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "ログイン失敗を記録するために、どのシャドウログインスイート(shadow login suite)のサイト固有の設定ファ\nイルを変更する必要がありますか？(ファイルへの完全なパスを入力)",
+    "choices": {},
+    "answer": [
+      "/etc/login.defs"
+    ]
+  },
+  {
+    "id": "341",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "Debianパッケージマネージャを使用せずに、.debファイルからファイルを抽出するために、gzipに加える必要\nがある2つのアーカイブプログラムを、スペースで区切って、パスなしで入力してください。",
+    "choices": {},
+    "answer": [
+      "ar tar"
+    ]
+  },
+  {
+    "id": "342",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "BIOSのLBA変換が正しくないため、ブートシステムはLILOプロンプトの代わりに、エラーを表示します。\nエラー番号Lでエラーメッセージを完了してください。",
+    "choices": {},
+    "answer": [
+      "01"
+    ]
+  },
+  {
+    "id": "343",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "ユーザーjohnのcronジョブを一覧表示するために、すべてのパラメーターと引数を付けてrootが使用できるコ\nマンドを入力してください。",
+    "choices": {},
+    "answer": [
+      "crontab -u john -l"
+    ]
+  },
+  {
+    "id": "344",
+    "type": "fill_in",
+    "multi_answer": false,
+    "question": "ユーザfredのcronジョブリストを消去するために、すべてのパラメータと引数を付いてrootが使用できるコ\nマンドを入力してください。",
+    "choices": {},
+    "answer": [
+      "crontab -u fred -r"
+    ]
+  },
+  {
+    "id": "345",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "プログラムからのメッセージがユーザーの母国語で表示されません。この設定のために、どのような環境変数を\n設定する必要がありますか？",
+    "choices": {
+      "A": "LANG",
+      "B": "I18N",
+      "C": "MESSAGES",
+      "D": "MSGS",
+      "E": "LC_MSGS"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "346",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "RPMパッケージをビルドする場合、ソースを展開し、パッチを適用してから次の手順に進むためには、どの\nrpmbuildオプションが使用されますか？",
+    "choices": {
+      "A": "-ba",
+      "B": "-bb",
+      "C": "-be",
+      "D": "-bs",
+      "E": "-bp"
+    },
+    "answer": [
+      "E"
+    ]
+  },
+  {
+    "id": "347",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "優先順位critのカーネル関連メッセージだけが報告されるようにするために、次のうちどれがsyslog設定ファ\nイルに入れる必要がありますか？",
+    "choices": {
+      "A": "kern.crit",
+      "B": "kern.!crit",
+      "C": "kern.=crit",
+      "D": "kern.*=crit",
+      "E": "kern.-crit"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "348",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "crontabに関する記述で正しいものはどれですか？(2つ選択)",
+    "choices": {
+      "A": "すべてのユーザーが独自のcrontabを持つことが可能です。",
+      "B": "crontabを変更するには、cronデーモンのリロード/再起動が必要です。",
+      "C": "cronデーモンは、必要に応じてcrontabファイルを自動的にリロードします。",
+      "D": "hourlyは \"0 * * * *\"と同じです。",
+      "E": "既存のcrontabごとにcronデーモンを実行する必要があります。"
+    },
+    "answer": [
+      "A",
+      "D"
+    ]
+  },
+  {
+    "id": "349",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "次のスクリプトは何をしますか？\n#!/bin/bash find / -perm +4000 | mail -s \"Daily find output\" root",
+    "choices": {
+      "A": "すべてのGUIDファイルのレポートをrootに電子メールで送信します",
+      "B": "すべての重要なファイルのレポートをrootに送信します。",
+      "C": "書き込み可能なすべてのファイルのレポートを電子メールでrootに送信します。",
+      "D": "すべてのsuidファイルのレポートをrootに電子メールで送信します。",
+      "E": "ファイルに対するアクセス権を修正し、その結果をrootに電子メールで送信します。"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "350",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "システムには、プライマリIDEコントローラに接続されたマスタとして設定され1台のハードディスクと、セカ\nンダリIDEコントローラに接続されたスレーブとして設定された1台のCD writerがあります。 システムが正\nしく構成されている場合、どのデバイスがCD writerを表すのに使用されますか？",
+    "choices": {
+      "A": "/dev/scd0",
+      "B": "/dev/hdd",
+      "C": "/dev/hdb",
+      "D": "/dev/sr1",
+      "E": "/dev/scd1"
+    },
+    "answer": [
+      "B"
+    ]
+  },
+  {
+    "id": "351",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "新しいPCMCIAネットワークカードが正しく機能していません。 これをトラブルシューティングするには、ソケ\nット情報を確認する必要があります。 これはどうすればできますか？ （2つを選択）",
+    "choices": {
+      "A": "cardctl info",
+      "B": "cardctl -s",
+      "C": "cardmgr -s",
+      "D": "cat /var/lib/pcmcia/stab",
+      "E": "cat /proc/pcmcia"
+    },
+    "answer": [
+      "A",
+      "D"
+    ]
+  },
+  {
+    "id": "352",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "接続されたUSBデバイスに関する情報を表示するコマンドはどれですか？",
+    "choices": {
+      "A": "cat /proc/usbdevices",
+      "B": "cat /proc/usb/devices",
+      "C": "cat /proc/bus/usb/devices",
+      "D": "cat /proc/usbbus/devices",
+      "E": "cat /proc/hotplug/usb"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "353",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "どのコマンドを使ってシリアルポートのボーレート(Baud Rate)を設定できますか？",
+    "choices": {
+      "A": "setserial",
+      "B": "serialconfig",
+      "C": "ttyconfig",
+      "D": "setty",
+      "E": "serialmode"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "354",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "どのコマンドを使用して、ソフトウェアRAIDセットアップにパーティションを再追加しますか？",
+    "choices": {
+      "A": "raidhotadd",
+      "B": "raidadd",
+      "C": "addraid",
+      "D": "raidaddhot"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "355",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "RPM仕様ファイルから次の抜粋を考えてみましょう。\nこのパッケージについて、次の文のうちどれが正しいですか？(2つ選択)\nSummary: Complete Web authoring system for linux Name: nvu\nVersion: 0.50\nRelease: 5\nSource0: %{name}-%{version}.tar.bz2 Patch0: nvu-freetype2.patch.bz2\nPatch1: nvu-mozilla-1.1-system-myspell-dicts.patch.bz2 Patch2: nvu-mozilla-1.7-spellcheck-full-\nlangname.patch.bz2 License: MPL/LGPL/GPL\nGroup: Development/Other Url: http://www.nvu.com\nBuildRoot: %{_tmppath}/%{name}-buildroot\nBuildRequires: libjpeg-devel libpng-devel libIDL-devel BuildRequires: zip tcsh BuildRequires:\ngtk+2-devel >= 2.2.0",
+    "choices": {
+      "A": "このnvuパッケージをインストールする前に、パッケージgtk+2-devel version 2.2.0以降がシステムに存\n在する必要があります。",
+      "B": "ファイルnvu-freetype2.patch.bz2は、SOURCES/PATCHESディレクトリに存在する必要があります。",
+      "C": "macro %_tmppathは、システム全体またはローカル構成ファイルで定義する必要があります。",
+      "D": "nvu-0.50.tar.bz2は、%{_tmppath}/%{name}-buildrootに展開されます。",
+      "E": "nvu-0.50.tar.bz2ファイルには、nvu用の元のソースが含まれています。"
+    },
+    "answer": [
+      "A",
+      "E"
+    ]
+  },
+  {
+    "id": "356",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "いくつかの古いマシンでは、Linuxカーネルは、割り込み駆動型操作（ECP:interrupt-driven operation）が可\n能であっても、デフォルトでパラレルプリンタポート（/dev/lp0）のポーリングを行います。 どのユーティリ\nティがパラレルポートの割り込み駆動型操作(interrupt-driven operation)を可能にしますか？",
+    "choices": {
+      "A": "tunelp",
+      "B": "stty",
+      "C": "setserial",
+      "D": "setpar",
+      "E": "parpirq"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "357",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "winbindの機能を確認するには、以下を試しました：\nwbinfo -u getent passwd\n次のアクションとは何ですか？",
+    "choices": {
+      "A": "smb.confの内容を確認する必要があります。",
+      "B": "resolv.confの内容を確認する必要があります。",
+      "C": "nsswitch.confの内容を確認する必要があります",
+      "D": "winbind.confの内容を確認する必要があります",
+      "E": "lmhostsの内容を確認する必要があります。"
+    },
+    "answer": [
+      "C"
+    ]
+  },
+  {
+    "id": "358",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "/etc/crontabの有効なエントリで、正しく動作するのは下記のどの3行でしょうか？",
+    "choices": {
+      "A": "0 23 * * 8 root tar cvf /dev/st0 /etc",
+      "B": "0 10 6 22 * /usr/local/bin/fs-report.sh",
+      "C": "0 17 * * 1 jdoe accouting-generation",
+      "D": "20 6 1 * * root graphicals-generations",
+      "E": "0 10 * * 2-6 tar cvf /dev/st0 /etc"
+    },
+    "answer": [
+      "C",
+      "D",
+      "E"
+    ]
+  },
+  {
+    "id": "359",
+    "type": "multiple_choice",
+    "multi_answer": true,
+    "question": "ワイヤレスネットワークのリンク品質をチェックするために使用できるワイヤレスツールはどれですか？",
+    "choices": {
+      "A": "iwconfig",
+      "B": "iwlink",
+      "C": "iwscan",
+      "D": "iwifi",
+      "E": "iwspy"
+    },
+    "answer": [
+      "A",
+      "E"
+    ]
+  },
+  {
+    "id": "360",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "ブートディスクの作成時にカーネルのオプションを永久に設定するために使用されるコマンドは何ですか？",
+    "choices": {
+      "A": "blockdev",
+      "B": "kconfig",
+      "C": "lilo",
+      "D": "rdev",
+      "E": "dd"
+    },
+    "answer": [
+      "D"
+    ]
+  },
+  {
+    "id": "361",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "CPANアーカイブからPerlモジュール（'$module'）をインストールするためにどのコマンドを使用できますか？",
+    "choices": {
+      "A": "perl -MCPAN -e \"install $module\"",
+      "B": "perl -MCPAN -install $module",
+      "C": "perl -i $module",
+      "D": "perl -cpan -e \"make $module\"",
+      "E": "perl -cpan -i $module"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "362",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "bashが対話型ログインシェルとして呼び出されたとき、正しいのは次の記述のうちどれですか？",
+    "choices": {
+      "A": "最初に/etc/bashrc内のコマンドを読み込んで実行し、/etc/profileに対して同じ処理を行います。",
+      "B": "/etc/profileを無視し、~/.bashrc内のコマンドだけを読み込んで実行します。",
+      "C": "最初に/etc/profile内のコマンドを読み込んで実行し、~/.bash_profile, ~/.bash_login, ~/.profileに対\nしても同じ処理を行います。",
+      "D": "最初に/etc/profile内のコマンドを読み込んで実行し、~/.bash_profile, ~/.bashrcに対しても同様に同じ\n処理を実行します。",
+      "E": "~/.bashrc内のコマンドを読み込んで実行するのは、/etc/profileや他の初期化スクリプトがそれを呼び出\nす場合に限られます。"
+    },
+    "answer": [
+      "A"
+    ]
+  },
+  {
+    "id": "363",
+    "type": "multiple_choice",
+    "multi_answer": false,
+    "question": "サーバーには2枚のネットワークカードがあります。 最初のカード用のドライバはモジュール8139tooであり、\n2番目のカード用のドライバはモジュールne2k-pciです。 どのようにして、8139tooドライバを使用するカー\nドがne2k-pciドライバを使用するカードの前に検出されるようにすることができますか？",
+    "choices": {
+      "A": "modprobe 8139too dev=eth0; modprobe ne2k-pci dev=eth1",
+      "B": "install mod 8139too; install mod ne2k-pci",
+      "C": "modprobe eth0=8139too, eth1=ne2k-pci",
+      "D": "ifconfig modadd eth0=8139too, eth1=ne2k-pci",
+      "E": "modprobe 8139too; modprobe ne2k-pci"
+    },
+    "answer": [
+      "A"
+    ]
+  }
+]
