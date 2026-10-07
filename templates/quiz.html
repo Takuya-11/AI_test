@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>LPIC 今日の20問</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d27;
+    --border: #2a2d3e;
+    --text: #e8eaf6;
+    --sub: #8b90a8;
+    --accent: #6c63ff;
+    --green: #4caf50;
+    --red: #f44336;
+    --yellow: #ffb300;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding-bottom: 40px;
+  }
+
+  /* ヘッダー */
+  .header {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 16px 10px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .header-title { font-size: 14px; font-weight: 700; color: var(--accent); }
+  .header-date { font-size: 12px; color: var(--sub); }
+  .progress-bar-wrap { background: var(--border); border-radius: 4px; height: 4px; }
+  .progress-bar { background: var(--accent); height: 4px; border-radius: 4px; transition: width 0.3s; }
+  .progress-text { font-size: 12px; color: var(--sub); margin-top: 6px; text-align: right; }
+
+  /* 問題カード */
+  .main { padding: 16px; }
+  .question-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .q-meta { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; }
+  .q-num { font-size: 13px; font-weight: 700; color: var(--accent); }
+  .q-tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  .tag-new { background: #1a3a5c; color: #64b5f6; }
+  .tag-review { background: #2d1f4e; color: #b39ddb; }
+  .tag-wrong { background: #3d1515; color: #ef9a9a; }
+  .tag-multi { background: #1a3d1a; color: #a5d6a7; font-size: 10px; }
+  .q-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text);
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+
+  /* 選択肢 */
+  .choices { display: flex; flex-direction: column; gap: 10px; }
+  .choice-btn {
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    text-align: left;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+    cursor: pointer;
+    transition: all 0.15s;
+    -webkit-appearance: none;
+    width: 100%;
+  }
+  .choice-btn:active { transform: scale(0.98); }
+  .choice-btn.selected { border-color: var(--accent); background: #1e1b3a; }
+  .choice-btn.correct { border-color: var(--green); background: #1a2e1a; color: #a5d6a7; }
+  .choice-btn.wrong { border-color: var(--red); background: #2e1a1a; color: #ef9a9a; }
+  .choice-btn.answer-reveal { border-color: var(--green); background: #1a2e1a; color: #a5d6a7; }
+  .choice-label { font-weight: 700; color: var(--accent); margin-right: 8px; }
+  .choice-btn.correct .choice-label, .choice-btn.answer-reveal .choice-label { color: var(--green); }
+  .choice-btn.wrong .choice-label { color: var(--red); }
+
+  /* 記述式 */
+  .fill-area { display: flex; flex-direction: column; gap: 10px; }
+  .fill-input {
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    color: var(--text);
+    font-size: 16px;
+    outline: none;
+    width: 100%;
+  }
+  .fill-input:focus { border-color: var(--accent); }
+  .fill-check-btn {
+    background: var(--accent);
+    border: none;
+    border-radius: var(--radius);
+    padding: 14px;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  /* フィードバック */
+  .feedback {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 16px;
+    display: none;
+  }
+  .feedback.show { display: block; }
+  .feedback-result {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .feedback-result.ok { color: var(--green); }
+  .feedback-result.ng { color: var(--red); }
+  .feedback-answer { font-size: 14px; color: var(--sub); margin-bottom: 4px; }
+  .feedback-answer span { color: var(--text); font-weight: 600; }
+
+  /* ボタン */
+  .next-btn {
+    background: var(--accent);
+    border: none;
+    border-radius: var(--radius);
+    padding: 16px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    display: none;
+    margin-top: 4px;
+  }
+  .next-btn.show { display: block; }
+  .next-btn:active { opacity: 0.85; }
+
+  /* 完了画面 */
+  #result-screen {
+    display: none;
+    padding: 20px;
+    text-align: center;
+  }
+  #result-screen.show { display: block; }
+  .result-emoji { font-size: 64px; margin-bottom: 16px; }
+  .result-title { font-size: 24px; font-weight: 700; margin-bottom: 24px; }
+  .result-stats {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .stat-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-label { color: var(--sub); font-size: 14px; }
+  .stat-value { font-weight: 700; font-size: 15px; }
+  .stat-value.green { color: var(--green); }
+  .stat-value.red { color: var(--red); }
+  .result-msg { color: var(--sub); font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+  .saving-msg { color: var(--yellow); font-size: 14px; }
+
+  /* ローディング */
+  #loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    gap: 16px;
+    color: var(--sub);
+  }
+  .spinner {
+    width: 40px; height: 40px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="spinner"></div>
+  <div>問題を読み込んでいます...</div>
+</div>
+
+<div id="quiz-screen" style="display:none">
+  <div class="header">
+    <div class="header-top">
+      <div class="header-title">📚 LPIC 今日の20問</div>
+      <div class="header-date" id="header-date"></div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+    </div>
+    <div class="progress-text" id="progress-text">Q1 / 20</div>
+  </div>
+
+  <div class="main">
+    <div class="question-card">
+      <div class="q-meta">
+        <span class="q-num" id="q-num">第1問</span>
+        <span class="q-tag" id="q-tag"></span>
+        <span class="q-tag tag-multi" id="q-multi" style="display:none">複数選択</span>
+      </div>
+      <div class="q-text" id="q-text"></div>
+    </div>
+
+    <div id="choices-area" class="choices"></div>
+    <div id="fill-area" class="fill-area" style="display:none">
+      <input type="text" class="fill-input" id="fill-input" placeholder="コマンド名を入力" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+      <button class="fill-check-btn" id="fill-check-btn" onclick="checkFillAnswer()">答えを確認する</button>
+    </div>
+
+    <div class="feedback" id="feedback">
+      <div class="feedback-result" id="feedback-result"></div>
+      <div class="feedback-answer" id="feedback-answer"></div>
+    </div>
+
+    <button class="next-btn" id="next-btn" onclick="nextQuestion()">次の問題へ →</button>
+  </div>
+</div>
+
+<div id="result-screen">
+  <div class="result-emoji" id="result-emoji"></div>
+  <div class="result-title">学習完了！</div>
+  <div class="result-stats" id="result-stats"></div>
+  <div class="result-msg" id="result-msg"></div>
+  <div class="saving-msg" id="saving-msg">📊 Google Sheetsに保存中...</div>
+</div>
+
+<script>
+let questions = [];
+let currentIdx = 0;
+let selectedAnswers = [];
+let isAnswered = false;
+let sessionAnswers = [];
+let sessionDate = '';
+let historySnapshot = {};
+
+async function loadSession() {
+  try {
+    const res = await fetch('/api/session');
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+
+    questions = data.questions;
+    sessionDate = data.date;
+    historySnapshot = data.history_snapshot || {};
+
+    document.getElementById('header-date').textContent = sessionDate;
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('quiz-screen').style.display = 'block';
+    showQuestion(0);
+  } catch(e) {
+    document.getElementById('loading').innerHTML =
+      '<div style="color:#f44336;padding:20px;text-align:center">セッションの読み込みに失敗しました。<br>lpic_morning.py を実行してください。</div>';
+  }
+}
+
+function showQuestion(idx) {
+  const q = questions[idx];
+  currentIdx = idx;
+  selectedAnswers = [];
+  isAnswered = false;
+
+  // プログレス
+  const pct = (idx / questions.length) * 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = `Q${idx+1} / ${questions.length}`;
+  document.getElementById('q-num').textContent = `第${idx+1}問`;
+
+  // タグ
+  const tagEl = document.getElementById('q-tag');
+  const h = historySnapshot[q.id];
+  if (!h) {
+    tagEl.className = 'q-tag tag-new'; tagEl.textContent = '🆕 新規';
+  } else if (h.times_wrong > h.times_correct) {
+    tagEl.className = 'q-tag tag-wrong'; tagEl.textContent = '❌ 要復習';
+  } else {
+    tagEl.className = 'q-tag tag-review'; tagEl.textContent = '🔁 復習';
+  }
+
+  // 複数選択ラベル
+  const multiTag = document.getElementById('q-multi');
+  multiTag.style.display = q.multi_answer ? 'inline-block' : 'none';
+
+  // 問題文
+  document.getElementById('q-text').textContent = q.question;
+
+  // フィードバック・次へボタンをリセット
+  const fb = document.getElementById('feedback');
+  fb.className = 'feedback';
+  document.getElementById('next-btn').className = 'next-btn';
+
+  if (q.type === 'fill_in') {
+    document.getElementById('choices-area').innerHTML = '';
+    const fillArea = document.getElementById('fill-area');
+    fillArea.style.display = 'flex';
+    const input = document.getElementById('fill-input');
+    input.value = '';
+    input.disabled = false;
+    document.getElementById('fill-check-btn').disabled = false;
+    setTimeout(() => input.focus(), 100);
+  } else {
+    document.getElementById('fill-area').style.display = 'none';
+    renderChoices(q);
+  }
+}
+
+function renderChoices(q) {
+  const area = document.getElementById('choices-area');
+  area.innerHTML = '';
+  const entries = Object.entries(q.choices);
+  entries.forEach(([label, text]) => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.id = 'choice-' + label;
+    btn.innerHTML = `<span class="choice-label">${label}.</span>${text}`;
+    btn.onclick = () => selectChoice(label, q);
+    area.appendChild(btn);
+  });
+}
+
+function selectChoice(label, q) {
+  if (isAnswered) return;
+
+  if (q.multi_answer) {
+    // 複数選択
+    const btn = document.getElementById('choice-' + label);
+    const idx = selectedAnswers.indexOf(label);
+    if (idx === -1) {
+      selectedAnswers.push(label);
+      btn.classList.add('selected');
+    } else {
+      selectedAnswers.splice(idx, 1);
+      btn.classList.remove('selected');
+    }
+    // 正解と同じ数選んだら自動判定
+    if (selectedAnswers.length === q.answer.length) {
+      judgeMultiAnswer(q);
+    }
+  } else {
+    // 単一選択
+    selectedAnswers = [label];
+    judgeSingleAnswer(label, q);
+  }
+}
+
+function judgeSingleAnswer(label, q) {
+  isAnswered = true;
+  const isCorrect = q.answer.includes(label);
+  const btn = document.getElementById('choice-' + label);
+  btn.classList.add(isCorrect ? 'correct' : 'wrong');
+
+  // 正解を表示
+  q.answer.forEach(a => {
+    const ab = document.getElementById('choice-' + a);
+    if (ab && !ab.classList.contains('wrong')) ab.classList.add('answer-reveal');
+  });
+
+  showFeedback(isCorrect, q.answer.join('、'), label);
+  recordAnswer(q, [label], isCorrect);
+}
+
+function judgeMultiAnswer(q) {
+  isAnswered = true;
+  const correctSet = new Set(q.answer);
+  const selectedSet = new Set(selectedAnswers);
+  const isCorrect = [...correctSet].every(a => selectedSet.has(a)) &&
+                    [...selectedSet].every(a => correctSet.has(a));
+
+  selectedAnswers.forEach(label => {
+    const btn = document.getElementById('choice-' + label);
+    btn.classList.remove('selected');
+    btn.classList.add(q.answer.includes(label) ? 'correct' : 'wrong');
+  });
+  q.answer.forEach(a => {
+    const ab = document.getElementById('choice-' + a);
+    if (ab && !ab.classList.contains('correct')) ab.classList.add('answer-reveal');
+  });
+
+  showFeedback(isCorrect, q.answer.join('、'), selectedAnswers.join('、'));
+  recordAnswer(q, selectedAnswers, isCorrect);
+}
+
+function checkFillAnswer() {
+  const input = document.getElementById('fill-input');
+  const userAns = input.value.trim();
+  const q = questions[currentIdx];
+  if (!userAns) return;
+
+  input.disabled = true;
+  document.getElementById('fill-check-btn').disabled = true;
+  isAnswered = true;
+
+  // 正解はユーザーが自己判定（大文字小文字・スペース無視で比較）
+  const normalize = s => s.toLowerCase().replace(/\s+/g, '');
+  const isCorrect = q.answer.some(a => normalize(a) === normalize(userAns));
+
+  showFeedback(isCorrect, q.answer.join('または'), userAns);
+  recordAnswer(q, [userAns], isCorrect);
+}
+
+function showFeedback(isCorrect, correctAns, userAns) {
+  const fb = document.getElementById('feedback');
+  const resultEl = document.getElementById('feedback-result');
+  const answerEl = document.getElementById('feedback-answer');
+
+  resultEl.className = 'feedback-result ' + (isCorrect ? 'ok' : 'ng');
+  resultEl.textContent = isCorrect ? '✅ 正解！' : '❌ 不正解';
+  answerEl.innerHTML = `正解：<span>${correctAns}</span>`;
+
+  fb.className = 'feedback show';
+  document.getElementById('next-btn').className = 'next-btn show';
+}
+
+function recordAnswer(q, userAnswers, isCorrect) {
+  sessionAnswers.push({
+    question_id: q.id,
+    user_answer: userAnswers.join(','),
+    correct_answer: q.answer.join(','),
+    is_correct: isCorrect,
+  });
+}
+
+function nextQuestion() {
+  if (currentIdx + 1 >= questions.length) {
+    showResult();
+  } else {
+    showQuestion(currentIdx + 1);
+    window.scrollTo(0, 0);
+  }
+}
+
+async function showResult() {
+  document.getElementById('quiz-screen').style.display = 'none';
+  const resultScreen = document.getElementById('result-screen');
+  resultScreen.className = 'show';
+  document.getElementById('progress-bar').style.width = '100%';
+  document.getElementById('progress-text').textContent = `完了 ${questions.length}/${questions.length}`;
+
+  const total = sessionAnswers.length;
+  const correct = sessionAnswers.filter(a => a.is_correct).length;
+  const wrong = total - correct;
+  const accuracy = Math.round(correct / Math.max(total, 1) * 100);
+
+  // 絵文字
+  const emoji = accuracy >= 90 ? '🏆' : accuracy >= 70 ? '🎉' : accuracy >= 50 ? '📚' : '💪';
+  document.getElementById('result-emoji').textContent = emoji;
+
+  // 統計
+  document.getElementById('result-stats').innerHTML = `
+    <div class="stat-row"><span class="stat-label">正解</span><span class="stat-value green">${correct}問</span></div>
+    <div class="stat-row"><span class="stat-label">不正解</span><span class="stat-value red">${wrong}問</span></div>
+    <div class="stat-row"><span class="stat-label">正答率</span><span class="stat-value">${accuracy}%</span></div>
+    <div class="stat-row"><span class="stat-label">出題数</span><span class="stat-value">${total}問</span></div>
+  `;
+
+  const msg = accuracy >= 90 ? '素晴らしい！この調子で続けましょう 🔥' :
+              accuracy >= 70 ? 'よく頑張りました！間違えた問題を復習しましょう。' :
+              accuracy >= 50 ? '頑張りました！復習を続けることで定着します。' :
+                               '難しい問題でした。明日も続けましょう！';
+  document.getElementById('result-msg').textContent = msg;
+
+  // Sheetsに保存
+  try {
+    const res = await fetch('/api/submit', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({answers: sessionAnswers}),
+    });
+    const data = await res.json();
+    document.getElementById('saving-msg').textContent = '✅ Google Sheetsに保存しました！LINEにも通知が届きます。';
+  } catch(e) {
+    document.getElementById('saving-msg').textContent = '⚠️ 保存に失敗しました（ネットワークを確認してください）';
+  }
+}
+
+loadSession();
+</script>
+</body>
+</html>
