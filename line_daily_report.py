@@ -27,12 +27,14 @@ JST = zoneinfo.ZoneInfo("Asia/Tokyo")
 LINE_API_URL = "https://api.line.me/v2/bot/message/push"
 
 
-def build_message() -> str:
-    """当日の日付（日本時間）を取得して日報フォーマットを生成する"""
+def build_messages() -> list[str]:
+    """1通目：促しメッセージ、2通目：日報フォーマット"""
     now = datetime.now(JST)
     date_str = f"{now.year}年{now.month}月{now.day}日"
 
-    return f"""{date_str}日報
+    prompt = "日報の作成をしてください！"
+
+    template = f"""{date_str}日報
 
 ・今日の主な出来事:
 
@@ -64,6 +66,8 @@ def build_message() -> str:
 ⚪ 緊急度：低 × 重要度：低
 ・SNS確認"""
 
+    return [prompt, template]
+
 
 def get_env() -> tuple[str, str]:
     """環境変数からToken・User IDを取得してバリデーションする"""
@@ -81,15 +85,15 @@ def get_env() -> tuple[str, str]:
     return token, user_id
 
 
-def send(token: str, user_id: str, message: str) -> None:
-    """LINE Push MessageAPIへ送信し、結果をログに記録する"""
+def send(token: str, user_id: str, messages: list[str]) -> None:
+    """LINE Push Message APIへ複数メッセージを1リクエストで送信する"""
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {token}",
     }
     payload = {
         "to": user_id,
-        "messages": [{"type": "text", "text": message}],
+        "messages": [{"type": "text", "text": m} for m in messages],
     }
 
     try:
@@ -122,10 +126,11 @@ def main() -> None:
     log.info("日報送信を開始します")
 
     token, user_id = get_env()
-    message = build_message()
+    messages = build_messages()
 
-    log.info("送信メッセージ:\n%s", message)
-    send(token, user_id, message)
+    for i, m in enumerate(messages, 1):
+        log.info("送信メッセージ%d通目:\n%s", i, m)
+    send(token, user_id, messages)
 
     log.info("日報送信が完了しました")
 
