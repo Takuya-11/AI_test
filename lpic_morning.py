@@ -207,7 +207,8 @@ def calc_coverage(questions: list[dict], history: dict, today: date) -> dict:
 
 def start_server() -> None:
     """Flaskサーバーをバックグラウンドで起動（多重起動防止）"""
-    result = subprocess.run(["lsof", "-ti", f":{PORT}"], capture_output=True, text=True)
+    lsof_path = "/usr/sbin/lsof" if os.path.exists("/usr/sbin/lsof") else "lsof"
+    result = subprocess.run([lsof_path, "-ti", f":{PORT}"], capture_output=True, text=True)
     if result.stdout.strip():
         print(f"Flaskサーバーはすでに起動中 (port {PORT})")
         return
