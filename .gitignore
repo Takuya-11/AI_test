@@ -19,3 +19,22 @@ members.csv
 # LPIC
 lpic_data/history.json
 *.pdf
+
+# ログ・実行データ（個人情報含む可能性）
+*.log
+lpic_data/morning.log
+lpic_data/server.log
+lpic_data/today_session.json
+processed_messages.json
+
+# 音声・メディアファイル
+*.m4a
+*.mp3
+*.mp4
+
+# OAuth トークン（全種）
+*_token.json
+calendar_token.json
+
+# launchd（個人パス含む）
+*.plist
